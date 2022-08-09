@@ -5,7 +5,7 @@
 		<RootNamespace>F1_Telemetry_Adapter</RootNamespace>
 		<GeneratePackageOnBuild>True</GeneratePackageOnBuild>
 		<Description>用来解析Codemaster公司的F1系列游戏的UDP遥测数据</Description>
-		<AssemblyName>F1.TelemetryAdapter</AssemblyName>
+		<AssemblyName>F1TelemetryAdapter</AssemblyName>
 		<GenerateDocumentationFile>True</GenerateDocumentationFile>
 	</PropertyGroup>
 
