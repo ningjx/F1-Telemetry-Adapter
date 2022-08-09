@@ -1,12 +1,15 @@
 <Project Sdk="Microsoft.NET.Sdk">
 
 	<PropertyGroup>
-		<TargetFrameworks>netstandard2.0;net461</TargetFrameworks>
+		<TargetFrameworks>netstandard2.0;net461;netcoreapp2.0;net6.0</TargetFrameworks>
 		<RootNamespace>F1_Telemetry_Adapter</RootNamespace>
 		<GeneratePackageOnBuild>True</GeneratePackageOnBuild>
 		<Description>用来解析Codemaster公司的F1系列游戏的UDP遥测数据</Description>
 		<AssemblyName>F1TelemetryAdapter</AssemblyName>
 		<GenerateDocumentationFile>True</GenerateDocumentationFile>
+		<RepositoryUrl>https://github.com/ningjx/F1-Telemetry-Adapter</RepositoryUrl>
+		<PackageRequireLicenseAcceptance>True</PackageRequireLicenseAcceptance>
+		<PackageLicenseExpression>Apache-2.0</PackageLicenseExpression>
 	</PropertyGroup>
 
 </Project>
