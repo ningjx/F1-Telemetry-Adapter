@@ -88,7 +88,7 @@ namespace F1_Telemetry_Adapter.F1_22_Packets
                         new PacketItem {Name="IsOverallFastestInSession",Type = typeof(byte)},
                         new PacketItem {Name="IsDriverFastestInSession",Type = typeof(byte)},
                         new PacketItem {Name="FastestVehicleIdxInSession",Type = typeof(byte)},
-                        new PacketItem {Name="NumLights",Type = typeof(byte)}
+                        new PacketItem {Name="FastestSpeedInSession",Type = typeof(float)}
                     };
                     break;
 

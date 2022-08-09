@@ -16,7 +16,7 @@ namespace F1_Telemetry_Adapter
                 case "Double":
                     res = BitConverter.ToDouble(bytes.ByteData, bytes.Index); bytes.Index += 8; break;
                 case "SByte":
-                    res = Convert.ToSByte(bytes.ByteData[bytes.Index]); bytes.Index += 1; break;
+                    res = (sbyte)bytes.ByteData[bytes.Index]; bytes.Index += 1; break;
                 case "Byte":
                     res = bytes.ByteData[bytes.Index]; bytes.Index += 1; break;
                 case "Int16":

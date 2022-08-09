@@ -91,7 +91,7 @@ namespace F1_Telemetry_Adapter.F1_22_Packets
         /// </summary>
         public byte Clutch;
         /// <summary>
-        /// Gear selected (1-8, N=0, R=-1)
+        /// Gear selected (1-8, N=0, R= -1)
         /// </summary>
         public sbyte Gear;
         /// <summary>
