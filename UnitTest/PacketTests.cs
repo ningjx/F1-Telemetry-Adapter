@@ -122,35 +122,5 @@ namespace F1_Telemetry_Adapter.Tests
             var pack = F1Packet.GetPacket(bytes);
             Assert.AreNotEqual(pack, null);
         }
-
-        [TestMethod()]
-        public void GetUDPPacketTest()
-        {
-            IPEndPoint FromIP = null;
-            var ListenEndPoint = new IPEndPoint(IPAddress.Parse("127.0.0.1"), 20777);
-            var UDP = new UdpClient(ListenEndPoint);
-            while (true)
-            {
-                if (UDP.Available <= 0)
-                {
-                    Console.WriteLine("没");
-                    continue;
-                }
-
-                var bytes = UDP.Receive(ref FromIP);
-                try
-                {
-                    Console.WriteLine("受大师能否接受地方摆放方式登记好看呢");
-                    var pack = F1Packet.GetPacket(bytes);
-                }
-                catch (Exception e)
-                {
-                    UDP.Dispose();
-                    var txt = string.Join(" ", bytes.Select(l => l.ToString()));
-                    File.WriteAllLines(@"D:\error\errorbytes", new string[] { txt });
-                }
-                Thread.Sleep(15);
-            }
-        }
     }
 }
