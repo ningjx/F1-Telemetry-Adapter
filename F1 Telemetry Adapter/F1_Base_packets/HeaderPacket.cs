@@ -24,7 +24,7 @@ namespace F1_Telemetry_Adapter.F1_Base_packets
             new PacketItem {Name="PacketFormat",TypeName = "uint16"},
             new PacketItem {Name="PacketVersion",TypeName = "uint8"},
             new PacketItem {Name="PacketId",TypeName = "uint8"},
-            new PacketItem {Name="SessionUID",Type = typeof(ulong)},
+            new PacketItem {Name="SessionUID",TypeName = "uint64"},
             new PacketItem {Name="SessionTime",TypeName = "float"},
             new PacketItem {Name="FrameIdentifier",TypeName = "uint32"},
             new PacketItem {Name="PlayerCarIndex",TypeName = "uint8"}

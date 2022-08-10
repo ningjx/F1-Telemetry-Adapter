@@ -19,14 +19,14 @@ namespace F1_Telemetry_Adapter.Models
 
                 if (item.Count == 0)
                 {
-                    value = bytes.ConvertValue(item.Type.Name);
+                    value = bytes.ConvertValue(item.TypeName);
                 }
                 else
                 {
                     var arrayEntity = Array.CreateInstance(item.Type, item.Count);
                     for (int i = 0; i < item.Count; i++)
                     {
-                        arrayEntity.SetValue(bytes.ConvertValue(item.Type.Name), i);
+                        arrayEntity.SetValue(bytes.ConvertValue(item.TypeName), i);
                     }
                     value = arrayEntity;
                 }

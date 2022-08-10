@@ -10,6 +10,11 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "UnitTest", "UnitTest\UnitTe
 		{54F51E30-1D1D-46C9-8125-F5276AE8B836} = {54F51E30-1D1D-46C9-8125-F5276AE8B836}
 	EndProjectSection
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Templet", "Templet\Templet.csproj", "{14E23E65-0C69-4EB5-8E55-C720B107E1D6}"
+	ProjectSection(ProjectDependencies) = postProject
+		{54F51E30-1D1D-46C9-8125-F5276AE8B836} = {54F51E30-1D1D-46C9-8125-F5276AE8B836}
+	EndProjectSection
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -24,6 +29,10 @@ Global
 		{C9639B48-6755-4474-928C-6EB690A83AFD}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{C9639B48-6755-4474-928C-6EB690A83AFD}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{C9639B48-6755-4474-928C-6EB690A83AFD}.Release|Any CPU.Build.0 = Release|Any CPU
+		{14E23E65-0C69-4EB5-8E55-C720B107E1D6}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{14E23E65-0C69-4EB5-8E55-C720B107E1D6}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{14E23E65-0C69-4EB5-8E55-C720B107E1D6}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{14E23E65-0C69-4EB5-8E55-C720B107E1D6}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
