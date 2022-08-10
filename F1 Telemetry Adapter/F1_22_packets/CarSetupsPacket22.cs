@@ -1,4 +1,5 @@
-﻿using F1_Telemetry_Adapter.Models;
+﻿using F1_Telemetry_Adapter.F1_Base_packets;
+using F1_Telemetry_Adapter.Models;
 
 namespace F1_Telemetry_Adapter.F1_22_Packets
 {
@@ -8,17 +9,17 @@ namespace F1_Telemetry_Adapter.F1_22_Packets
     /// Size: 1102 bytes
     /// Version: 1
     /// </summary>
-    public class CarSetupsPacket : F1Packet
+    public class CarSetupsPacket22 : F1Packet
     {
         public override int PacketSize => 1102;
 
         public CarSetupData[] CarSetupDatas;
 
-        public CarSetupsPacket(HeaderPacket header) : base(header) { }
+        public CarSetupsPacket22(HeaderPacket header) : base(header) { }
 
-        public CarSetupsPacket() { }
+        public CarSetupsPacket22() { }
 
-        public override ItemList PacketItems => new ItemList
+        internal override ItemList PacketItems => new ItemList
         {
             new PacketItem {
                 Name="CarSetupDatas",
@@ -26,28 +27,28 @@ namespace F1_Telemetry_Adapter.F1_22_Packets
                 Count=22,
                 Children = new PacketItem[]
                 {
-                    new PacketItem {ClassName="CarSetupData",Name="FrontWing",Type = typeof(byte)},
-                    new PacketItem {ClassName="CarSetupData",Name="RearWing",Type = typeof(byte)},
-                    new PacketItem {ClassName="CarSetupData",Name="OnThrottle",Type = typeof(byte)},
-                    new PacketItem {ClassName="CarSetupData",Name="OffThrottle",Type = typeof(byte)},
-                    new PacketItem {ClassName="CarSetupData",Name="FrontCamber",Type = typeof(float)},
-                    new PacketItem {ClassName="CarSetupData",Name="TearCamber",Type = typeof(float)},
-                    new PacketItem {ClassName="CarSetupData",Name="FrontToe",Type = typeof(float)},
-                    new PacketItem {ClassName="CarSetupData",Name="RearToe",Type = typeof(float)},
-                    new PacketItem {ClassName="CarSetupData",Name="FrontSuspension",Type = typeof(byte)},
-                    new PacketItem {ClassName="CarSetupData",Name="TearSuspension",Type = typeof(byte)},
-                    new PacketItem {ClassName="CarSetupData",Name="FrontAntiRollBar",Type = typeof(byte)},
-                    new PacketItem {ClassName="CarSetupData",Name="TearAntiRollBar",Type = typeof(byte)},
-                    new PacketItem {ClassName="CarSetupData",Name="FrontSuspensionHeight",Type = typeof(byte)},
-                    new PacketItem {ClassName="CarSetupData",Name="TearSuspensionHeight",Type = typeof(byte)},
-                    new PacketItem {ClassName="CarSetupData",Name="BrakePressure",Type = typeof(byte)},
-                    new PacketItem {ClassName="CarSetupData",Name="BrakeBias",Type = typeof(byte)},
-                    new PacketItem {ClassName="CarSetupData",Name="RearLeftTyrePressure",Type = typeof(float)},
-                    new PacketItem {ClassName="CarSetupData",Name="RearRightTyrePressure",Type = typeof(float)},
-                    new PacketItem {ClassName="CarSetupData",Name="FrontLeftTyrePressure",Type = typeof(float)},
-                    new PacketItem {ClassName="CarSetupData",Name="FrontRightTyrePressure",Type = typeof(float)},
-                    new PacketItem {ClassName="CarSetupData",Name="Ballast",Type = typeof(byte)},
-                    new PacketItem {ClassName="CarSetupData",Name="FuelLoad",Type = typeof(float)}
+                    new PacketItem {Name="FrontWing",TypeName = "uint8"},
+                    new PacketItem {Name="RearWing",TypeName = "uint8"},
+                    new PacketItem {Name="OnThrottle",TypeName = "uint8"},
+                    new PacketItem {Name="OffThrottle",TypeName = "uint8"},
+                    new PacketItem {Name="FrontCamber",TypeName = "float"},
+                    new PacketItem {Name="TearCamber",TypeName = "float"},
+                    new PacketItem {Name="FrontToe",TypeName = "float"},
+                    new PacketItem {Name="RearToe",TypeName = "float"},
+                    new PacketItem {Name="FrontSuspension",TypeName = "uint8"},
+                    new PacketItem {Name="TearSuspension",TypeName = "uint8"},
+                    new PacketItem {Name="FrontAntiRollBar",TypeName = "uint8"},
+                    new PacketItem {Name="TearAntiRollBar",TypeName = "uint8"},
+                    new PacketItem {Name="FrontSuspensionHeight",TypeName = "uint8"},
+                    new PacketItem {Name="TearSuspensionHeight",TypeName = "uint8"},
+                    new PacketItem {Name="BrakePressure",TypeName = "uint8"},
+                    new PacketItem {Name="BrakeBias",TypeName = "uint8"},
+                    new PacketItem {Name="RearLeftTyrePressure",TypeName = "float"},
+                    new PacketItem {Name="RearRightTyrePressure",TypeName = "float"},
+                    new PacketItem {Name="FrontLeftTyrePressure",TypeName = "float"},
+                    new PacketItem {Name="FrontRightTyrePressure",TypeName = "float"},
+                    new PacketItem {Name="Ballast",TypeName = "uint8"},
+                    new PacketItem {Name="FuelLoad",TypeName = "float"}
                 }
             }
         };

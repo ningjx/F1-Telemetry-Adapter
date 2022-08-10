@@ -1,41 +1,11 @@
-﻿using F1_Telemetry_Adapter.Models;
+﻿using F1_Telemetry_Adapter.Enums;
+using F1_Telemetry_Adapter.Models;
 using System;
 
 namespace F1_Telemetry_Adapter
 {
     internal static class Helper
     {
-        internal static object ConvertValue(this Bytes bytes, string type)
-        {
-            //"Single Double SByte Byte Int16 UInt16 UInt32 UInt64 Char"
-            object res = null;
-            switch (type)
-            {
-                case "Single":
-                    res = BitConverter.ToSingle(bytes.ByteData, bytes.Index); bytes.Index += 4; break;
-                case "Double":
-                    res = BitConverter.ToDouble(bytes.ByteData, bytes.Index); bytes.Index += 8; break;
-                case "SByte":
-                    res = (sbyte)bytes.ByteData[bytes.Index]; bytes.Index += 1; break;
-                case "Byte":
-                    res = bytes.ByteData[bytes.Index]; bytes.Index += 1; break;
-                case "Int16":
-                    res = BitConverter.ToInt16(bytes.ByteData, bytes.Index); bytes.Index += 2; break;
-                case "UInt16":
-                    res = BitConverter.ToUInt16(bytes.ByteData, bytes.Index); bytes.Index += 2; break;
-                case "UInt32":
-                    res = BitConverter.ToUInt32(bytes.ByteData, bytes.Index); bytes.Index += 4; break;
-                case "UInt64":
-                    res = BitConverter.ToUInt64(bytes.ByteData, bytes.Index); bytes.Index += 8; break;
-                case "Char":
-                    res = bytes.ByteData[bytes.Index]; bytes.Index += 1; break;
-                default:
-                    bytes.Index += 0; return null;
-            }
-
-            return res;
-        }
-
         internal static int GetTypeSize(string type)
         {
             switch (type)
@@ -60,14 +30,52 @@ namespace F1_Telemetry_Adapter
             }
         }
 
-        internal static byte[] GetBytes(this byte[] bytes, int start, int length)
+        internal static byte[] GetBytes(this Bytes bytes, int start, int length)
         {
             var res = new byte[length];
             for (int i = 0; i < length; i++)
             {
-                res[i] = bytes[i + start];
+                res[i] = bytes.byteData[i + start];
             }
             return res;
+        }
+
+        internal static Type ToType(this string typeStr)
+        {
+            if (string.IsNullOrEmpty(typeStr))
+                return null;
+            switch (typeStr)
+            {
+                case "uint8":
+                    return typeof(byte);
+                case "int8":
+                    return typeof(sbyte);
+                case "uint16":
+                    return typeof(ushort);
+                case "int16":
+                    return typeof(short);
+                case "uint32":
+                    return typeof(uint);
+                case "int32":
+                    return typeof(int);
+                case "float":
+                    return typeof(float);
+                case "double":
+                    return typeof(double);
+                case "uint64":
+                    return typeof(ulong);
+                case "int64":
+                    return typeof(long);
+                case "char":
+                    return typeof(byte);
+
+                default: return null;
+            }
+        }
+
+        public static GameSeries GetGameVersion(this Bytes bytes)
+        {
+            return (GameSeries)BitConverter.ToUInt16(bytes.byteData, 0);
         }
     }
 }

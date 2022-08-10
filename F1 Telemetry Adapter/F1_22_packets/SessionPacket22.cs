@@ -1,4 +1,5 @@
 ﻿using F1_Telemetry_Adapter.Enums;
+using F1_Telemetry_Adapter.F1_Base_packets;
 using F1_Telemetry_Adapter.Models;
 
 namespace F1_Telemetry_Adapter.F1_22_Packets
@@ -9,7 +10,7 @@ namespace F1_Telemetry_Adapter.F1_22_Packets
     /// Size: 632 bytes
     /// Version: 1
     /// </summary>
-    public class SessionPacket : F1Packet
+    public class SessionPacket22 : F1Packet
     {
         public override int PacketSize => 632;
 
@@ -189,78 +190,78 @@ namespace F1_Telemetry_Adapter.F1_22_Packets
 
         public SessionType _SessionType => (SessionType)SessionType;
 
-        public SessionPacket(HeaderPacket header) : base(header) { }
+        public SessionPacket22(HeaderPacket header) : base(header) { }
 
-        public SessionPacket() { }
+        public SessionPacket22() { }
 
-        public override ItemList PacketItems => new ItemList
+        internal override ItemList PacketItems => new ItemList
         {
-            new PacketItem {Name="Weather",Type = typeof(byte)},
-            new PacketItem {Name="TrackTemperature",Type = typeof(sbyte)},
-            new PacketItem {Name="AirTemperature",Type = typeof(sbyte)},
-            new PacketItem {Name="TotalLaps",Type = typeof(byte)},
-            new PacketItem {Name="TrackLength",Type = typeof(ushort)},
-            new PacketItem {Name="SessionType",Type = typeof(byte)},
-            new PacketItem {Name="TrackId",Type = typeof(sbyte)},
-            new PacketItem {Name="Formula",Type = typeof(byte)},
-            new PacketItem {Name="SessionTimeLeft",Type = typeof(ushort)},
-            new PacketItem {Name="SessionDuration",Type = typeof(ushort)},
-            new PacketItem {Name="PitSpeedLimit",Type = typeof(byte)},
-            new PacketItem {Name="GamePaused",Type = typeof(byte)},
-            new PacketItem {Name="IsSpectating",Type = typeof(byte)},
-            new PacketItem {Name="SpectatorCarIndex",Type = typeof(byte)},
-            new PacketItem {Name="SliProNativeSupport",Type = typeof(byte)},
-            new PacketItem {Name="NumMarshalZones",Type = typeof(byte)},
+            new PacketItem {Name="Weather",TypeName = "uint8"},
+            new PacketItem {Name="TrackTemperature",TypeName = "int8"},
+            new PacketItem {Name="AirTemperature",TypeName = "int8"},
+            new PacketItem {Name="TotalLaps",TypeName = "uint8"},
+            new PacketItem {Name="TrackLength",TypeName = "uint16"},
+            new PacketItem {Name="SessionType",TypeName = "uint8"},
+            new PacketItem {Name="TrackId",TypeName = "int8"},
+            new PacketItem {Name="Formula",TypeName = "uint8"},
+            new PacketItem {Name="SessionTimeLeft",TypeName = "uint16"},
+            new PacketItem {Name="SessionDuration",TypeName = "uint16"},
+            new PacketItem {Name="PitSpeedLimit",TypeName = "uint8"},
+            new PacketItem {Name="GamePaused",TypeName = "uint8"},
+            new PacketItem {Name="IsSpectating",TypeName = "uint8"},
+            new PacketItem {Name="SpectatorCarIndex",TypeName = "uint8"},
+            new PacketItem {Name="SliProNativeSupport",TypeName = "uint8"},
+            new PacketItem {Name="NumMarshalZones",TypeName = "uint8"},
             new PacketItem {
                 Name="MarshalZones",
                 Type = typeof(MarshalZone),
                 Count=21,
                 Children = new PacketItem[]
                 {
-                    new PacketItem {ClassName="MarshalZone", Name="ZoneStart",Type = typeof(float)},
-                    new PacketItem {ClassName="MarshalZone",Name="ZoneFlag",Type = typeof(sbyte)}
+                    new PacketItem {ClassName="MarshalZone", Name="ZoneStart",TypeName = "float"},
+                    new PacketItem {ClassName="MarshalZone",Name="ZoneFlag",TypeName = "int8"}
                 }
             },
-            new PacketItem {Name="SafetyCarStatus",Type = typeof(byte)},
-            new PacketItem {Name="NetworkGame",Type = typeof(byte)},
-            new PacketItem {Name="NumWeatherForecastSamples",Type = typeof(byte)},
+            new PacketItem {Name="SafetyCarStatus",TypeName = "uint8"},
+            new PacketItem {Name="NetworkGame",TypeName = "uint8"},
+            new PacketItem {Name="NumWeatherForecastSamples",TypeName = "uint8"},
             new PacketItem {
                 Name="WeatherForecastSamples",
                 Type = typeof(WeatherForecastSample),
                 Count= 56,
                 Children = new PacketItem[]
                 {
-                    new PacketItem {ClassName="WeatherForecastSample", Name="SessionType",Type = typeof(byte)},
-                    new PacketItem {ClassName="WeatherForecastSample",Name="TimeOffset",Type = typeof(byte)},
-                    new PacketItem {ClassName="WeatherForecastSample",Name="Weather",Type = typeof(byte)},
-                    new PacketItem {ClassName="WeatherForecastSample",Name="TrackTemperature",Type = typeof(sbyte)},
-                    new PacketItem {ClassName="WeatherForecastSample",Name="TrackTemperatureChange",Type = typeof(sbyte)},
-                    new PacketItem {ClassName="WeatherForecastSample",Name="AirTemperature",Type = typeof(sbyte)},
-                    new PacketItem {ClassName="WeatherForecastSample",Name="AirTemperatureChange",Type = typeof(sbyte)},
-                    new PacketItem {ClassName="WeatherForecastSample",Name="RainPercentage",Type = typeof(byte)}
+                    new PacketItem {ClassName="WeatherForecastSample", Name="SessionType",TypeName = "uint8"},
+                    new PacketItem {ClassName="WeatherForecastSample",Name="TimeOffset",TypeName = "uint8"},
+                    new PacketItem {ClassName="WeatherForecastSample",Name="Weather",TypeName = "uint8"},
+                    new PacketItem {ClassName="WeatherForecastSample",Name="TrackTemperature",TypeName = "int8"},
+                    new PacketItem {ClassName="WeatherForecastSample",Name="TrackTemperatureChange",TypeName = "int8"},
+                    new PacketItem {ClassName="WeatherForecastSample",Name="AirTemperature",TypeName = "int8"},
+                    new PacketItem {ClassName="WeatherForecastSample",Name="AirTemperatureChange",TypeName = "int8"},
+                    new PacketItem {ClassName="WeatherForecastSample",Name="RainPercentage",TypeName = "uint8"}
                 }
             },
-            new PacketItem {Name="ForecastAccuracy",Type = typeof(byte)},
-            new PacketItem {Name="AiDifficulty",Type = typeof(byte)},
-            new PacketItem {Name="SeasonLinkIdentifier",Type = typeof(uint)},
-            new PacketItem {Name="WeekendLinkIdentifier",Type = typeof(uint)},
-            new PacketItem {Name="SessionLinkIdentifier",Type = typeof(uint)},
-            new PacketItem {Name="PitStopWindowIdealLap",Type = typeof(byte)},
-            new PacketItem {Name="PitStopWindowLatestLap",Type = typeof(byte)},
-            new PacketItem {Name="PitStopRejoinPosition",Type = typeof(byte)},
-            new PacketItem {Name="SteeringAssist",Type = typeof(byte)},
-            new PacketItem {Name="BrakingAssist",Type = typeof(byte)},
-            new PacketItem {Name="GearboxAssist",Type = typeof(byte)},
-            new PacketItem {Name="PitAssist",Type = typeof(byte)},
-            new PacketItem {Name="PitReleaseAssist",Type = typeof(byte)},
-            new PacketItem {Name="ERSAssist",Type = typeof(byte)},
-            new PacketItem {Name="DRSAssist",Type = typeof(byte)},
-            new PacketItem {Name="DynamicRacingLine",Type = typeof(byte)},
-            new PacketItem {Name="DynamicRacingLineType",Type = typeof(byte)},
-            new PacketItem {Name="GameMode",Type = typeof(byte)},
-            new PacketItem {Name="RuleSet",Type = typeof(byte)},
-            new PacketItem {Name="TimeOfDay",Type = typeof(uint)},
-            new PacketItem {Name="SessionLength",Type = typeof(byte)}
+            new PacketItem {Name="ForecastAccuracy",TypeName = "uint8"},
+            new PacketItem {Name="AiDifficulty",TypeName = "uint8"},
+            new PacketItem {Name="SeasonLinkIdentifier",TypeName = "uint32"},
+            new PacketItem {Name="WeekendLinkIdentifier",TypeName = "uint32"},
+            new PacketItem {Name="SessionLinkIdentifier",TypeName = "uint32"},
+            new PacketItem {Name="PitStopWindowIdealLap",TypeName = "uint8"},
+            new PacketItem {Name="PitStopWindowLatestLap",TypeName = "uint8"},
+            new PacketItem {Name="PitStopRejoinPosition",TypeName = "uint8"},
+            new PacketItem {Name="SteeringAssist",TypeName = "uint8"},
+            new PacketItem {Name="BrakingAssist",TypeName = "uint8"},
+            new PacketItem {Name="GearboxAssist",TypeName = "uint8"},
+            new PacketItem {Name="PitAssist",TypeName = "uint8"},
+            new PacketItem {Name="PitReleaseAssist",TypeName = "uint8"},
+            new PacketItem {Name="ERSAssist",TypeName = "uint8"},
+            new PacketItem {Name="DRSAssist",TypeName = "uint8"},
+            new PacketItem {Name="DynamicRacingLine",TypeName = "uint8"},
+            new PacketItem {Name="DynamicRacingLineType",TypeName = "uint8"},
+            new PacketItem {Name="GameMode",TypeName = "uint8"},
+            new PacketItem {Name="RuleSet",TypeName = "uint8"},
+            new PacketItem {Name="TimeOfDay",TypeName = "uint32"},
+            new PacketItem {Name="SessionLength",TypeName = "uint8"}
             };
     }
 

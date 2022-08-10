@@ -78,12 +78,34 @@ namespace F1_Telemetry_Adapter.Models
 
     public class PacketItem
     {
+        private Type _type;
+        /// <summary>
+        /// Field name
+        /// </summary>
         public string Name { get; set; }
-        public Type Type { get; set; }
+        /// <summary>
+        /// Field type in document
+        /// </summary>
+        public string TypeName { get; set; }
+        /// <summary>
+        /// Use it to create instance.
+        /// </summary>
+        public Type Type
+        {
+            get
+            {
+                if (_type == null)
+                    _type = TypeName.ToType();
+                return _type;
+            }
+            set { _type = value; }
+        }
+        /// <summary>
+        /// conut > 0 means that the item is an array
+        /// </summary>
         public int Count { get; set; } = 0;
         public string ClassName { get; set; }
         public PacketItem[] Children { get; set; }
         public bool HasChild => Children != null && Children.Length > 0;
-        public SelectType SelectType { get; set; } = SelectType.All;
     }
 }

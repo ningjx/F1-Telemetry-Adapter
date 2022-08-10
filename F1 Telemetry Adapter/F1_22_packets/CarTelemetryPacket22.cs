@@ -1,4 +1,5 @@
-﻿using F1_Telemetry_Adapter.Models;
+﻿using F1_Telemetry_Adapter.F1_Base_packets;
+using F1_Telemetry_Adapter.Models;
 
 namespace F1_Telemetry_Adapter.F1_22_Packets
 {
@@ -7,7 +8,7 @@ namespace F1_Telemetry_Adapter.F1_22_Packets
     /// Size: 1347 bytes
     /// Version: 1
     /// </summary>
-    public class CarTelemetryPacket : F1Packet
+    public class CarTelemetryPacket22 : F1Packet
     {
         public override int PacketSize => 1347;
 
@@ -32,11 +33,11 @@ namespace F1_Telemetry_Adapter.F1_22_Packets
         /// </summary>
         public sbyte SuggestedGear;
 
-        public CarTelemetryPacket(HeaderPacket header) : base(header) { }
+        public CarTelemetryPacket22(HeaderPacket header) : base(header) { }
 
-        public CarTelemetryPacket() { }
+        public CarTelemetryPacket22() { }
 
-        public override ItemList PacketItems => new ItemList
+        internal override ItemList PacketItems => new ItemList
         {
             new PacketItem {
                 Name="CarTelemetryData",
@@ -44,27 +45,27 @@ namespace F1_Telemetry_Adapter.F1_22_Packets
                 Count=22,
                 Children = new PacketItem[]
                 {
-                    new PacketItem {ClassName="CarTelemetryData",Name="Speed",Type = typeof(ushort)},
-                    new PacketItem {ClassName="CarTelemetryData",Name="Throttle",Type = typeof(float)},
-                    new PacketItem {ClassName="CarTelemetryData",Name="Steer",Type = typeof(float)},
-                    new PacketItem {ClassName="CarTelemetryData",Name="Brake",Type = typeof(float)},
-                    new PacketItem {ClassName="CarTelemetryData",Name="Clutch",Type = typeof(byte)},
-                    new PacketItem {ClassName="CarTelemetryData",Name="Gear",Type = typeof(sbyte)},
-                    new PacketItem {ClassName="CarTelemetryData",Name="EngineRPM",Type = typeof(ushort)},
-                    new PacketItem {ClassName="CarTelemetryData",Name="Drs",Type = typeof(byte)},
-                    new PacketItem {ClassName="CarTelemetryData",Name="RevLightsPercent",Type = typeof(byte)},
-                    new PacketItem {ClassName="CarTelemetryData",Name="RevLightsBitValue",Type = typeof(ushort)},
-                    new PacketItem {ClassName="CarTelemetryData",Name="BrakesTemperature",Type = typeof(ushort),Count = 4  },
-                    new PacketItem {ClassName="CarTelemetryData",Name="TyresSurfaceTemperature",Type = typeof(byte),Count = 4  },
-                    new PacketItem {ClassName="CarTelemetryData",Name="TyresInnerTemperature",Type = typeof(byte),Count = 4  },
-                    new PacketItem {ClassName="CarTelemetryData",Name="EngineTemperature",Type = typeof(ushort)},
-                    new PacketItem {ClassName="CarTelemetryData",Name="TyresPressure",Type = typeof(float),Count = 4  },
-                    new PacketItem {ClassName="CarTelemetryData",Name="SurfaceType",Type = typeof(byte),Count = 4  }
+                    new PacketItem {ClassName="CarTelemetryData",Name="Speed",TypeName = "uint16"},
+                    new PacketItem {ClassName="CarTelemetryData",Name="Throttle",TypeName = "float"},
+                    new PacketItem {ClassName="CarTelemetryData",Name="Steer",TypeName = "float"},
+                    new PacketItem {ClassName="CarTelemetryData",Name="Brake",TypeName = "float"},
+                    new PacketItem {ClassName="CarTelemetryData",Name="Clutch",TypeName = "uint8"},
+                    new PacketItem {ClassName="CarTelemetryData",Name="Gear",TypeName = "int8"},
+                    new PacketItem {ClassName="CarTelemetryData",Name="EngineRPM",TypeName = "uint16"},
+                    new PacketItem {ClassName="CarTelemetryData",Name="Drs",TypeName = "uint8"},
+                    new PacketItem {ClassName="CarTelemetryData",Name="RevLightsPercent",TypeName = "uint8"},
+                    new PacketItem {ClassName="CarTelemetryData",Name="RevLightsBitValue",TypeName = "uint16"},
+                    new PacketItem {ClassName="CarTelemetryData",Name="BrakesTemperature",TypeName = "uint16",Count = 4  },
+                    new PacketItem {ClassName="CarTelemetryData",Name="TyresSurfaceTemperature",TypeName = "uint8",Count = 4  },
+                    new PacketItem {ClassName="CarTelemetryData",Name="TyresInnerTemperature",TypeName = "uint8",Count = 4  },
+                    new PacketItem {ClassName="CarTelemetryData",Name="EngineTemperature",TypeName = "uint16"},
+                    new PacketItem {ClassName="CarTelemetryData",Name="TyresPressure",TypeName = "float",Count = 4  },
+                    new PacketItem {ClassName="CarTelemetryData",Name="SurfaceType",TypeName = "uint8",Count = 4  }
                 }
             },
-            new PacketItem {Name="MfdPanelIndex",Type = typeof(byte)},
-            new PacketItem {Name="MFDPanelIndexSecondaryPlayer",Type = typeof(byte)},
-            new PacketItem {Name="SuggestedGear",Type = typeof(sbyte)}
+            new PacketItem {Name="MfdPanelIndex",TypeName = "uint8"},
+            new PacketItem {Name="MFDPanelIndexSecondaryPlayer",TypeName = "uint8"},
+            new PacketItem {Name="SuggestedGear",TypeName = "int8"}
         };
     }
 

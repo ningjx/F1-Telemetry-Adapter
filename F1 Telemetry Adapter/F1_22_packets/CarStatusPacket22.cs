@@ -1,4 +1,5 @@
-﻿using F1_Telemetry_Adapter.Models;
+﻿using F1_Telemetry_Adapter.F1_Base_packets;
+using F1_Telemetry_Adapter.Models;
 using System;
 
 namespace F1_Telemetry_Adapter.F1_22_Packets
@@ -9,17 +10,17 @@ namespace F1_Telemetry_Adapter.F1_22_Packets
     /// Size: 1058 bytes
     /// Version: 1
     /// </summary>
-    public class CarStatusPacket : F1Packet
+    public class CarStatusPacket22 : F1Packet
     {
         public override int PacketSize => 1058;
 
         public CarStatusData[] CarStatusDatas;
 
-        public CarStatusPacket(HeaderPacket header) : base(header) { }
+        public CarStatusPacket22(HeaderPacket header) : base(header) { }
 
-        public CarStatusPacket() { }
+        public CarStatusPacket22() { }
 
-        public override ItemList PacketItems => new ItemList
+        internal override ItemList PacketItems => new ItemList
         {
             new PacketItem {
                 Name="CarStatusDatas",
@@ -27,29 +28,29 @@ namespace F1_Telemetry_Adapter.F1_22_Packets
                 Count=22,
                 Children = new PacketItem[]
                 {
-                    new PacketItem {ClassName="CarStatusData",Name="TractionControl",Type = typeof(byte)},
-                    new PacketItem {ClassName="CarStatusData",Name="AntiLockBrakes",Type = typeof(byte)},
-                    new PacketItem {ClassName="CarStatusData",Name="FuelMix",Type = typeof(byte)},
-                    new PacketItem {ClassName="CarStatusData",Name="FrontBrakeBias",Type = typeof(byte)},
-                    new PacketItem {ClassName="CarStatusData",Name="PitLimiterStatus",Type = typeof(byte)},
-                    new PacketItem {ClassName="CarStatusData",Name="FuelInTank",Type = typeof(float)},
-                    new PacketItem {ClassName="CarStatusData",Name="FuelCapacity",Type = typeof(float)},
-                    new PacketItem {ClassName="CarStatusData",Name="FuelRemainingLaps",Type = typeof(float)},
-                    new PacketItem {ClassName="CarStatusData",Name="MaxRPM",Type = typeof(ushort)},
-                    new PacketItem {ClassName="CarStatusData",Name="IdleRPM",Type = typeof(ushort)},
-                    new PacketItem {ClassName="CarStatusData",Name="MaxGears",Type = typeof(byte)},
-                    new PacketItem {ClassName="CarStatusData",Name="DrsAllowed",Type = typeof(byte)},
-                    new PacketItem {ClassName="CarStatusData",Name="DrsActivationDistance",Type = typeof(ushort)},
-                    new PacketItem {ClassName="CarStatusData",Name="ActualTyreCompound",Type = typeof(byte)},
-                    new PacketItem {ClassName="CarStatusData",Name="VisualTyreCompound",Type = typeof(byte)},
-                    new PacketItem {ClassName="CarStatusData",Name="TyresAgeLaps",Type = typeof(byte)},
-                    new PacketItem {ClassName="CarStatusData",Name="VehicleFiaFlags",Type = typeof(sbyte)},
-                    new PacketItem {ClassName="CarStatusData",Name="ErsStoreEnergy",Type = typeof(float)},
-                    new PacketItem {ClassName="CarStatusData",Name="ErsDeployMode",Type = typeof(byte)},
-                    new PacketItem {ClassName="CarStatusData",Name="ErsHarvestedThisLapMGUK",Type = typeof(float)},
-                    new PacketItem {ClassName="CarStatusData",Name="ErsHarvestedThisLapMGUH",Type = typeof(float)},
-                    new PacketItem {ClassName="CarStatusData",Name="ErsDeployedThisLap",Type = typeof(float)},
-                    new PacketItem {ClassName="CarStatusData",Name="NetworkPaused",Type = typeof(byte)}
+                    new PacketItem {Name="TractionControl",TypeName = "uint8"},
+                    new PacketItem {Name="AntiLockBrakes",TypeName = "uint8"},
+                    new PacketItem {Name="FuelMix",TypeName = "uint8"},
+                    new PacketItem {Name="FrontBrakeBias",TypeName = "uint8"},
+                    new PacketItem {Name="PitLimiterStatus",TypeName = "uint8"},
+                    new PacketItem {Name="FuelInTank",TypeName = "float"},
+                    new PacketItem {Name="FuelCapacity",TypeName = "float"},
+                    new PacketItem {Name="FuelRemainingLaps",TypeName = "float"},
+                    new PacketItem {Name="MaxRPM",TypeName = "uint16"},
+                    new PacketItem {Name="IdleRPM",TypeName = "uint16"},
+                    new PacketItem {Name="MaxGears",TypeName = "uint8"},
+                    new PacketItem {Name="DrsAllowed",TypeName = "uint8"},
+                    new PacketItem {Name="DrsActivationDistance",TypeName = "uint16"},
+                    new PacketItem {Name="ActualTyreCompound",TypeName = "uint8"},
+                    new PacketItem {Name="VisualTyreCompound",TypeName = "uint8"},
+                    new PacketItem {Name="TyresAgeLaps",TypeName = "uint8"},
+                    new PacketItem {Name="VehicleFiaFlags",TypeName = "int8"},
+                    new PacketItem {Name="ErsStoreEnergy",TypeName = "float"},
+                    new PacketItem {Name="ErsDeployMode",TypeName = "uint8"},
+                    new PacketItem {Name="ErsHarvestedThisLapMGUK",TypeName = "float"},
+                    new PacketItem {Name="ErsHarvestedThisLapMGUH",TypeName = "float"},
+                    new PacketItem {Name="ErsDeployedThisLap",TypeName = "float"},
+                    new PacketItem {Name="NetworkPaused",TypeName = "uint8"}
                 }
             }
         };

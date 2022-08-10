@@ -1,4 +1,5 @@
-﻿using F1_Telemetry_Adapter.Models;
+﻿using F1_Telemetry_Adapter.F1_Base_packets;
+using F1_Telemetry_Adapter.Models;
 
 namespace F1_Telemetry_Adapter.F1_22_Packets
 {
@@ -9,7 +10,7 @@ namespace F1_Telemetry_Adapter.F1_22_Packets
     /// Size: 1464 bytes
     /// Version: 1
     /// </summary>
-    public class MotionPacket : F1Packet
+    public class MotionPacket22 : F1Packet
     {
         public override int PacketSize => 1464;
 
@@ -72,51 +73,51 @@ namespace F1_Telemetry_Adapter.F1_22_Packets
         /// </summary>
         public float FrontWheelsAngle;
 
-        public MotionPacket(HeaderPacket header) : base(header) { }
+        public MotionPacket22(HeaderPacket header) : base(header) { }
 
-        public MotionPacket() { }
+        public MotionPacket22() { }
 
-        public override ItemList PacketItems => new ItemList
+        internal override ItemList PacketItems => new ItemList
         {
             new PacketItem {
                 Name="CarMotionData",
                 Type = typeof(CarMotionData),
                 Children = new PacketItem[]
                 {
-                    new PacketItem {Name="WorldPositionX",Type = typeof(float)},
-                    new PacketItem {Name="WorldPositionY",Type = typeof(float)},
-                    new PacketItem {Name="WorldPositionZ",Type = typeof(float)},
-                    new PacketItem {Name="WorldVelocityX",Type = typeof(float)},
-                    new PacketItem {Name="WorldVelocityY",Type = typeof(float)},
-                    new PacketItem {Name="WorldVelocityZ",Type = typeof(float)},
-                    new PacketItem {Name="WorldForwardDirX",Type = typeof(short)},
-                    new PacketItem {Name="WorldForwardDirY",Type = typeof(short)},
-                    new PacketItem {Name="WorldForwardDirZ",Type = typeof(short)},
-                    new PacketItem {Name="WorldRightDirX",Type = typeof(short)},
-                    new PacketItem {Name="WorldRightDirY",Type = typeof(short)},
-                    new PacketItem {Name="WorldRightDirZ",Type = typeof(short)},
-                    new PacketItem {Name="GForceLateral",Type = typeof(float)},
-                    new PacketItem {Name="GForceLongitudinal",Type = typeof(float)},
-                    new PacketItem {Name="GForceVertical",Type = typeof(float)},
-                    new PacketItem {Name="Yaw",Type = typeof(float)},
-                    new PacketItem {Name="Pitch",Type = typeof(float)},
-                    new PacketItem {Name="Roll",Type = typeof(float)}
+                    new PacketItem {Name="WorldPositionX",TypeName = "float"},
+                    new PacketItem {Name="WorldPositionY",TypeName = "float"},
+                    new PacketItem {Name="WorldPositionZ",TypeName = "float"},
+                    new PacketItem {Name="WorldVelocityX",TypeName = "float"},
+                    new PacketItem {Name="WorldVelocityY",TypeName = "float"},
+                    new PacketItem {Name="WorldVelocityZ",TypeName = "float"},
+                    new PacketItem {Name="WorldForwardDirX",TypeName = "int16"},
+                    new PacketItem {Name="WorldForwardDirY",TypeName = "int16"},
+                    new PacketItem {Name="WorldForwardDirZ",TypeName = "int16"},
+                    new PacketItem {Name="WorldRightDirX",TypeName = "int16"},
+                    new PacketItem {Name="WorldRightDirY",TypeName = "int16"},
+                    new PacketItem {Name="WorldRightDirZ",TypeName = "int16"},
+                    new PacketItem {Name="GForceLateral",TypeName = "float"},
+                    new PacketItem {Name="GForceLongitudinal",TypeName = "float"},
+                    new PacketItem {Name="GForceVertical",TypeName = "float"},
+                    new PacketItem {Name="Yaw",TypeName = "float"},
+                    new PacketItem {Name="Pitch",TypeName = "float"},
+                    new PacketItem {Name="Roll",TypeName = "float"}
                 }
             },
-            new PacketItem {Name="SuspensionVelocity",Type = typeof(float),Count=4},
-            new PacketItem {Name="SuspensionAcceleration",Type = typeof(float),Count=4},
-            new PacketItem {Name="WheelSpeed",Type = typeof(float),Count=4},
-            new PacketItem {Name="WheelSlip",Type = typeof(float),Count=4},
-            new PacketItem {Name="LocalVelocityX",Type = typeof(float)},
-            new PacketItem {Name="LocalVelocityY",Type = typeof(float)},
-            new PacketItem {Name="LocalVelocityZ",Type = typeof(float)},
-            new PacketItem {Name="AngularVelocityX",Type = typeof(float)},
-            new PacketItem {Name="AngularVelocityY",Type = typeof(float)},
-            new PacketItem {Name="AngularVelocityZ",Type = typeof(float)},
-            new PacketItem {Name="AngularAccelerationX",Type = typeof(float)},
-            new PacketItem {Name="AngularAccelerationY",Type = typeof(float)},
-            new PacketItem {Name="AngularAccelerationZ",Type = typeof(float)},
-            new PacketItem {Name="FrontWheelsAngle",Type = typeof(float)}
+            new PacketItem {Name="SuspensionVelocity",TypeName = "float",Count=4},
+            new PacketItem {Name="SuspensionAcceleration",TypeName = "float",Count=4},
+            new PacketItem {Name="WheelSpeed",TypeName = "float",Count=4},
+            new PacketItem {Name="WheelSlip",TypeName = "float",Count=4},
+            new PacketItem {Name="LocalVelocityX",TypeName = "float"},
+            new PacketItem {Name="LocalVelocityY",TypeName = "float"},
+            new PacketItem {Name="LocalVelocityZ",TypeName = "float"},
+            new PacketItem {Name="AngularVelocityX",TypeName = "float"},
+            new PacketItem {Name="AngularVelocityY",TypeName = "float"},
+            new PacketItem {Name="AngularVelocityZ",TypeName = "float"},
+            new PacketItem {Name="AngularAccelerationX",TypeName = "float"},
+            new PacketItem {Name="AngularAccelerationY",TypeName = "float"},
+            new PacketItem {Name="AngularAccelerationZ",TypeName = "float"},
+            new PacketItem {Name="FrontWheelsAngle",TypeName = "float"}
         };
     }
 

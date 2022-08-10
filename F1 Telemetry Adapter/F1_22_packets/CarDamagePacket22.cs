@@ -1,4 +1,5 @@
-﻿using F1_Telemetry_Adapter.Models;
+﻿using F1_Telemetry_Adapter.F1_Base_packets;
+using F1_Telemetry_Adapter.Models;
 
 namespace F1_Telemetry_Adapter.F1_22_Packets
 {
@@ -8,46 +9,46 @@ namespace F1_Telemetry_Adapter.F1_22_Packets
     /// Size: 941 bytes
     /// Version: 1
     /// </summary>
-    public class CarDamagePacket : F1Packet
+    public class CarDamagePacket22 : F1Packet
     {
         public override int PacketSize => 941;
 
         public CarDamageData[] CarDamageDatas;
 
-        public CarDamagePacket(HeaderPacket header) : base(header) { }
+        public CarDamagePacket22(HeaderPacket header) : base(header) { }
 
-        public CarDamagePacket() { }
+        public CarDamagePacket22() { }
 
-        public override ItemList PacketItems => new ItemList
+        internal override ItemList PacketItems => new ItemList
         {
             new PacketItem
             {
-                Name="CarDamageDatas",
+                Name = "CarDamageDatas",
                 Type = typeof(CarDamageData),
-                Count=22,
+                Count = 22,
                 Children = new PacketItem[]
                 {
-                    new PacketItem {ClassName="CarDamageData",Name="TyresWear",Type = typeof(float),Count = 4  },
-                    new PacketItem {ClassName="CarDamageData",Name="TyresDamage",Type = typeof(byte),Count = 4  },
-                    new PacketItem {ClassName="CarDamageData",Name="BrakesDamage",Type = typeof(byte),Count = 4  },
-                    new PacketItem {ClassName="CarDamageData",Name="FrontLeftWingDamage",Type = typeof(byte) },
-                    new PacketItem {ClassName="CarDamageData",Name="FrontRightWingDamage",Type = typeof(byte) },
-                    new PacketItem {ClassName="CarDamageData",Name="RearWingDamage",Type = typeof(byte)},
-                    new PacketItem {ClassName="CarDamageData",Name="FloorDamage",Type = typeof(byte) },
-                    new PacketItem {ClassName="CarDamageData",Name="DiffuserDamage",Type = typeof(byte)},
-                    new PacketItem {ClassName="CarDamageData",Name="SidepodDamage",Type = typeof(byte) },
-                    new PacketItem {ClassName="CarDamageData",Name="DrsFault",Type = typeof(byte) },
-                    new PacketItem {ClassName="CarDamageData",Name="ErsFault",Type = typeof(byte)},
-                    new PacketItem {ClassName="CarDamageData",Name="GearBoxDamage",Type = typeof(byte) },
-                    new PacketItem {ClassName="CarDamageData",Name="EngineDamage",Type = typeof(byte)},
-                    new PacketItem {ClassName="CarDamageData",Name="EngineMGUHWear",Type = typeof(byte)},
-                    new PacketItem {ClassName="CarDamageData",Name="EngineESWear",Type = typeof(byte) },
-                    new PacketItem {ClassName="CarDamageData",Name="EngineCEWear",Type = typeof(byte) },
-                    new PacketItem {ClassName="CarDamageData",Name="EngineICEWear",Type = typeof(byte) },
-                    new PacketItem {ClassName="CarDamageData",Name="EngineMGUKWear",Type = typeof(byte) },
-                    new PacketItem {ClassName="CarDamageData",Name="EngineTCWear",Type = typeof(byte)},
-                    new PacketItem {ClassName="CarDamageData",Name="EngineBlown",Type = typeof(byte)},
-                    new PacketItem {ClassName="CarDamageData",Name="EngineSeized",Type = typeof(byte)}
+                    new PacketItem {Name="TyresWear",TypeName = "float",Count = 4  },
+                    new PacketItem {Name="TyresDamage",TypeName = "uint8",Count = 4  },
+                    new PacketItem {Name="BrakesDamage",TypeName = "uint8",Count = 4  },
+                    new PacketItem {Name="FrontLeftWingDamage",TypeName = "uint8" },
+                    new PacketItem {Name="FrontRightWingDamage",TypeName = "uint8" },
+                    new PacketItem {Name="RearWingDamage",TypeName = "uint8"},
+                    new PacketItem {Name="FloorDamage",TypeName = "uint8" },
+                    new PacketItem {Name="DiffuserDamage",TypeName = "uint8"},
+                    new PacketItem {Name="SidepodDamage",TypeName = "uint8" },
+                    new PacketItem {Name="DrsFault",TypeName = "uint8" },
+                    new PacketItem {Name="ErsFault",TypeName = "uint8"},
+                    new PacketItem {Name="GearBoxDamage",TypeName = "uint8" },
+                    new PacketItem {Name="EngineDamage",TypeName = "uint8"},
+                    new PacketItem {Name="EngineMGUHWear",TypeName = "uint8"},
+                    new PacketItem {Name="EngineESWear",TypeName = "uint8" },
+                    new PacketItem {Name="EngineCEWear",TypeName = "uint8" },
+                    new PacketItem {Name="EngineICEWear",TypeName = "uint8" },
+                    new PacketItem {Name="EngineMGUKWear",TypeName = "uint8" },
+                    new PacketItem {Name="EngineTCWear",TypeName = "uint8"},
+                    new PacketItem {Name="EngineBlown",TypeName = "uint8"},
+                    new PacketItem {Name="EngineSeized",TypeName = "uint8"}
                 }
             }
         };

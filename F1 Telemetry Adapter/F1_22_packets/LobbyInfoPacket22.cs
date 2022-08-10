@@ -1,4 +1,5 @@
 ﻿using F1_Telemetry_Adapter.Enums;
+using F1_Telemetry_Adapter.F1_Base_packets;
 using F1_Telemetry_Adapter.Models;
 
 namespace F1_Telemetry_Adapter.F1_22_Packets
@@ -9,7 +10,7 @@ namespace F1_Telemetry_Adapter.F1_22_Packets
     /// Size: 1191 bytes
     /// Version: 1
     /// </summary>
-    public class LobbyInfoPacket : F1Packet
+    public class LobbyInfoPacket22 : F1Packet
     {
         public override int PacketSize => 1191;
 
@@ -22,25 +23,25 @@ namespace F1_Telemetry_Adapter.F1_22_Packets
         /// </summary>
         public LobbyInfoData[] LobbyInfoData;
 
-        public LobbyInfoPacket(HeaderPacket header) : base(header) { }
+        public LobbyInfoPacket22(HeaderPacket header) : base(header) { }
 
-        public LobbyInfoPacket() { }
+        public LobbyInfoPacket22() { }
 
-        public override ItemList PacketItems => new ItemList
+        internal override ItemList PacketItems => new ItemList
         {
-            new PacketItem {Name = "NumPlayers",Type = typeof(byte)},
+            new PacketItem {Name = "NumPlayers",TypeName = "uint8"},
             new PacketItem {
                 Name = "LobbyInfoData",
                 Type = typeof(LobbyInfoData),
                 Count = 22,
                 Children = new PacketItem[]
                 {
-                    new PacketItem {ClassName="LobbyInfoData",Name="AiControlled",Type = typeof(byte)},
-                    new PacketItem {ClassName="LobbyInfoData",Name="TeamId",Type = typeof(byte)},
-                    new PacketItem {ClassName="LobbyInfoData",Name="Nationality",Type = typeof(byte)},
-                    new PacketItem {ClassName="LobbyInfoData",Name="Name",Type = typeof(char),Count = 48  },
-                    new PacketItem {ClassName="LobbyInfoData",Name="CarNumber",Type = typeof(byte)},
-                    new PacketItem {ClassName="LobbyInfoData",Name="ReadyStatus",Type = typeof(byte)}
+                    new PacketItem {ClassName="LobbyInfoData",Name="AiControlled",TypeName = "uint8"},
+                    new PacketItem {ClassName="LobbyInfoData",Name="TeamId",TypeName = "uint8"},
+                    new PacketItem {ClassName="LobbyInfoData",Name="Nationality",TypeName = "uint8"},
+                    new PacketItem {ClassName="LobbyInfoData",Name="Name",TypeName = "char",Count = 48  },
+                    new PacketItem {ClassName="LobbyInfoData",Name="CarNumber",TypeName = "uint8"},
+                    new PacketItem {ClassName="LobbyInfoData",Name="ReadyStatus",TypeName = "uint8"}
                 }
             }
         };

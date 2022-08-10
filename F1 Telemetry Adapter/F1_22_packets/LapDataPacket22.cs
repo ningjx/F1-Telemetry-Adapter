@@ -1,4 +1,5 @@
-﻿using F1_Telemetry_Adapter.Models;
+﻿using F1_Telemetry_Adapter.F1_Base_packets;
+using F1_Telemetry_Adapter.Models;
 
 namespace F1_Telemetry_Adapter.F1_22_Packets
 {
@@ -8,7 +9,7 @@ namespace F1_Telemetry_Adapter.F1_22_Packets
     /// Size: 972 bytes
     /// Version: 1
     /// </summary>
-    public class LapDataPacket : F1Packet
+    public class LapDataPacket22 : F1Packet
     {
         public override int PacketSize => 972;
 
@@ -25,11 +26,11 @@ namespace F1_Telemetry_Adapter.F1_22_Packets
         /// </summary>
         public byte TimeTrialRivalCarIdx;
 
-        public LapDataPacket(HeaderPacket header) : base(header) { }
+        public LapDataPacket22(HeaderPacket header) : base(header) { }
 
-        public LapDataPacket() { }
+        public LapDataPacket22() { }
 
-        public override ItemList PacketItems => new ItemList
+        internal override ItemList PacketItems => new ItemList
         {
             new PacketItem {
                 Name="LapData",
@@ -37,34 +38,34 @@ namespace F1_Telemetry_Adapter.F1_22_Packets
                 Count=22,
                 Children = new PacketItem[]
                 {
-                    new PacketItem {ClassName="LapData",Name="LastLapTimeInMS",Type = typeof(uint)},
-                    new PacketItem {ClassName="LapData",Name="CurrentLapTimeInMS",Type = typeof(uint)},
-                    new PacketItem {ClassName="LapData",Name="Sector1TimeInMS",Type = typeof(ushort)},
-                    new PacketItem {ClassName="LapData",Name="Sector2TimeInMS",Type = typeof(ushort)},
-                    new PacketItem {ClassName="LapData",Name="LapDistance",Type = typeof(float)},
-                    new PacketItem {ClassName="LapData",Name="TotalDistance",Type = typeof(float)},
-                    new PacketItem {ClassName="LapData",Name="SafetyCarDelta",Type = typeof(float)},
-                    new PacketItem {ClassName="LapData",Name="CarPosition",Type = typeof(byte)},
-                    new PacketItem {ClassName="LapData",Name="CurrentLapNum",Type = typeof(byte)},
-                    new PacketItem {ClassName="LapData",Name="PitStatus",Type = typeof(byte)},
-                    new PacketItem {ClassName="LapData",Name="NumPitStops",Type = typeof(byte)},
-                    new PacketItem {ClassName="LapData",Name="Sector",Type = typeof(byte)},
-                    new PacketItem {ClassName="LapData",Name="CurrentLapInvalid",Type = typeof(byte)},
-                    new PacketItem {ClassName="LapData",Name="Penalties",Type = typeof(byte)},
-                    new PacketItem {ClassName="LapData",Name="Warnings",Type = typeof(byte)},
-                    new PacketItem {ClassName="LapData",Name="NumUnservedDriveThroughPens",Type = typeof(byte)},
-                    new PacketItem {ClassName="LapData",Name="NumUnservedStopGoPens",Type = typeof(byte)},
-                    new PacketItem {ClassName="LapData",Name="GridPosition",Type = typeof(byte)},
-                    new PacketItem {ClassName="LapData",Name="DriverStatus",Type = typeof(byte)},
-                    new PacketItem {ClassName="LapData",Name="ResultStatus",Type = typeof(byte)},
-                    new PacketItem {ClassName="LapData",Name="PitLaneTimerActive",Type = typeof(byte)},
-                    new PacketItem {ClassName="LapData",Name="PitLaneTimeInLaneInMS",Type = typeof(ushort)},
-                    new PacketItem {ClassName="LapData",Name="PitStopTimerInMS",Type = typeof(ushort)},
-                    new PacketItem {ClassName="LapData",Name="PitStopShouldServePen",Type = typeof(byte)}
+                    new PacketItem {ClassName="LapData",Name="LastLapTimeInMS",TypeName = "uint32"},
+                    new PacketItem {ClassName="LapData",Name="CurrentLapTimeInMS",TypeName = "uint32"},
+                    new PacketItem {ClassName="LapData",Name="Sector1TimeInMS",TypeName = "uint16"},
+                    new PacketItem {ClassName="LapData",Name="Sector2TimeInMS",TypeName = "uint16"},
+                    new PacketItem {ClassName="LapData",Name="LapDistance",TypeName = "float"},
+                    new PacketItem {ClassName="LapData",Name="TotalDistance",TypeName = "float"},
+                    new PacketItem {ClassName="LapData",Name="SafetyCarDelta",TypeName = "float"},
+                    new PacketItem {ClassName="LapData",Name="CarPosition",TypeName = "uint8"},
+                    new PacketItem {ClassName="LapData",Name="CurrentLapNum",TypeName = "uint8"},
+                    new PacketItem {ClassName="LapData",Name="PitStatus",TypeName = "uint8"},
+                    new PacketItem {ClassName="LapData",Name="NumPitStops",TypeName = "uint8"},
+                    new PacketItem {ClassName="LapData",Name="Sector",TypeName = "uint8"},
+                    new PacketItem {ClassName="LapData",Name="CurrentLapInvalid",TypeName = "uint8"},
+                    new PacketItem {ClassName="LapData",Name="Penalties",TypeName = "uint8"},
+                    new PacketItem {ClassName="LapData",Name="Warnings",TypeName = "uint8"},
+                    new PacketItem {ClassName="LapData",Name="NumUnservedDriveThroughPens",TypeName = "uint8"},
+                    new PacketItem {ClassName="LapData",Name="NumUnservedStopGoPens",TypeName = "uint8"},
+                    new PacketItem {ClassName="LapData",Name="GridPosition",TypeName = "uint8"},
+                    new PacketItem {ClassName="LapData",Name="DriverStatus",TypeName = "uint8"},
+                    new PacketItem {ClassName="LapData",Name="ResultStatus",TypeName = "uint8"},
+                    new PacketItem {ClassName="LapData",Name="PitLaneTimerActive",TypeName = "uint8"},
+                    new PacketItem {ClassName="LapData",Name="PitLaneTimeInLaneInMS",TypeName = "uint16"},
+                    new PacketItem {ClassName="LapData",Name="PitStopTimerInMS",TypeName = "uint16"},
+                    new PacketItem {ClassName="LapData",Name="PitStopShouldServePen",TypeName = "uint8"}
                 }
             },
-            new PacketItem {Name="TimeTrialPBCarIdx",Type = typeof(byte)},
-            new PacketItem {Name="TimeTrialRivalCarIdx",Type = typeof(byte)}
+            new PacketItem {Name="TimeTrialPBCarIdx",TypeName = "uint8"},
+            new PacketItem {Name="TimeTrialRivalCarIdx",TypeName = "uint8"}
         };
     }
 

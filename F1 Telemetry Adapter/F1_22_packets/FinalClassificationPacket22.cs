@@ -1,4 +1,5 @@
-﻿using F1_Telemetry_Adapter.Models;
+﻿using F1_Telemetry_Adapter.F1_Base_packets;
+using F1_Telemetry_Adapter.Models;
 
 namespace F1_Telemetry_Adapter.F1_22_Packets
 {
@@ -8,7 +9,7 @@ namespace F1_Telemetry_Adapter.F1_22_Packets
     /// Size: 1015 bytes
     /// Version: 1
     /// </summary>
-    public class FinalClassificationPacket : F1Packet
+    public class FinalClassificationPacket22 : F1Packet
     {
         public override int PacketSize => 1015;
 
@@ -19,33 +20,33 @@ namespace F1_Telemetry_Adapter.F1_22_Packets
 
         public FinalClassificationData[] FinalClassificationData;
 
-        public FinalClassificationPacket(HeaderPacket header) : base(header) { }
+        public FinalClassificationPacket22(HeaderPacket header) : base(header) { }
 
-        public FinalClassificationPacket() { }
+        public FinalClassificationPacket22() { }
 
-        public override ItemList PacketItems => new ItemList
+        internal override ItemList PacketItems => new ItemList
         {
-            new PacketItem {Name="NumCars",Type = typeof(byte)},
+            new PacketItem {Name="NumCars",TypeName = "uint8"},
             new PacketItem {
                 Name="FinalClassificationData",
                 Type = typeof(FinalClassificationData),
                 Count=22,
                 Children = new PacketItem[]
                 {
-                    new PacketItem {ClassName="FinalClassificationData",Name="Position",Type = typeof(byte)},
-                    new PacketItem {ClassName="FinalClassificationData",Name="NumLaps",Type = typeof(byte)},
-                    new PacketItem {ClassName="FinalClassificationData",Name="GridPosition",Type = typeof(byte)},
-                    new PacketItem {ClassName="FinalClassificationData",Name="Points",Type = typeof(byte)},
-                    new PacketItem {ClassName="FinalClassificationData",Name="NumPitStops",Type = typeof(byte)},
-                    new PacketItem {ClassName="FinalClassificationData",Name="ResultStatus",Type = typeof(byte)},
-                    new PacketItem {ClassName="FinalClassificationData",Name="BestLapTimeInMS",Type = typeof(uint)},
-                    new PacketItem {ClassName="FinalClassificationData",Name="TotalRaceTime",Type = typeof(double)},
-                    new PacketItem {ClassName="FinalClassificationData",Name="PenaltiesTime",Type = typeof(byte)},
-                    new PacketItem {ClassName="FinalClassificationData",Name="NumPenalties",Type = typeof(byte)},
-                    new PacketItem {ClassName="FinalClassificationData",Name="NumTyreStints",Type = typeof(byte)},
-                    new PacketItem {ClassName="FinalClassificationData",Name="TyreStintsActual",Type = typeof(byte),Count = 8  },
-                    new PacketItem {ClassName="FinalClassificationData",Name="TyreStintsVisual",Type = typeof(byte),Count = 8  },
-                    new PacketItem {ClassName="FinalClassificationData",Name="TyreStintsEndLaps",Type = typeof(byte),Count = 8  }
+                    new PacketItem {ClassName="FinalClassificationData",Name="Position",TypeName = "uint8"},
+                    new PacketItem {ClassName="FinalClassificationData",Name="NumLaps",TypeName = "uint8"},
+                    new PacketItem {ClassName="FinalClassificationData",Name="GridPosition",TypeName = "uint8"},
+                    new PacketItem {ClassName="FinalClassificationData",Name="Points",TypeName = "uint8"},
+                    new PacketItem {ClassName="FinalClassificationData",Name="NumPitStops",TypeName = "uint8"},
+                    new PacketItem {ClassName="FinalClassificationData",Name="ResultStatus",TypeName = "uint8"},
+                    new PacketItem {ClassName="FinalClassificationData",Name="BestLapTimeInMS",TypeName = "uint32"},
+                    new PacketItem {ClassName="FinalClassificationData",Name="TotalRaceTime",TypeName = "double"},
+                    new PacketItem {ClassName="FinalClassificationData",Name="PenaltiesTime",TypeName = "uint8"},
+                    new PacketItem {ClassName="FinalClassificationData",Name="NumPenalties",TypeName = "uint8"},
+                    new PacketItem {ClassName="FinalClassificationData",Name="NumTyreStints",TypeName = "uint8"},
+                    new PacketItem {ClassName="FinalClassificationData",Name="TyreStintsActual",TypeName = "uint8",Count = 8  },
+                    new PacketItem {ClassName="FinalClassificationData",Name="TyreStintsVisual",TypeName = "uint8",Count = 8  },
+                    new PacketItem {ClassName="FinalClassificationData",Name="TyreStintsEndLaps",TypeName = "uint8",Count = 8  }
                 }
             }
         };

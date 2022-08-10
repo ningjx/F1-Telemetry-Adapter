@@ -1,4 +1,5 @@
 ﻿using F1_Telemetry_Adapter.Enums;
+using F1_Telemetry_Adapter.F1_Base_packets;
 using F1_Telemetry_Adapter.Models;
 using System.Text;
 
@@ -12,7 +13,7 @@ namespace F1_Telemetry_Adapter.F1_22_Packets
     /// Size: 1257 bytes
     /// Version: 1
     /// </summary>
-    public class ParticipantsPacket : F1Packet
+    public class ParticipantsPacket22 : F1Packet
     {
         public override int PacketSize => 1257;
 
@@ -23,13 +24,13 @@ namespace F1_Telemetry_Adapter.F1_22_Packets
 
         public ParticipantData[] Participants;
 
-        public ParticipantsPacket(HeaderPacket header) : base(header) { }
+        public ParticipantsPacket22(HeaderPacket header) : base(header) { }
 
-        public ParticipantsPacket() { }
+        public ParticipantsPacket22() { }
 
-        public override ItemList PacketItems => new ItemList
+        internal override ItemList PacketItems => new ItemList
         {
-            new PacketItem {Name="NumActiveCars",Type = typeof(byte)},
+            new PacketItem {Name="NumActiveCars",TypeName = "uint8"},
             new PacketItem
             {
                 Name = "Participants",
@@ -37,15 +38,15 @@ namespace F1_Telemetry_Adapter.F1_22_Packets
                 Count = 22,
                 Children = new PacketItem[]
                 {
-                    new PacketItem {ClassName="ParticipantData",Name="AiControlled",Type = typeof(byte)},
-                    new PacketItem {ClassName="ParticipantData",Name="DriverId",Type = typeof(byte)},
-                    new PacketItem {ClassName="ParticipantData",Name="NetworkId",Type = typeof(byte)},
-                    new PacketItem {ClassName="ParticipantData",Name="TeamId",Type = typeof(byte)},
-                    new PacketItem {ClassName="ParticipantData",Name="MyTeam",Type = typeof(byte)},
-                    new PacketItem {ClassName="ParticipantData",Name="RaceNumber",Type = typeof(byte)},
-                    new PacketItem {ClassName="ParticipantData",Name="Nationality",Type = typeof(byte)},
-                    new PacketItem {ClassName="ParticipantData",Name="Name",Type = typeof(byte),Count = 48},
-                    new PacketItem {ClassName="ParticipantData",Name="YourTelemetry",Type = typeof(byte)}
+                    new PacketItem {ClassName="ParticipantData",Name="AiControlled",TypeName = "uint8"},
+                    new PacketItem {ClassName="ParticipantData",Name="DriverId",TypeName = "uint8"},
+                    new PacketItem {ClassName="ParticipantData",Name="NetworkId",TypeName = "uint8"},
+                    new PacketItem {ClassName="ParticipantData",Name="TeamId",TypeName = "uint8"},
+                    new PacketItem {ClassName="ParticipantData",Name="MyTeam",TypeName = "uint8"},
+                    new PacketItem {ClassName="ParticipantData",Name="RaceNumber",TypeName = "uint8"},
+                    new PacketItem {ClassName="ParticipantData",Name="Nationality",TypeName = "uint8"},
+                    new PacketItem {ClassName="ParticipantData",Name="Name",TypeName = "uint8",Count = 48},
+                    new PacketItem {ClassName="ParticipantData",Name="YourTelemetry",TypeName = "uint8"}
                 }
             }
         };

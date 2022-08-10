@@ -1,4 +1,5 @@
 ﻿using F1_Telemetry_Adapter.Enums;
+using F1_Telemetry_Adapter.F1_Base_packets;
 using F1_Telemetry_Adapter.Models;
 using System.Text;
 
@@ -10,7 +11,7 @@ namespace F1_Telemetry_Adapter.F1_22_Packets
     /// Size: 40 bytes
     /// Version: 1
     /// </summary>
-    public class EventPacket : F1Packet
+    public class EventPacket22 : F1Packet
     {
         public override int PacketSize => 40;
 
@@ -24,15 +25,15 @@ namespace F1_Telemetry_Adapter.F1_22_Packets
         /// </summary>
         public EventDataDetail EventDetail;
 
-        public EventPacket(HeaderPacket header) : base(header) { }
+        public EventPacket22(HeaderPacket header) : base(header) { }
 
-        public EventPacket() { }
+        public EventPacket22() { }
 
         internal override void LoadPacket(Bytes bytes)
         {
-            var codeBytes = bytes.ByteData.GetBytes(bytes.Index, 4);
+            var codeBytes = bytes.GetBytes(bytes.Index, 4);
             EventStringCode = Encoding.UTF8.GetString(codeBytes);
-            bytes.Index += 4;
+            bytes.MoveIndex(4);
 
             var packetItem = new PacketItem { Name = "EventDetail" };
             switch (EventStringCode)
@@ -41,54 +42,54 @@ namespace F1_Telemetry_Adapter.F1_22_Packets
                     packetItem.Type = typeof(FastestLap);
                     packetItem.Children = new PacketItem[]
                     {
-                        new PacketItem {Name="VehicleIdx",Type = typeof(byte)},
-                        new PacketItem {Name="lapTime",Type = typeof(float)}
+                        new PacketItem {Name="VehicleIdx",TypeName = "uint8"},
+                        new PacketItem {Name="lapTime",TypeName = "float"}
                     };
                     break;
                 case EventCodes.Retirement:
                     packetItem.Type = typeof(Retirement);
                     packetItem.Children = new PacketItem[]
                     {
-                        new PacketItem {Name="VehicleIdx",Type = typeof(byte)}
+                        new PacketItem {Name="VehicleIdx",TypeName = "uint8"}
                     };
                     break;
                 case EventCodes.TeammateInPits:
                     packetItem.Type = typeof(TeamMateInPits);
                     packetItem.Children = new PacketItem[]
                     {
-                        new PacketItem {Name="VehicleIdx",Type = typeof(byte)}
+                        new PacketItem {Name="VehicleIdx",TypeName = "uint8"}
                     };
                     break;
                 case EventCodes.RaceWinner:
                     packetItem.Type = typeof(RaceWinner);
                     packetItem.Children = new PacketItem[]
                     {
-                        new PacketItem {Name="VehicleIdx",Type = typeof(byte)}
+                        new PacketItem {Name="VehicleIdx",TypeName = "uint8"}
                     };
                     break;
                 case EventCodes.PenaltyIssued:
                     packetItem.Type = typeof(Penalty);
                     packetItem.Children = new PacketItem[]
                     {
-                        new PacketItem {Name="PenaltyType",Type = typeof(byte)},
-                        new PacketItem {Name="InfringementType",Type = typeof(byte)},
-                        new PacketItem {Name="VehicleIdx",Type = typeof(byte)},
-                        new PacketItem {Name="OtherVehicleIdx",Type = typeof(byte)},
-                        new PacketItem {Name="Time",Type = typeof(byte)},
-                        new PacketItem {Name="LapNum",Type = typeof(byte)},
-                        new PacketItem {Name="PlacesGained",Type = typeof(byte)}
+                        new PacketItem {Name="PenaltyType",TypeName = "uint8"},
+                        new PacketItem {Name="InfringementType",TypeName = "uint8"},
+                        new PacketItem {Name="VehicleIdx",TypeName = "uint8"},
+                        new PacketItem {Name="OtherVehicleIdx",TypeName = "uint8"},
+                        new PacketItem {Name="Time",TypeName = "uint8"},
+                        new PacketItem {Name="LapNum",TypeName = "uint8"},
+                        new PacketItem {Name="PlacesGained",TypeName = "uint8"}
                     };
                     break;
                 case EventCodes.SpeedTrapTriggered:
                     packetItem.Type = typeof(SpeedTrap);
                     packetItem.Children = new PacketItem[]
                     {
-                        new PacketItem {Name="VehicleIdx",Type = typeof(byte)},
-                        new PacketItem {Name="Speed",Type = typeof(float)},
-                        new PacketItem {Name="IsOverallFastestInSession",Type = typeof(byte)},
-                        new PacketItem {Name="IsDriverFastestInSession",Type = typeof(byte)},
-                        new PacketItem {Name="FastestVehicleIdxInSession",Type = typeof(byte)},
-                        new PacketItem {Name="FastestSpeedInSession",Type = typeof(float)}
+                        new PacketItem {Name="VehicleIdx",TypeName = "uint8"},
+                        new PacketItem {Name="Speed",TypeName = "float"},
+                        new PacketItem {Name="IsOverallFastestInSession",TypeName = "uint8"},
+                        new PacketItem {Name="IsDriverFastestInSession",TypeName = "uint8"},
+                        new PacketItem {Name="FastestVehicleIdxInSession",TypeName = "uint8"},
+                        new PacketItem {Name="FastestSpeedInSession",TypeName = "float"}
                     };
                     break;
 
@@ -96,36 +97,36 @@ namespace F1_Telemetry_Adapter.F1_22_Packets
                     packetItem.Type = typeof(StartLights);
                     packetItem.Children = new PacketItem[]
                     {
-                        new PacketItem {Name="NumLights",Type = typeof(byte)},
+                        new PacketItem {Name="NumLights",TypeName = "uint8"},
                     };
                     break;
                 case EventCodes.DriveThroughServed:
                     packetItem.Type = typeof(DriveThroughPenaltyServed);
                     packetItem.Children = new PacketItem[]
                     {
-                        new PacketItem {Name="VehicleIdx",Type = typeof(byte)}
+                        new PacketItem {Name="VehicleIdx",TypeName = "uint8"}
                     };
                     break;
                 case EventCodes.StopGoServed:
                     packetItem.Type = typeof(StopGoPenaltyServed);
                     packetItem.Children = new PacketItem[]
                     {
-                        new PacketItem {Name="VehicleIdx",Type = typeof(byte)}
+                        new PacketItem {Name="VehicleIdx",TypeName = "uint8"}
                     };
                     break;
                 case EventCodes.Flashback:
                     packetItem.Type = typeof(Flashback);
                     packetItem.Children = new PacketItem[]
                     {
-                        new PacketItem {Name="FlashbackFrameIdentifier",Type = typeof(uint)},
-                        new PacketItem {Name="FlashbackSessionTime",Type = typeof(float)},
+                        new PacketItem {Name="FlashbackFrameIdentifier",TypeName = "uint32"},
+                        new PacketItem {Name="FlashbackSessionTime",TypeName = "float"},
                     };
                     break;
                 case EventCodes.ButtonStatus:
                     packetItem.Type = typeof(Buttons);
                     packetItem.Children = new PacketItem[]
                     {
-                        new PacketItem {Name="ButtonStatus",Type = typeof(uint)}
+                        new PacketItem {Name="ButtonStatus",TypeName = "uint32"}
                     };
                     break;
                 default:
@@ -136,7 +137,7 @@ namespace F1_Telemetry_Adapter.F1_22_Packets
                 new ItemList { packetItem }.LoadBytes(bytes, this);
         }
 
-        public override ItemList PacketItems => new ItemList { };
+        internal override ItemList PacketItems => new ItemList { };
     }
 
     public class EventDataDetail { }

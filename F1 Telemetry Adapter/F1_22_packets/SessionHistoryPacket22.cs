@@ -1,4 +1,5 @@
-﻿using F1_Telemetry_Adapter.Models;
+﻿using F1_Telemetry_Adapter.F1_Base_packets;
+using F1_Telemetry_Adapter.Models;
 
 namespace F1_Telemetry_Adapter.F1_22_Packets
 {
@@ -9,7 +10,7 @@ namespace F1_Telemetry_Adapter.F1_22_Packets
     /// Size: 1155 bytes
     /// Version: 1
     /// </summary>
-    public class SessionHistoryPacket : F1Packet
+    public class SessionHistoryPacket22 : F1Packet
     {
         public override int PacketSize => 1155;
 
@@ -48,19 +49,19 @@ namespace F1_Telemetry_Adapter.F1_22_Packets
 
         public TyreStintHistoryData[] TyreStintHistoryDatas;
 
-        public SessionHistoryPacket(HeaderPacket header) : base(header) { }
+        public SessionHistoryPacket22(HeaderPacket header) : base(header) { }
 
-        public SessionHistoryPacket() { }
+        public SessionHistoryPacket22() { }
 
-        public override ItemList PacketItems => new ItemList
+        internal override ItemList PacketItems => new ItemList
         {
-            new PacketItem {Name="CarIdx",Type = typeof(byte)},
-            new PacketItem {Name="NumLaps",Type = typeof(byte)},
-            new PacketItem {Name="NumTyreStints",Type = typeof(byte)},
-            new PacketItem {Name="BestLapTimeLapNum",Type = typeof(byte)},
-            new PacketItem {Name="BestSector1LapNum",Type = typeof(byte)},
-            new PacketItem {Name="BestSector2LapNum",Type = typeof(byte)},
-            new PacketItem {Name="BestSector3LapNum",Type = typeof(byte)},
+            new PacketItem {Name="CarIdx",TypeName = "uint8"},
+            new PacketItem {Name="NumLaps",TypeName = "uint8"},
+            new PacketItem {Name="NumTyreStints",TypeName = "uint8"},
+            new PacketItem {Name="BestLapTimeLapNum",TypeName = "uint8"},
+            new PacketItem {Name="BestSector1LapNum",TypeName = "uint8"},
+            new PacketItem {Name="BestSector2LapNum",TypeName = "uint8"},
+            new PacketItem {Name="BestSector3LapNum",TypeName = "uint8"},
             new PacketItem
             {
                 Name="LapHistoryDatas",
@@ -68,11 +69,11 @@ namespace F1_Telemetry_Adapter.F1_22_Packets
                 Count=100,
                 Children = new PacketItem[]
                 {
-                    new PacketItem {ClassName="LapHistoryData",Name="LapTimeInMS",Type = typeof(uint)},
-                    new PacketItem {ClassName="LapHistoryData",Name="Sector1TimeInMS",Type = typeof(ushort)},
-                    new PacketItem {ClassName="LapHistoryData",Name="Sector2TimeInMS",Type = typeof(ushort)},
-                    new PacketItem {ClassName="LapHistoryData",Name="Sector3TimeInMS",Type = typeof(ushort)},
-                    new PacketItem {ClassName="LapHistoryData",Name="LapValidBitFlags",Type = typeof(byte)}
+                    new PacketItem {ClassName="LapHistoryData",Name="LapTimeInMS",TypeName = "uint32"},
+                    new PacketItem {ClassName="LapHistoryData",Name="Sector1TimeInMS",TypeName = "uint16"},
+                    new PacketItem {ClassName="LapHistoryData",Name="Sector2TimeInMS",TypeName = "uint16"},
+                    new PacketItem {ClassName="LapHistoryData",Name="Sector3TimeInMS",TypeName = "uint16"},
+                    new PacketItem {ClassName="LapHistoryData",Name="LapValidBitFlags",TypeName = "uint8"}
                 }
             },
             new PacketItem
@@ -82,9 +83,9 @@ namespace F1_Telemetry_Adapter.F1_22_Packets
                 Count=8,
                 Children = new PacketItem[]
                 {
-                    new PacketItem {ClassName="TyreStintHistoryData",Name="EndLap",Type = typeof(byte)},
-                    new PacketItem {ClassName="TyreStintHistoryData",Name="TyreActualCompound",Type = typeof(byte)},
-                    new PacketItem {ClassName="TyreStintHistoryData",Name="TyreVisualCompound",Type = typeof(byte)}
+                    new PacketItem {ClassName="TyreStintHistoryData",Name="EndLap",TypeName = "uint8"},
+                    new PacketItem {ClassName="TyreStintHistoryData",Name="TyreActualCompound",TypeName = "uint8"},
+                    new PacketItem {ClassName="TyreStintHistoryData",Name="TyreVisualCompound",TypeName = "uint8"}
                 }
             }
         };
