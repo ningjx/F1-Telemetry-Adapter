@@ -10,7 +10,7 @@ namespace F1_Telemetry_Adapter.F1_22_Packets
     /// Size: 1155 bytes
     /// Version: 1
     /// </summary>
-    public class SessionHistoryPacket22 : F1Packet
+    public class SessionHistoryPacket21 : F1Packet
     {
         public override int PacketSize => 1155;
 
@@ -45,9 +45,9 @@ namespace F1_Telemetry_Adapter.F1_22_Packets
         /// <summary>
         /// 100 laps of data max
         /// </summary>
-        public LapHistoryData[] LapHistoryDatas;
+        public LapHistoryData21[] LapHistoryDatas;
 
-        public TyreStintHistoryData[] TyreStintHistoryDatas;
+        public TyreStintHistoryData21[] TyreStintHistoryDatas;
 
         internal override ItemList PacketItems => new ItemList
         {
@@ -61,7 +61,7 @@ namespace F1_Telemetry_Adapter.F1_22_Packets
             new PacketItem
             {
                 Name="LapHistoryDatas",
-                Type = typeof(LapHistoryData),
+                Type = typeof(LapHistoryData21),
                 Count=100,
                 Children = new PacketItem[]
                 {
@@ -75,7 +75,7 @@ namespace F1_Telemetry_Adapter.F1_22_Packets
             new PacketItem
             {
                 Name="TyreStintHistoryDatas",
-                Type = typeof(TyreStintHistoryData),
+                Type = typeof(TyreStintHistoryData21),
                 Count=8,
                 Children = new PacketItem[]
                 {
@@ -87,7 +87,7 @@ namespace F1_Telemetry_Adapter.F1_22_Packets
         };
     }
 
-    public class LapHistoryData
+    public class LapHistoryData21
     {
         /// <summary>
         /// Lap time in milliseconds
@@ -111,7 +111,7 @@ namespace F1_Telemetry_Adapter.F1_22_Packets
         public byte LapValidBitFlags;
     }
 
-    public class TyreStintHistoryData
+    public class TyreStintHistoryData21
     {
         /// <summary>
         /// Lap the tyre usage ends on (255 of current tyre)

@@ -51,7 +51,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Models\HeaderPacketTests.cs" />
-    <Compile Include="PacketTests.cs" />
+    <Compile Include="F1DecoderTests.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>

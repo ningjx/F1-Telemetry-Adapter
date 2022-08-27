@@ -10,11 +10,11 @@ namespace F1_Telemetry_Adapter.F1_22_Packets
     /// Size: 1464 bytes
     /// Version: 1
     /// </summary>
-    public class MotionPacket22 : F1Packet
+    public class MotionPacket21 : F1Packet
     {
         public override int PacketSize => 1464;
 
-        public CarMotionData CarMotionData;
+        public CarMotionData21 CarMotionData;
 
         /// <summary>
         /// RL, RR, FL, FR
@@ -117,7 +117,7 @@ namespace F1_Telemetry_Adapter.F1_22_Packets
         };
     }
 
-    public class CarMotionData
+    public class CarMotionData21
     {
         /// <summary>
         /// World space X position

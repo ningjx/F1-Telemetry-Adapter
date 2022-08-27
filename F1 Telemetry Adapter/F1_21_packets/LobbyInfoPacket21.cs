@@ -10,7 +10,7 @@ namespace F1_Telemetry_Adapter.F1_22_Packets
     /// Size: 1191 bytes
     /// Version: 1
     /// </summary>
-    public class LobbyInfoPacket22 : F1Packet
+    public class LobbyInfoPacket21 : F1Packet
     {
         public override int PacketSize => 1191;
 
@@ -21,14 +21,14 @@ namespace F1_Telemetry_Adapter.F1_22_Packets
         /// <summary>
         /// Number of players in the lobby data
         /// </summary>
-        public LobbyInfoData[] LobbyInfoData;
+        public LobbyInfoData21[] LobbyInfoData;
 
         internal override ItemList PacketItems => new ItemList
         {
             new PacketItem {Name = "NumPlayers",TypeName = "uint8"},
             new PacketItem {
                 Name = "LobbyInfoData",
-                Type = typeof(LobbyInfoData),
+                Type = typeof(LobbyInfoData21),
                 Count = 22,
                 Children = new PacketItem[]
                 {
@@ -42,7 +42,7 @@ namespace F1_Telemetry_Adapter.F1_22_Packets
             }
         };
     }
-    public class LobbyInfoData
+    public class LobbyInfoData21
     {
         /// <summary>
         /// Whether the vehicle is AI (1) or Human (0) controlled

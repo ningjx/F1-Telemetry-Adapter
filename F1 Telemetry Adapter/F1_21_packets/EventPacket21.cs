@@ -12,19 +12,19 @@ namespace F1_Telemetry_Adapter.F1_22_Packets
     /// Size: 40 bytes
     /// Version: 1
     /// </summary>
-    public class EventPacket22 : EventPacket21
+    public class EventPacket21 : F1Packet
     {
-        public override int PacketSize => 40;
+        public override int PacketSize => 36;
 
         /// <summary>
         /// Event string code,
         /// see <see cref="EventCodes"/>
         /// </summary>
-        //public string EventStringCode;
+        public string EventStringCode;
         /// <summary>
         /// Event details - should be interpreted differently for each typ
         /// </summary>
-        public new EventDataDetail22 EventDetail;
+        public EventDataDetail21 EventDetail;
 
         internal override void LoadPacket(Bytes bytes)
         {
@@ -35,37 +35,37 @@ namespace F1_Telemetry_Adapter.F1_22_Packets
             var packetItem = new PacketItem { Name = "EventDetail" };
             switch (EventStringCode)
             {
-                case EventCodes22.FastestLap:
-                    packetItem.Type = typeof(FastestLap22);
+                case EventCodes21.FastestLap:
+                    packetItem.Type = typeof(FastestLap21);
                     packetItem.Children = new PacketItem[]
                     {
                         new PacketItem {Name="VehicleIdx",TypeName = "uint8"},
                         new PacketItem {Name="lapTime",TypeName = "float"}
                     };
                     break;
-                case EventCodes22.Retirement:
-                    packetItem.Type = typeof(Retirement22);
+                case EventCodes21.Retirement:
+                    packetItem.Type = typeof(Retirement21);
                     packetItem.Children = new PacketItem[]
                     {
                         new PacketItem {Name="VehicleIdx",TypeName = "uint8"}
                     };
                     break;
-                case EventCodes22.TeammateInPits:
-                    packetItem.Type = typeof(TeamMateInPits22);
+                case EventCodes21.TeammateInPits:
+                    packetItem.Type = typeof(TeamMateInPits21);
                     packetItem.Children = new PacketItem[]
                     {
                         new PacketItem {Name="VehicleIdx",TypeName = "uint8"}
                     };
                     break;
-                case EventCodes22.RaceWinner:
-                    packetItem.Type = typeof(RaceWinner22);
+                case EventCodes21.RaceWinner:
+                    packetItem.Type = typeof(RaceWinner21);
                     packetItem.Children = new PacketItem[]
                     {
                         new PacketItem {Name="VehicleIdx",TypeName = "uint8"}
                     };
                     break;
-                case EventCodes22.PenaltyIssued:
-                    packetItem.Type = typeof(Penalty22);
+                case EventCodes21.PenaltyIssued:
+                    packetItem.Type = typeof(Penalty21);
                     packetItem.Children = new PacketItem[]
                     {
                         new PacketItem {Name="PenaltyType",TypeName = "uint8"},
@@ -77,8 +77,8 @@ namespace F1_Telemetry_Adapter.F1_22_Packets
                         new PacketItem {Name="PlacesGained",TypeName = "uint8"}
                     };
                     break;
-                case EventCodes22.SpeedTrapTriggered:
-                    packetItem.Type = typeof(SpeedTrap22);
+                case EventCodes21.SpeedTrapTriggered:
+                    packetItem.Type = typeof(SpeedTrap21);
                     packetItem.Children = new PacketItem[]
                     {
                         new PacketItem {Name="VehicleIdx",TypeName = "uint8"},
@@ -90,37 +90,37 @@ namespace F1_Telemetry_Adapter.F1_22_Packets
                     };
                     break;
 
-                case EventCodes22.StartLights:
-                    packetItem.Type = typeof(StartLights22);
+                case EventCodes21.StartLights:
+                    packetItem.Type = typeof(StartLights21);
                     packetItem.Children = new PacketItem[]
                     {
                         new PacketItem {Name="NumLights",TypeName = "uint8"},
                     };
                     break;
-                case EventCodes22.DriveThroughServed:
-                    packetItem.Type = typeof(DriveThroughPenaltyServed22);
+                case EventCodes21.DriveThroughServed:
+                    packetItem.Type = typeof(DriveThroughPenaltyServed21);
                     packetItem.Children = new PacketItem[]
                     {
                         new PacketItem {Name="VehicleIdx",TypeName = "uint8"}
                     };
                     break;
-                case EventCodes22.StopGoServed:
-                    packetItem.Type = typeof(StopGoPenaltyServed22);
+                case EventCodes21.StopGoServed:
+                    packetItem.Type = typeof(StopGoPenaltyServed21);
                     packetItem.Children = new PacketItem[]
                     {
                         new PacketItem {Name="VehicleIdx",TypeName = "uint8"}
                     };
                     break;
-                case EventCodes22.Flashback:
-                    packetItem.Type = typeof(Flashback22);
+                case EventCodes21.Flashback:
+                    packetItem.Type = typeof(Flashback21);
                     packetItem.Children = new PacketItem[]
                     {
                         new PacketItem {Name="FlashbackFrameIdentifier",TypeName = "uint32"},
                         new PacketItem {Name="FlashbackSessionTime",TypeName = "float"},
                     };
                     break;
-                case EventCodes22.ButtonStatus:
-                    packetItem.Type = typeof(Buttons22);
+                case EventCodes21.ButtonStatus:
+                    packetItem.Type = typeof(Buttons21);
                     packetItem.Children = new PacketItem[]
                     {
                         new PacketItem {Name="ButtonStatus",TypeName = "uint32"}
@@ -134,13 +134,13 @@ namespace F1_Telemetry_Adapter.F1_22_Packets
                 new ItemList { packetItem }.LoadBytes(bytes, this);
         }
 
-        //internal override ItemList PacketItems => new ItemList { };
+        internal override ItemList PacketItems => new ItemList { };
     }
 
-    public class EventDataDetail22 { }
+    public class EventDataDetail21 { }
 
 
-    public class FastestLap22 : EventDataDetail22
+    public class FastestLap21 : EventDataDetail21
     {
         /// <summary>
         /// Vehicle index of car achieving fastest lap
@@ -152,7 +152,7 @@ namespace F1_Telemetry_Adapter.F1_22_Packets
         public float lapTime;
     }
 
-    public class Retirement22 : EventDataDetail22
+    public class Retirement21 : EventDataDetail21
     {
         /// <summary>
         /// Vehicle index of car retiring
@@ -161,7 +161,7 @@ namespace F1_Telemetry_Adapter.F1_22_Packets
     }
 
 
-    public class TeamMateInPits22 : EventDataDetail22
+    public class TeamMateInPits21 : EventDataDetail21
     {
         /// <summary>
         /// Vehicle index of team mate
@@ -170,7 +170,7 @@ namespace F1_Telemetry_Adapter.F1_22_Packets
     }
 
 
-    public class RaceWinner22 : EventDataDetail22
+    public class RaceWinner21 : EventDataDetail21
     {
         /// <summary>
         /// Vehicle index of the race winner
@@ -178,7 +178,7 @@ namespace F1_Telemetry_Adapter.F1_22_Packets
         public byte VehicleIdx;
     }
 
-    public class Penalty22 : EventDataDetail22
+    public class Penalty21 : EventDataDetail21
     {
         /// <summary>
         /// Penalty type – see Appendices
@@ -210,7 +210,7 @@ namespace F1_Telemetry_Adapter.F1_22_Packets
         public byte PlacesGained;
     }
 
-    public class SpeedTrap22 : EventDataDetail22
+    public class SpeedTrap21 : EventDataDetail21
     {
         /// <summary>
         /// Vehicle index of the Vehicle triggering speed trap
@@ -223,11 +223,11 @@ namespace F1_Telemetry_Adapter.F1_22_Packets
         /// <summary>
         /// Overall fastest speed in session = 1, otherwise 0
         /// </summary>
-        public byte IsOverallFastestInSession;
+        //public byte IsOverallFastestInSession;
         /// <summary>
         /// Fastest speed for driver in session = 1, otherwise 0
         /// </summary>
-        public byte IsDriverFastestInSession;
+        //public byte IsDriverFastestInSession;
         /// <summary>
         /// Vehicle index of the Vehicle that is the fastest in this session
         /// </summary>
@@ -238,7 +238,7 @@ namespace F1_Telemetry_Adapter.F1_22_Packets
         public float FastestSpeedInSession;
     }
 
-    public class StartLights22 : EventDataDetail22
+    public class StartLights21 : EventDataDetail21
     {
         /// <summary>
         /// Number of lights showing
@@ -246,7 +246,7 @@ namespace F1_Telemetry_Adapter.F1_22_Packets
         public byte NumLights;
     }
 
-    public class DriveThroughPenaltyServed22 : EventDataDetail22
+    public class DriveThroughPenaltyServed21 : EventDataDetail21
     {
         /// <summary>
         /// Vehicle index of the Vehicle serving drive through
@@ -254,7 +254,7 @@ namespace F1_Telemetry_Adapter.F1_22_Packets
         public byte VehicleIdx;
     }
 
-    public class StopGoPenaltyServed22 : EventDataDetail22
+    public class StopGoPenaltyServed21 : EventDataDetail21
     {
         /// <summary>
         /// Vehicle index of the Vehicle serving stop go
@@ -262,7 +262,7 @@ namespace F1_Telemetry_Adapter.F1_22_Packets
         public byte VehicleIdx;
     }
 
-    public class Flashback22 : EventDataDetail22
+    public class Flashback21 : EventDataDetail21
     {
         /// <summary>
         /// Frame identifier flashed back to
@@ -274,7 +274,7 @@ namespace F1_Telemetry_Adapter.F1_22_Packets
         public float FlashbackSessionTime;
     }
 
-    public class Buttons22 : EventDataDetail22
+    public class Buttons21 : EventDataDetail21
     {
         /// <summary>
         /// Bit flags specifying which buttons are being pressed currently - see appendices
@@ -282,7 +282,8 @@ namespace F1_Telemetry_Adapter.F1_22_Packets
         public uint ButtonStatus;
         public ButtonFlag _PressedButton => (ButtonFlag)ButtonStatus;
     }
-    public class EventCodes22
+
+    public class EventCodes21
     {
         public const string SessionStarted = "SSTA";
         public const string SessionEnded = "SEND";

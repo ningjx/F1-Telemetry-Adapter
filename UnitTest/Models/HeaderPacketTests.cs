@@ -16,7 +16,7 @@ namespace F1_Telemetry_Adapter.Models.Tests
             {
                 bytes[i] = Convert.ToByte(sp[i]);
             }
-            var header = F1Packet.GetHeaderPacket(bytes);
+            var header = F1Decoder.GetHeaderPacket(bytes);
             Assert.IsNotNull(header);
         }
     }

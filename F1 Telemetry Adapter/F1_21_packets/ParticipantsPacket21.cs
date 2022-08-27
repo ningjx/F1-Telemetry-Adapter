@@ -13,7 +13,7 @@ namespace F1_Telemetry_Adapter.F1_22_Packets
     /// Size: 1257 bytes
     /// Version: 1
     /// </summary>
-    public class ParticipantsPacket22 : F1Packet
+    public class ParticipantsPacket21 : F1Packet
     {
         public override int PacketSize => 1257;
 
@@ -22,7 +22,7 @@ namespace F1_Telemetry_Adapter.F1_22_Packets
         /// </summary>
         public byte NumActiveCars;
 
-        public ParticipantData[] Participants;
+        public ParticipantData21[] Participants;
 
         internal override ItemList PacketItems => new ItemList
         {
@@ -48,7 +48,7 @@ namespace F1_Telemetry_Adapter.F1_22_Packets
         };
     }
 
-    public class ParticipantData
+    public class ParticipantData21
     {
         /// <summary>
         /// Whether the vehicle is AI (1) or Human (0) controlled

@@ -6,21 +6,21 @@ namespace F1_Telemetry_Adapter.F1_22_Packets
     /// <summary>
     /// This packet details car damage parameters for all the cars in the race.
     /// Frequency: 2 per second
-    /// Size: 941 bytes
+    /// Size: 882 bytes
     /// Version: 1
     /// </summary>
-    public class CarDamagePacket22 : CarDamagePacket21
+    public class CarDamagePacket21 : F1Packet
     {
-        public override int PacketSize => 941;
+        public override int PacketSize => 882;
 
-        public CarDamageData22[] CarDamageDatas;
+        public CarDamageData21[] CarDamageDatas;
 
         internal override ItemList PacketItems => new ItemList
         {
             new PacketItem
             {
                 Name = "CarDamageDatas",
-                Type = typeof(CarDamageData22),
+                Type = typeof(CarDamageData21),
                 Count = 22,
                 Children = new PacketItem[]
                 {
@@ -34,7 +34,6 @@ namespace F1_Telemetry_Adapter.F1_22_Packets
                     new PacketItem {Name="DiffuserDamage",TypeName = "uint8"},
                     new PacketItem {Name="SidepodDamage",TypeName = "uint8" },
                     new PacketItem {Name="DrsFault",TypeName = "uint8" },
-                    new PacketItem {Name="ErsFault",TypeName = "uint8"},
                     new PacketItem {Name="GearBoxDamage",TypeName = "uint8" },
                     new PacketItem {Name="EngineDamage",TypeName = "uint8"},
                     new PacketItem {Name="EngineMGUHWear",TypeName = "uint8"},
@@ -42,15 +41,13 @@ namespace F1_Telemetry_Adapter.F1_22_Packets
                     new PacketItem {Name="EngineCEWear",TypeName = "uint8" },
                     new PacketItem {Name="EngineICEWear",TypeName = "uint8" },
                     new PacketItem {Name="EngineMGUKWear",TypeName = "uint8" },
-                    new PacketItem {Name="EngineTCWear",TypeName = "uint8"},
-                    new PacketItem {Name="EngineBlown",TypeName = "uint8"},
-                    new PacketItem {Name="EngineSeized",TypeName = "uint8"}
+                    new PacketItem {Name="EngineTCWear",TypeName = "uint8"}
                 }
             }
         };
     }
 
-    public class CarDamageData22
+    public class CarDamageData21
     {
         /// <summary>
         /// Tyre wear (percentage)
@@ -106,10 +103,6 @@ namespace F1_Telemetry_Adapter.F1_22_Packets
         /// </summary>
         public byte DrsFault;
         /// <summary>
-        /// Indicator for ERS fault, 0 = OK, 1 = fault
-        /// </summary>
-        public byte ErsFault;
-        /// <summary>
         /// Gear box damage (percentage)
         /// </summary>
         public byte GearBoxDamage;
@@ -141,13 +134,5 @@ namespace F1_Telemetry_Adapter.F1_22_Packets
         /// Engine wear TC (percentage)
         /// </summary>
         public byte EngineTCWear;
-        /// <summary>
-        /// Engine blown, 0 = OK, 1 = fault
-        /// </summary>
-        public byte EngineBlown;
-        /// <summary>
-        /// Engine seized, 0 = OK, 1 = fault
-        /// </summary>
-        public byte EngineSeized;
     }
 }

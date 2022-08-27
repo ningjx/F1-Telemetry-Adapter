@@ -9,14 +9,14 @@ namespace F1_Telemetry_Adapter.F1_22_Packets
     /// Size: 972 bytes
     /// Version: 1
     /// </summary>
-    public class LapDataPacket22 : F1Packet
+    public class LapDataPacket21 : F1Packet
     {
         public override int PacketSize => 972;
 
         /// <summary>
         /// Lap data for all cars on track
         /// </summary>
-        public LapData[] LapData;
+        public LapData21[] LapData;
         /// <summary>
         /// Index of Personal Best car in time trial (255 if invalid)
         /// </summary>
@@ -30,7 +30,7 @@ namespace F1_Telemetry_Adapter.F1_22_Packets
         {
             new PacketItem {
                 Name="LapData",
-                Type = typeof(LapData),
+                Type = typeof(LapData21),
                 Count=22,
                 Children = new PacketItem[]
                 {
@@ -65,7 +65,7 @@ namespace F1_Telemetry_Adapter.F1_22_Packets
         };
     }
 
-    public class LapData
+    public class LapData21
     {
         /// <summary>
         /// Last lap time in milliseconds

@@ -3,19 +3,12 @@ using F1_Telemetry_Adapter.Models;
 
 namespace F1_Telemetry_Adapter
 {
-    public partial class F1Packet
+    public class F1Packet
     {
         /// <summary>
         /// 每个数据包都含有一个信息头
         /// </summary>
         public HeaderPacket PacketHeader { get; set; }
-
-        public F1Packet(HeaderPacket header)
-        {
-            PacketHeader = header;
-        }
-
-        public F1Packet() { }
 
         /// <summary>
         /// 数据包格式

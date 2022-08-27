@@ -9,7 +9,7 @@ namespace F1_Telemetry_Adapter.F1_22_Packets
     /// Size: 1015 bytes
     /// Version: 1
     /// </summary>
-    public class FinalClassificationPacket22 : F1Packet
+    public class FinalClassificationPacket21 : F1Packet
     {
         public override int PacketSize => 1015;
 
@@ -18,14 +18,14 @@ namespace F1_Telemetry_Adapter.F1_22_Packets
         /// </summary>
         public byte NumCars;
 
-        public FinalClassificationData[] FinalClassificationData;
+        public FinalClassificationData21[] FinalClassificationData;
 
         internal override ItemList PacketItems => new ItemList
         {
             new PacketItem {Name="NumCars",TypeName = "uint8"},
             new PacketItem {
                 Name="FinalClassificationData",
-                Type = typeof(FinalClassificationData),
+                Type = typeof(FinalClassificationData21),
                 Count=22,
                 Children = new PacketItem[]
                 {
@@ -48,7 +48,7 @@ namespace F1_Telemetry_Adapter.F1_22_Packets
         };
     }
 
-    public class FinalClassificationData
+    public class FinalClassificationData21
     {
         /// <summary>
         /// Finishing position

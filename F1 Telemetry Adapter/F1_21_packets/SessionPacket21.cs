@@ -10,7 +10,7 @@ namespace F1_Telemetry_Adapter.F1_22_Packets
     /// Size: 632 bytes
     /// Version: 1
     /// </summary>
-    public class SessionPacket22 : F1Packet
+    public class SessionPacket21 : F1Packet
     {
         public override int PacketSize => 632;
 
@@ -86,7 +86,7 @@ namespace F1_Telemetry_Adapter.F1_22_Packets
         /// <summary>
         /// List of marshal zones – max 21
         /// </summary>
-        public MarshalZone22[] MarshalZones;
+        public MarshalZone21[] MarshalZones;
         /// <summary>
         /// 0 = no safety car, 1 = full, 2 = virtual, 3 = formation lap
         /// </summary>
@@ -102,7 +102,7 @@ namespace F1_Telemetry_Adapter.F1_22_Packets
         /// <summary>
         /// Array of weather forecast samples
         /// </summary>
-        public WeatherForecastSample22[] WeatherForecastSamples;
+        public WeatherForecastSample21[] WeatherForecastSamples;
         /// <summary>
         /// 0 = Perfect, 1 = Approximate
         /// </summary>
@@ -210,11 +210,11 @@ namespace F1_Telemetry_Adapter.F1_22_Packets
             new PacketItem {Name="NumMarshalZones",TypeName = "uint8"},
             new PacketItem {
                 Name="MarshalZones",
-                Type = typeof(MarshalZone22),
+                Type = typeof(MarshalZone21),
                 Count=21,
                 Children = new PacketItem[]
                 {
-                    new PacketItem {Name="ZoneStart",TypeName = "float"},
+                    new PacketItem { Name="ZoneStart",TypeName = "float"},
                     new PacketItem {Name="ZoneFlag",TypeName = "int8"}
                 }
             },
@@ -223,7 +223,7 @@ namespace F1_Telemetry_Adapter.F1_22_Packets
             new PacketItem {Name="NumWeatherForecastSamples",TypeName = "uint8"},
             new PacketItem {
                 Name="WeatherForecastSamples",
-                Type = typeof(WeatherForecastSample22),
+                Type = typeof(WeatherForecastSample21),
                 Count= 56,
                 Children = new PacketItem[]
                 {
@@ -261,7 +261,7 @@ namespace F1_Telemetry_Adapter.F1_22_Packets
             };
     }
 
-    public class MarshalZone22
+    public class MarshalZone21
     {
         /// <summary>
         /// Fraction (0..1) of way through the lap the marshal zone starts
@@ -273,7 +273,7 @@ namespace F1_Telemetry_Adapter.F1_22_Packets
         public sbyte ZoneFlag;
     }
 
-    public class WeatherForecastSample22
+    public class WeatherForecastSample21
     {
         /// <summary>
         /// 0 = unknown, 1 = P1, 2 = P2, 3 = P3, 4 = Short P, 5 = Q1,

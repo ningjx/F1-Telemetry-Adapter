@@ -2,34 +2,10 @@
 using F1_Telemetry_Adapter.Models;
 using System;
 
-namespace F1_Telemetry_Adapter
+namespace F1_Telemetry_Adapter.Helpers
 {
     internal static class Helper
     {
-        internal static int GetTypeSize(string type)
-        {
-            switch (type)
-            {
-                case "Single":
-                    return 4;
-                case "Double":
-                    return 8;
-                case "SByte":
-                    return 1;
-                case "Byte":
-                    return 1;
-                case "Int16":
-                    return 2;
-                case "UInt16":
-                    return 2;
-                case "UInt32":
-                    return 4;
-                case "UInt64":
-                    return 8;
-                default: return 0;
-            }
-        }
-
         internal static byte[] GetBytes(this Bytes bytes, int start, int length)
         {
             var res = new byte[length];
@@ -68,6 +44,10 @@ namespace F1_Telemetry_Adapter
                     return typeof(long);
                 case "char":
                     return typeof(byte);
+                case "uint":
+                    return typeof(uint);
+                case "int":
+                    return typeof(int);
 
                 default: return null;
             }

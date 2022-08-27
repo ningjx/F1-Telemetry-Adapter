@@ -9,21 +9,17 @@ namespace F1_Telemetry_Adapter.F1_22_Packets
     /// Size: 1102 bytes
     /// Version: 1
     /// </summary>
-    public class CarSetupsPacket22 : F1Packet
+    public class CarSetupsPacket22 : CarSetupsPacket21
     {
-        public override int PacketSize => 1102;
+        //public override int PacketSize => 1102;
 
-        public CarSetupData[] CarSetupDatas;
-
-        public CarSetupsPacket22(HeaderPacket header) : base(header) { }
-
-        public CarSetupsPacket22() { }
+        public CarSetupData22[] CarSetupDatas;
 
         internal override ItemList PacketItems => new ItemList
         {
             new PacketItem {
                 Name="CarSetupDatas",
-                Type = typeof(CarSetupData),
+                Type = typeof(CarSetupData22),
                 Count=22,
                 Children = new PacketItem[]
                 {
@@ -54,95 +50,8 @@ namespace F1_Telemetry_Adapter.F1_22_Packets
         };
     }
 
-    public class CarSetupData
+    public class CarSetupData22 : CarSetupData21
     {
-        /// <summary>
-        /// Front wing aero
-        /// </summary>
-        public byte FrontWing;
-        /// <summary>
-        /// Rear wing aero
-        /// </summary>
-        public byte RearWing;
-        /// <summary>
-        /// Differential adjustment on throttle (percentage)
-        /// </summary>
-        public byte OnThrottle;
-        /// <summary>
-        /// Differential adjustment off throttle (percentage)
-        /// </summary>
-        public byte OffThrottle;
-        /// <summary>
-        /// Front camber angle (suspension geometry)
-        /// </summary>
-        public float FrontCamber;
-        /// <summary>
-        /// Rear camber angle (suspension geometry)
-        /// </summary>
-        public float TearCamber;
-        /// <summary>
-        /// Front toe angle (suspension geometry)
-        /// </summary>
-        public float FrontToe;
-        /// <summary>
-        /// Rear toe angle (suspension geometry)
-        /// </summary>
-        public float RearToe;
-        /// <summary>
-        /// Front suspension
-        /// </summary>
-        public byte FrontSuspension;
-        /// <summary>
-        /// Rear suspension
-        /// </summary>
-        public byte TearSuspension;
-        /// <summary>
-        /// Front anti-roll bar
-        /// </summary>
-        public byte FrontAntiRollBar;
-        /// <summary>
-        /// Front anti-roll bar
-        /// </summary>
-        public byte TearAntiRollBar;
-        /// <summary>
-        /// Front ride height
-        /// </summary>
-        public byte FrontSuspensionHeight;
-        /// <summary>
-        /// Rear ride height
-        /// </summary>
-        public byte TearSuspensionHeight;
-        /// <summary>
-        /// Brake pressure (percentage)
-        /// </summary>
-        public byte BrakePressure;
-        /// <summary>
-        /// Brake bias (percentage)
-        /// </summary>
-        public byte BrakeBias;
-        /// <summary>
-        /// Rear left tyre pressure (PSI)
-        /// </summary>
-        public float RearLeftTyrePressure;
-        /// <summary>
-        /// Rear right tyre pressure (PSI)
-        /// </summary>
-        public float RearRightTyrePressure;
-        /// <summary>
-        /// Front left tyre pressure (PSI)
-        /// </summary>
-        public float FrontLeftTyrePressure;
-        /// <summary>
-        /// Front right tyre pressure (PSI)
-        /// </summary>
-        public float FrontRightTyrePressure;
-        /// <summary>
-        /// Ballast
-        /// </summary>
-        public byte Ballast;
-        /// <summary>
-        /// Fuel load
-        /// </summary>
-        public float FuelLoad;
+
     }
 }
