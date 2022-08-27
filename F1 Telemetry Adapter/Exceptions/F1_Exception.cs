@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Text;
 
-namespace F1_Telemetry_Adapter.Exceptions
+namespace NingSoft.F1TelemetryAdapter.Exceptions
 {
     public class F1_Exception : Exception
     {

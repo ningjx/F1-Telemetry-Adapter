@@ -1,9 +1,9 @@
-﻿using F1_Telemetry_Adapter.Enums;
-using F1_Telemetry_Adapter.F1_Base_packets;
-using F1_Telemetry_Adapter.Models;
+﻿using NingSoft.F1TelemetryAdapter.Enums;
+using NingSoft.F1TelemetryAdapter.F1_Base_packets;
+using NingSoft.F1TelemetryAdapter.Models;
 using System;
 
-namespace F1_Telemetry_Adapter.F1_18_packets
+namespace NingSoft.F1TelemetryAdapter.F1_18_packets
 {
     public class HeaderPacket18 : HeaderPacket
     {

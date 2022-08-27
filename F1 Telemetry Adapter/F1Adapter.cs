@@ -1,21 +1,21 @@
-﻿using F1_Telemetry_Adapter.Enums;
-using F1_Telemetry_Adapter.Exceptions;
-using F1_Telemetry_Adapter.F1_18_packets;
-using F1_Telemetry_Adapter.F1_19_packets;
-using F1_Telemetry_Adapter.F1_20_packets;
-using F1_Telemetry_Adapter.F1_21_packets;
-using F1_Telemetry_Adapter.F1_22_packets;
-using F1_Telemetry_Adapter.F1_22_Packets;
-using F1_Telemetry_Adapter.F1_Base_packets;
-using F1_Telemetry_Adapter.Helpers;
-using F1_Telemetry_Adapter.Models;
+﻿using NingSoft.F1TelemetryAdapter.Enums;
+using NingSoft.F1TelemetryAdapter.Exceptions;
+using NingSoft.F1TelemetryAdapter.F1_18_packets;
+using NingSoft.F1TelemetryAdapter.F1_19_packets;
+using NingSoft.F1TelemetryAdapter.F1_20_packets;
+using NingSoft.F1TelemetryAdapter.F1_21_packets;
+using NingSoft.F1TelemetryAdapter.F1_22_packets;
+using NingSoft.F1TelemetryAdapter.F1_22_Packets;
+using NingSoft.F1TelemetryAdapter.F1_Base_packets;
+using NingSoft.F1TelemetryAdapter.Helpers;
+using NingSoft.F1TelemetryAdapter.Models;
 using System;
 using System.Collections.Generic;
 using System.Text;
 
-namespace F1_Telemetry_Adapter
+namespace NingSoft.F1TelemetryAdapter
 {
-    public static class F1Decoder
+    public static class F1Adapter
     {
         /// <summary>
         /// 获取字节流中的信息头
@@ -64,7 +64,7 @@ namespace F1_Telemetry_Adapter
         /// </summary>
         /// <param name="bytes"></param>
         /// <returns></returns>
-        public static F1Packet DecodePacket(byte[] bytes)
+        public static F1Packet GetF1Packet(byte[] bytes)
         {
             var byteData = new Bytes(bytes);
             var version = byteData.GetGameVersion();

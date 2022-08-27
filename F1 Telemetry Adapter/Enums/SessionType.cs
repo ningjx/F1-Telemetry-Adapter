@@ -1,4 +1,4 @@
-﻿namespace F1_Telemetry_Adapter.Enums
+﻿namespace NingSoft.F1TelemetryAdapter.Enums
 {
     public enum SessionType
     {

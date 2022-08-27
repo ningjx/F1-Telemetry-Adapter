@@ -1,9 +1,9 @@
-﻿using F1_Telemetry_Adapter.Enums;
-using F1_Telemetry_Adapter.Helpers;
+﻿using NingSoft.F1TelemetryAdapter.Enums;
+using NingSoft.F1TelemetryAdapter.Helpers;
 using System;
 using System.Collections.Generic;
 
-namespace F1_Telemetry_Adapter.Models
+namespace NingSoft.F1TelemetryAdapter.Models
 {
     public class ItemList : List<PacketItem>
     {

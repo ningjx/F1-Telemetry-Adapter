@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace F1_Telemetry_Adapter.Models
+namespace NingSoft.F1TelemetryAdapter.Models
 {
     public class Bytes
     {

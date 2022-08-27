@@ -1,8 +1,8 @@
-﻿using F1_Telemetry_Adapter.Enums;
-using F1_Telemetry_Adapter.F1_Base_packets;
-using F1_Telemetry_Adapter.Models;
+﻿using NingSoft.F1TelemetryAdapter.Enums;
+using NingSoft.F1TelemetryAdapter.F1_Base_packets;
+using NingSoft.F1TelemetryAdapter.Models;
 
-namespace F1_Telemetry_Adapter.F1_22_Packets
+namespace NingSoft.F1TelemetryAdapter.F1_22_Packets
 {
     /// <summary>
     /// The session packet includes details about the current session in progress.

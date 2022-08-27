@@ -1,8 +1,8 @@
-﻿using F1_Telemetry_Adapter.F1_Base_packets;
-using F1_Telemetry_Adapter.Models;
+﻿using NingSoft.F1TelemetryAdapter.F1_Base_packets;
+using NingSoft.F1TelemetryAdapter.Models;
 using System;
 
-namespace F1_Telemetry_Adapter.F1_22_Packets
+namespace NingSoft.F1TelemetryAdapter.F1_22_Packets
 {
     /// <summary>
     /// This packet details car statuses for all the cars in the race.

@@ -1,8 +1,8 @@
-﻿using F1_Telemetry_Adapter.Enums;
-using F1_Telemetry_Adapter.F1_Base_packets;
-using F1_Telemetry_Adapter.Models;
+﻿using NingSoft.F1TelemetryAdapter.Enums;
+using NingSoft.F1TelemetryAdapter.F1_Base_packets;
+using NingSoft.F1TelemetryAdapter.Models;
 
-namespace F1_Telemetry_Adapter.F1_22_Packets
+namespace NingSoft.F1TelemetryAdapter.F1_22_Packets
 {
     /// <summary>
     /// This packet details the players currently in a multiplayer lobby. It details each player’s selected car, any AI involved in the game and also the ready status of each of the participants.

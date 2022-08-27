@@ -1,7 +1,7 @@
 ﻿using Microsoft.VisualStudio.TestTools.UnitTesting;
 using System;
 
-namespace F1_Telemetry_Adapter.Models.Tests
+namespace NingSoft.F1TelemetryAdapter.Models.Tests
 {
     [TestClass()]
     public class HeaderPacketTests
@@ -16,7 +16,7 @@ namespace F1_Telemetry_Adapter.Models.Tests
             {
                 bytes[i] = Convert.ToByte(sp[i]);
             }
-            var header = F1Decoder.GetHeaderPacket(bytes);
+            var header = F1Adapter.GetHeaderPacket(bytes);
             Assert.IsNotNull(header);
         }
     }

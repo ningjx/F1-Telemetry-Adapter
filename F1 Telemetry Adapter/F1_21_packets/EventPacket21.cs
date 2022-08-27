@@ -1,10 +1,10 @@
-﻿using F1_Telemetry_Adapter.Enums;
-using F1_Telemetry_Adapter.F1_Base_packets;
-using F1_Telemetry_Adapter.Helpers;
-using F1_Telemetry_Adapter.Models;
+﻿using NingSoft.F1TelemetryAdapter.Enums;
+using NingSoft.F1TelemetryAdapter.F1_Base_packets;
+using NingSoft.F1TelemetryAdapter.Helpers;
+using NingSoft.F1TelemetryAdapter.Models;
 using System.Text;
 
-namespace F1_Telemetry_Adapter.F1_22_Packets
+namespace NingSoft.F1TelemetryAdapter.F1_22_Packets
 {
     /// <summary>
     /// This packet gives details of events that happen during the course of a session.

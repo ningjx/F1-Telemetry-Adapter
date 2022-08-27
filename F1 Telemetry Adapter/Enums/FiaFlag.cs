@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace F1_Telemetry_Adapter.Enums
+namespace NingSoft.F1TelemetryAdapter.Enums
 {
     public enum FiaFlag : sbyte
     {

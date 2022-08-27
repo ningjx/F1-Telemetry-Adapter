@@ -1,7 +1,7 @@
-﻿using F1_Telemetry_Adapter.F1_19_packets;
-using F1_Telemetry_Adapter.Models;
+﻿using NingSoft.F1TelemetryAdapter.F1_19_packets;
+using NingSoft.F1TelemetryAdapter.Models;
 
-namespace F1_Telemetry_Adapter.F1_20_packets
+namespace NingSoft.F1TelemetryAdapter.F1_20_packets
 {
     public class HeaderPacket20 : HeaderPacket19
     {

@@ -1,8 +1,8 @@
-﻿using F1_Telemetry_Adapter.Enums;
-using F1_Telemetry_Adapter.Models;
+﻿using NingSoft.F1TelemetryAdapter.Enums;
+using NingSoft.F1TelemetryAdapter.Models;
 using System;
 
-namespace F1_Telemetry_Adapter.Helpers
+namespace NingSoft.F1TelemetryAdapter.Helpers
 {
     internal static class Helper
     {
