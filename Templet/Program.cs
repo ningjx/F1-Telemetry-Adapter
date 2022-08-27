@@ -3,7 +3,7 @@ using NingSoft.F1TelemetryAdapter.Enums;
 using NingSoft.F1TelemetryAdapter.F1_22_Packets;
 using NingSoft.F1TelemetryAdapter.F1_Base_packets;
 
-namespace Templet
+namespace Templete
 {
     internal class Program
     {
@@ -20,13 +20,20 @@ namespace Templet
                     //ba la ba la
                     break;
             }
-            //or you don't care about the shit of GameSeries,just want some basic data fields,parse the packet to someone in namespace "NingSoft.F1TelemetryAdapter.F1_Base_packets" directly.
+            //or you don't care about the shit of GameSeries,just want some basic data fields,parse the packet to someone in namespace "NingSoft.F1TelemetryAdapter.F1_XX_packets" directly.(XX likes 18/19/20/21/22)
             switch (pack.PacketHeader._PacketType)
             {
                 case PacketType.CarTelemetry:
                     var newPack = pack as CarTelemetryPacket22;
-                    //float playerThrottle = newPack.CarTelemetryData[pack.PacketHeader.PlayerCarIndex].Throttle;
+                    float playerThrottle = newPack.CarTelemetryData[pack.PacketHeader.PlayerCarIndex].Throttle;
                     break;
+            }
+
+            //or you can use dynamic type
+            dynamic dPack = F1Adapter.GetF1Packet(bytes);
+            if (dPack.PacketHeader._PacketType == PacketType.CarTelemetry)
+            {
+                float playerThrottle = dPack.CarTelemetryData[dPack.PacketHeader.PlayerCarIndex].Throttle;
             }
 
         }
