@@ -42,6 +42,31 @@ namespace NingSoft.F1TelemetryAdapter.Models
             }
         }
 
+        public void MoveIndexToEnd(Bytes bytes, object obj)
+        {
+            if (bytes == null) return;
+
+            Action<PacketField, object> action = (item, entity) =>
+            {
+                if (item.Count == 0)
+                {
+                    bytes.MoveIndexByType(item.TypeName);
+                }
+                else
+                {
+                    for (int i = 0; i < item.Count; i++)
+                    {
+                        bytes.MoveIndexByType(item.TypeName);
+                    }
+                }
+            };
+
+            foreach (var item in this)
+            {
+                VisitItem(item, action, obj);
+            }
+        }
+
         private void VisitItem(PacketField item, Action<PacketField, object> action, object entity)
         {
             if (!item.HasChild)

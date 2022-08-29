@@ -7,7 +7,6 @@ namespace NingSoft.F1TelemetryAdapter.Models
         public readonly byte[] byteData;
         private int index;
         public int Index => index;
-        //public byte this[int index] => ByteData[index];
 
         public Bytes(byte[] byteData, int index = 0)
         {
@@ -52,6 +51,37 @@ namespace NingSoft.F1TelemetryAdapter.Models
             }
 
             return res;
+        }
+
+        public void MoveIndexByType(string type)
+        {
+            switch (type)
+            {
+                case "char":
+                    index += 1; break;
+                case "uint8":
+                    index += 1; break;
+                case "int8":
+                    index += 1; break;
+                case "uint16":
+                    index += 2; break;
+                case "int16":
+                    index += 2; break;
+                case "uint32":
+                    index += 4; break;
+                case "int32":
+                    index += 4; break;
+                case "float":
+                    index += 4; break;
+                case "double":
+                    index += 8; break;
+                case "uint64":
+                    index += 8; break;
+                case "int64":
+                    index += 8; break;
+                default:
+                    index += 0; break;
+            }
         }
 
         public object ConvertValue(Type type)

@@ -9,15 +9,15 @@ namespace NingSoft.F1TelemetryAdapter.F1_22_Packets
     /// Size: 1102 bytes
     /// Version: 1
     /// </summary>
-    public class CarSetupsPacket22 : CarSetupsPacket21
+    public class CarSetupsPacket22 : F1Packet
     {
-        //public override int PacketSize => 1102;
+        public override int Length => 1102;
 
         public CarSetupData22[] CarSetupDatas;
 
-        public CarSetupsPacket22(HeaderPacket header, Bytes bys) : base(header, bys)
-        {
-        }
+        public CarSetupsPacket22(HeaderPacket header, Bytes bys) : base(header, bys) { }
+
+        public CarSetupsPacket22() { }
 
         internal override FieldList Fields => new FieldList
         {
@@ -32,15 +32,15 @@ namespace NingSoft.F1TelemetryAdapter.F1_22_Packets
                     new PacketField {Name="OnThrottle",TypeName = "uint8"},
                     new PacketField {Name="OffThrottle",TypeName = "uint8"},
                     new PacketField {Name="FrontCamber",TypeName = "float"},
-                    new PacketField {Name="TearCamber",TypeName = "float"},
+                    new PacketField {Name="RearCamber",TypeName = "float"},
                     new PacketField {Name="FrontToe",TypeName = "float"},
                     new PacketField {Name="RearToe",TypeName = "float"},
                     new PacketField {Name="FrontSuspension",TypeName = "uint8"},
-                    new PacketField {Name="TearSuspension",TypeName = "uint8"},
+                    new PacketField {Name="RearSuspension",TypeName = "uint8"},
                     new PacketField {Name="FrontAntiRollBar",TypeName = "uint8"},
-                    new PacketField {Name="TearAntiRollBar",TypeName = "uint8"},
+                    new PacketField {Name="RearAntiRollBar",TypeName = "uint8"},
                     new PacketField {Name="FrontSuspensionHeight",TypeName = "uint8"},
-                    new PacketField {Name="TearSuspensionHeight",TypeName = "uint8"},
+                    new PacketField {Name="RearSuspensionHeight",TypeName = "uint8"},
                     new PacketField {Name="BrakePressure",TypeName = "uint8"},
                     new PacketField {Name="BrakeBias",TypeName = "uint8"},
                     new PacketField {Name="RearLeftTyrePressure",TypeName = "float"},

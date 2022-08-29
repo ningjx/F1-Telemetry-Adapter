@@ -49,9 +49,10 @@ namespace NingSoft.F1TelemetryAdapter.F1_22_Packets
 
         public TyreStintHistoryData[] TyreStintHistoryDatas;
 
-        public SessionHistoryPacket22(HeaderPacket header, Bytes bys) : base(header, bys)
-        {
-        }
+        public SessionHistoryPacket22(HeaderPacket header, Bytes bys) : base(header, bys) { }
+
+        public SessionHistoryPacket22() { }
+
 
         internal override FieldList Fields => new FieldList
         {

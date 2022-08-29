@@ -3,17 +3,17 @@ using NingSoft.F1TelemetryAdapter.F1_Base_packets;
 using NingSoft.F1TelemetryAdapter.Models;
 using System.Text;
 
-namespace NingSoft.F1TelemetryAdapter.F1_22_Packets
+namespace NingSoft.F1TelemetryAdapter.F1_18_Packets
 {
     /// <summary>
     /// This is a list of participants in the race. If the vehicle is controlled by AI, then the name will be the driver name. If this is a multiplayer game, the names will be the Steam Id on PC, or the LAN name if appropriate.
     /// N.B.on Xbox One, the names will always be the driver name, on PS4 the name will be the LAN name if playing a LAN game, otherwise it will be the driver name.
     /// The array should be indexed by vehicle index.
     /// Frequency: Every 5 seconds
-    /// Size: 1257 bytes
+    /// Size: 1082 bytes
     /// Version: 1
     /// </summary>
-    public class ParticipantsPacket22 : F1Packet
+    public class ParticipantsPacket18 : F1Packet
     {
         public override int Length => 1257;
 
@@ -22,11 +22,11 @@ namespace NingSoft.F1TelemetryAdapter.F1_22_Packets
         /// </summary>
         public byte NumActiveCars;
 
-        public ParticipantData[] Participants;
+        public ParticipantData18[] Participants;
 
-        public ParticipantsPacket22(HeaderPacket header, Bytes bys) : base(header, bys) { }
-
-        public ParticipantsPacket22() { }
+        public ParticipantsPacket18(HeaderPacket header, Bytes bys) : base(header, bys)
+        {
+        }
 
         internal override FieldList Fields => new FieldList
         {
@@ -34,25 +34,22 @@ namespace NingSoft.F1TelemetryAdapter.F1_22_Packets
             new PacketField
             {
                 Name = "Participants",
-                Type = typeof(ParticipantData),
-                Count = 22,
+                Type = typeof(ParticipantData18),
+                Count = 20,
                 Children = new PacketField[]
                 {
                     new PacketField {Name="AiControlled",TypeName = "uint8"},
                     new PacketField {Name="DriverId",TypeName = "uint8"},
-                    new PacketField {Name="NetworkId",TypeName = "uint8"},
                     new PacketField {Name="TeamId",TypeName = "uint8"},
-                    new PacketField {Name="MyTeam",TypeName = "uint8"},
                     new PacketField {Name="RaceNumber",TypeName = "uint8"},
                     new PacketField {Name="Nationality",TypeName = "uint8"},
-                    new PacketField {Name="Name",TypeName = "uint8",Count = 48},
-                    new PacketField {Name="YourTelemetry",TypeName = "uint8"}
+                    new PacketField {Name="Name",TypeName = "uint8",Count = 48}
                 }
             }
         };
     }
 
-    public class ParticipantData
+    public class ParticipantData18
     {
         /// <summary>
         /// Whether the vehicle is AI (1) or Human (0) controlled
@@ -63,17 +60,9 @@ namespace NingSoft.F1TelemetryAdapter.F1_22_Packets
         /// </summary>
         public byte DriverId;
         /// <summary>
-        /// Network id – unique identifier for network players
-        /// </summary>
-        public byte NetworkId;
-        /// <summary>
         /// Team id - see appendix
         /// </summary>
         public byte TeamId;
-        /// <summary>
-        /// My team flag – 1 = My Team, 0 = otherwise
-        /// </summary>
-        public byte MyTeam;
         /// <summary>
         /// Race number of the car
         /// </summary>
@@ -86,10 +75,6 @@ namespace NingSoft.F1TelemetryAdapter.F1_22_Packets
         /// Name of participant in UTF-8 format – null terminated. Will be truncated with … (U+2026) if too long
         /// </summary>
         public byte[] Name;
-        /// <summary>
-        /// The player's UDP setting, 0 = restricted, 1 = public
-        /// </summary>
-        public byte YourTelemetry;
 
         public string _Name => Encoding.UTF8.GetString(Name);
         public Driver _Driver => (Driver)DriverId;

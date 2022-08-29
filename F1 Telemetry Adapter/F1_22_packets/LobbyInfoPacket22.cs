@@ -23,9 +23,9 @@ namespace NingSoft.F1TelemetryAdapter.F1_22_Packets
         /// </summary>
         public LobbyInfoData[] LobbyInfoData;
 
-        public LobbyInfoPacket22(HeaderPacket header, Bytes bys) : base(header, bys)
-        {
-        }
+        public LobbyInfoPacket22(HeaderPacket header, Bytes bys) : base(header, bys) { }
+
+        public LobbyInfoPacket22() { }
 
         internal override FieldList Fields => new FieldList
         {

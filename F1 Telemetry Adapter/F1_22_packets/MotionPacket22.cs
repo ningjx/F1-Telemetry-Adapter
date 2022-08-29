@@ -14,8 +14,12 @@ namespace NingSoft.F1TelemetryAdapter.F1_22_Packets
     {
         public override int Length => 1464;
 
-        public CarMotionData CarMotionData;
+        public CarMotionData22[] CarMotionData;
 
+        /// <summary>
+        /// RL, RR, FL, FR
+        /// </summary>
+        public float[] SuspensionPosition;
         /// <summary>
         /// RL, RR, FL, FR
         /// </summary>
@@ -73,15 +77,16 @@ namespace NingSoft.F1TelemetryAdapter.F1_22_Packets
         /// </summary>
         public float FrontWheelsAngle;
 
-        public MotionPacket22(HeaderPacket header, Bytes bys) : base(header, bys)
-        {
-        }
+        public MotionPacket22(HeaderPacket header, Bytes bys) : base(header, bys) { }
+
+        public MotionPacket22() { }
 
         internal override FieldList Fields => new FieldList
         {
             new PacketField {
                 Name="CarMotionData",
-                Type = typeof(CarMotionData),
+                Type = typeof(CarMotionData22),
+                Count = 22,
                 Children = new PacketField[]
                 {
                     new PacketField {Name="WorldPositionX",TypeName = "float"},
@@ -104,6 +109,7 @@ namespace NingSoft.F1TelemetryAdapter.F1_22_Packets
                     new PacketField {Name="Roll",TypeName = "float"}
                 }
             },
+            new PacketField {Name="SuspensionPosition",TypeName = "float",Count=4},
             new PacketField {Name="SuspensionVelocity",TypeName = "float",Count=4},
             new PacketField {Name="SuspensionAcceleration",TypeName = "float",Count=4},
             new PacketField {Name="WheelSpeed",TypeName = "float",Count=4},
@@ -121,7 +127,7 @@ namespace NingSoft.F1TelemetryAdapter.F1_22_Packets
         };
     }
 
-    public class CarMotionData
+    public class CarMotionData22
     {
         /// <summary>
         /// World space X position

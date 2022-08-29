@@ -6,18 +6,18 @@ namespace NingSoft.F1TelemetryAdapter.F1_22_Packets
     /// <summary>
     /// This packet details car damage parameters for all the cars in the race.
     /// Frequency: 2 per second
-    /// Size: 941 bytes
+    /// Size: 948 bytes
     /// Version: 1
     /// </summary>
-    public class CarDamagePacket22 : CarDamagePacket21
+    public class CarDamagePacket22 : F1Packet
     {
-        public override int Length => 941;
+        public override int Length => 948;
 
         public CarDamageData22[] CarDamageDatas;
 
-        public CarDamagePacket22(HeaderPacket header, Bytes bys) : base(header, bys)
-        {
-        }
+        public CarDamagePacket22(HeaderPacket header, Bytes bys) : base(header, bys) { }
+
+        public CarDamagePacket22() { }
 
         internal override FieldList Fields => new FieldList
         {

@@ -12,7 +12,7 @@ namespace NingSoft.F1TelemetryAdapter.F1_22_Packets
     /// Size: 40 bytes
     /// Version: 1
     /// </summary>
-    public class EventPacket22 : EventPacket21
+    public class EventPacket22 : F1Packet
     {
         public override int Length => 40;
 
@@ -20,7 +20,7 @@ namespace NingSoft.F1TelemetryAdapter.F1_22_Packets
         /// Event string code,
         /// see <see cref="EventCodes"/>
         /// </summary>
-        //public string EventStringCode;
+        public string EventStringCode;
         /// <summary>
         /// Event details - should be interpreted differently for each typ
         /// </summary>
@@ -134,6 +134,8 @@ namespace NingSoft.F1TelemetryAdapter.F1_22_Packets
             if (packetItem.Type != null)
                 new FieldList { packetItem }.LoadBytes(bys, this);
         }
+
+        public EventPacket22() { }
     }
 
     public class EventDataDetail22 { }

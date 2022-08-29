@@ -10,15 +10,15 @@ namespace NingSoft.F1TelemetryAdapter.F1_22_Packets
     /// Size: 1058 bytes
     /// Version: 1
     /// </summary>
-    public class CarStatusPacket22 : CarStatusPacket21
+    public class CarStatusPacket22 : F1Packet
     {
-        //public override int PacketSize => 1058;
+        public override int Length => 1058;
 
         public CarStatusData22[] CarStatusDatas;
 
-        public CarStatusPacket22(HeaderPacket header, Bytes bys) : base(header, bys)
-        {
-        }
+        public CarStatusPacket22(HeaderPacket header, Bytes bys) : base(header, bys) { }
+
+        public CarStatusPacket22() { }
 
         internal override FieldList Fields => new FieldList
         {

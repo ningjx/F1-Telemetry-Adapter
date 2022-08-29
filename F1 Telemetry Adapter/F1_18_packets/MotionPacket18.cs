@@ -1,20 +1,19 @@
 ﻿using NingSoft.F1TelemetryAdapter.F1_Base_packets;
 using NingSoft.F1TelemetryAdapter.Models;
 
-namespace NingSoft.F1TelemetryAdapter.F1_22_Packets
+namespace NingSoft.F1TelemetryAdapter.F1_18_Packets
 {
     /// <summary>
     /// The motion packet gives physics data for all the cars being driven. There is additional data for the car being driven with the goal of being able to drive a motion platform setup.
     /// N.B.For the normalised vectors below, to convert to float values divide by 32767.0f – 16-bit signed values are used to pack the data and on the assumption that direction values are always between -1.0f and 1.0f.
     /// Frequency: Rate as specified in menus
-    /// Size: 1464 bytes
-    /// Version: 1
+    /// Size: 1341 bytes
     /// </summary>
-    public class MotionPacket21 : F1Packet
+    public class MotionPacket18 : F1Packet
     {
-        public override int Length => 1464;
+        public override int Length => 1341;
 
-        public CarMotionData21[] CarMotionData;
+        public CarMotionData18[] CarMotionData;
 
         /// <summary>
         /// RL, RR, FL, FR
@@ -77,7 +76,7 @@ namespace NingSoft.F1TelemetryAdapter.F1_22_Packets
         /// </summary>
         public float FrontWheelsAngle;
 
-        public MotionPacket21(HeaderPacket header, Bytes bys) : base(header, bys)
+        public MotionPacket18(HeaderPacket header, Bytes bys) : base(header, bys)
         {
         }
 
@@ -85,8 +84,8 @@ namespace NingSoft.F1TelemetryAdapter.F1_22_Packets
         {
             new PacketField {
                 Name="CarMotionData",
-                Count = 22,
-                Type = typeof(CarMotionData21),
+                Type = typeof(CarMotionData18),
+                Count = 20,
                 Children = new PacketField[]
                 {
                     new PacketField {Name="WorldPositionX",TypeName = "float"},
@@ -127,7 +126,7 @@ namespace NingSoft.F1TelemetryAdapter.F1_22_Packets
         };
     }
 
-    public class CarMotionData21
+    public class CarMotionData18
     {
         /// <summary>
         /// World space X position

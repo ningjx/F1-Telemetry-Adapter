@@ -1,5 +1,9 @@
 ﻿using Microsoft.VisualStudio.TestTools.UnitTesting;
+using NingSoft.F1TelemetryAdapter.F1_22_Packets;
+using NingSoft.F1TelemetryAdapter.F1_Base_packets;
+using NingSoft.F1TelemetryAdapter.Models;
 using System;
+using System.Linq;
 
 namespace NingSoft.F1TelemetryAdapter.Tests
 {
@@ -127,6 +131,23 @@ namespace NingSoft.F1TelemetryAdapter.Tests
 
             var pack = F1Adapter.GetF1Packet(bytes);
             Assert.AreNotEqual(pack, null);
+        }
+
+        [TestMethod]
+        public void CheckPacketFormat()
+        {
+            var h = new HeaderPacket(null, null);
+            new CarSetupsPacket22().CheckPacket();
+            new CarTelemetryPacket22().CheckPacket();
+            new CarStatusPacket22().CheckPacket();
+            new FinalClassificationPacket22().CheckPacket();
+            new LapDataPacket22().CheckPacket();
+            new LobbyInfoPacket22().CheckPacket();
+            new MotionPacket22().CheckPacket();
+            new ParticipantsPacket22().CheckPacket();
+            new SessionHistoryPacket22().CheckPacket();
+            new SessionPacket22().CheckPacket();
+            new CarDamagePacket22().CheckPacket();
         }
     }
 }
