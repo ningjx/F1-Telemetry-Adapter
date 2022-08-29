@@ -49,6 +49,10 @@ namespace NingSoft.F1TelemetryAdapter.F1_22_Packets
 
         public TyreStintHistoryData21[] TyreStintHistoryDatas;
 
+        public SessionHistoryPacket21(HeaderPacket header, Bytes bys) : base(header, bys)
+        {
+        }
+
         internal override ItemList PacketItems => new ItemList
         {
             new PacketItem {Name="CarIdx",TypeName = "uint8"},

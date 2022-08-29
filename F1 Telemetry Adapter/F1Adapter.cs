@@ -22,38 +22,23 @@ namespace NingSoft.F1TelemetryAdapter
         /// </summary>
         /// <param name="bytes"></param>
         /// <returns></returns>
-        public static HeaderPacket GetHeaderPacket(byte[] bytes)
+        public static HeaderPacket GetHeaderPacket(byte[] bytes, out Bytes bys)
         {
-            var byteData = new Bytes(bytes);
-            var version = byteData.GetGameVersion();
+            bys = new Bytes(bytes);
+            var version = bys.GetGameVersion();
             HeaderPacket header;
 
             switch (version)
             {
-                case GameSeries.G_2018:
-                    header = new HeaderPacket18();
-                    header.PacketItems.LoadBytes(byteData, header);
-                    return header;
+                case GameSeries.G_2018: return new HeaderPacket18(null, bys);
 
-                case GameSeries.G_2019:
-                    header = new HeaderPacket19();
-                    header.PacketItems.LoadBytes(byteData, header);
-                    return header;
+                case GameSeries.G_2019: return new HeaderPacket19(null, bys);
 
-                case GameSeries.G_2020:
-                    header = new HeaderPacket20();
-                    header.PacketItems.LoadBytes(byteData, header);
-                    return header;
+                case GameSeries.G_2020: return new HeaderPacket20(null, bys);
 
-                case GameSeries.G_2021:
-                    header = new HeaderPacket21();
-                    header.PacketItems.LoadBytes(byteData, header);
-                    return header;
+                case GameSeries.G_2021: return new HeaderPacket21(null, bys);
 
-                case GameSeries.G_2022:
-                    header = new HeaderPacket22();
-                    header.PacketItems.LoadBytes(byteData, header);
-                    return header;
+                case GameSeries.G_2022: return new HeaderPacket22(null, bys);
 
                 default: throw new F1_Exception("不支持的游戏版本");
             }
@@ -66,69 +51,47 @@ namespace NingSoft.F1TelemetryAdapter
         /// <returns></returns>
         public static F1Packet GetF1Packet(byte[] bytes)
         {
-            var byteData = new Bytes(bytes);
-            var version = byteData.GetGameVersion();
+            var header = GetHeaderPacket(bytes, out Bytes bys);
 
-            switch (version)
+            switch (header._GameSeries)
             {
                 case GameSeries.G_2022:
-                    return GetPacket22(byteData);
+                    return GetPacket22(header, bys);
 
                 default: throw new F1_Exception("不支持的游戏版本");
             }
         }
 
-        private static F1Packet GetPacket22(Bytes bytes)
+        private static F1Packet GetPacket22(HeaderPacket header, Bytes bytes)
         {
-            var header = new HeaderPacket22();
-            header.PacketItems.LoadBytes(bytes, header);
-
-            if (header._PacketType == PacketType.Event)
-            {
-                var packet = new EventPacket22
-                {
-                    PacketHeader = header
-                };
-                packet.LoadPacket(bytes);
-                return packet;
-            }
-
             switch (header._PacketType)
             {
                 case PacketType.CarTelemetry:
-                    return LoadPacketByType<CarTelemetryPacket22>(header, bytes);
+                    return new CarTelemetryPacket22(header, bytes);
                 case PacketType.CarStatus:
-                    return LoadPacketByType<CarStatusPacket22>(header, bytes);
+                    return new CarStatusPacket22(header, bytes);
                 case PacketType.CarSetups:
-                    return LoadPacketByType<CarSetupsPacket22>(header, bytes);
+                    return new CarSetupsPacket22(header, bytes);
                 case PacketType.CarDamage:
-                    return LoadPacketByType<CarDamagePacket22>(header, bytes);
+                    return new CarDamagePacket22(header, bytes);
                 case PacketType.SessionHistory:
-                    return LoadPacketByType<SessionHistoryPacket22>(header, bytes);
+                    return new SessionHistoryPacket22(header, bytes);
                 case PacketType.LapData:
-                    return LoadPacketByType<LapDataPacket22>(header, bytes);
+                    return new LapDataPacket22(header, bytes);
                 case PacketType.FinalClassification:
-                    return LoadPacketByType<FinalClassificationPacket22>(header, bytes);
+                    return new FinalClassificationPacket22(header, bytes);
                 case PacketType.LobbyInfo:
-                    return LoadPacketByType<LobbyInfoPacket22>(header, bytes);
+                    return new LobbyInfoPacket22(header, bytes);
                 case PacketType.Session:
-                    return LoadPacketByType<SessionPacket21>(header, bytes);
+                    return new SessionPacket21(header, bytes);
                 case PacketType.Participants:
-                    return LoadPacketByType<ParticipantsPacket22>(header, bytes);
+                    return new ParticipantsPacket22(header, bytes);
                 case PacketType.Motion:
-                    return LoadPacketByType<MotionPacket22>(header, bytes);
+                    return new MotionPacket22(header, bytes);
+                case PacketType.Event:
+                    return new EventPacket22(header, bytes);
                 default: return null;
             }
-        }
-
-        private static F1Packet LoadPacketByType<T>(HeaderPacket header, Bytes byteData) where T : F1Packet, new()
-        {
-            var packet = new T
-            {
-                PacketHeader = header
-            };
-            packet.PacketItems.LoadBytes(byteData, packet);
-            return packet;
         }
     }
 }

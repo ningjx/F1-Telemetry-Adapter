@@ -26,16 +26,17 @@ namespace NingSoft.F1TelemetryAdapter.F1_22_Packets
         /// </summary>
         public new EventDataDetail22 EventDetail;
 
-        internal override void LoadPacket(Bytes bytes)
+        public EventPacket22(HeaderPacket header, Bytes bys) : base(header, null)
         {
-            var codeBytes = bytes.GetBytes(bytes.Index, 4);
+            if (bys == null) return;
+
+            var codeBytes = bys.GetBytes(bys.Index, 4);
             EventStringCode = Encoding.UTF8.GetString(codeBytes);
-            bytes.MoveIndex(4);
 
             var packetItem = new PacketItem { Name = "EventDetail" };
             switch (EventStringCode)
             {
-                case EventCodes22.FastestLap:
+                case EventCodes.FastestLap:
                     packetItem.Type = typeof(FastestLap22);
                     packetItem.Children = new PacketItem[]
                     {
@@ -43,28 +44,28 @@ namespace NingSoft.F1TelemetryAdapter.F1_22_Packets
                         new PacketItem {Name="lapTime",TypeName = "float"}
                     };
                     break;
-                case EventCodes22.Retirement:
+                case EventCodes.Retirement:
                     packetItem.Type = typeof(Retirement22);
                     packetItem.Children = new PacketItem[]
                     {
                         new PacketItem {Name="VehicleIdx",TypeName = "uint8"}
                     };
                     break;
-                case EventCodes22.TeammateInPits:
+                case EventCodes.TeammateInPits:
                     packetItem.Type = typeof(TeamMateInPits22);
                     packetItem.Children = new PacketItem[]
                     {
                         new PacketItem {Name="VehicleIdx",TypeName = "uint8"}
                     };
                     break;
-                case EventCodes22.RaceWinner:
+                case EventCodes.RaceWinner:
                     packetItem.Type = typeof(RaceWinner22);
                     packetItem.Children = new PacketItem[]
                     {
                         new PacketItem {Name="VehicleIdx",TypeName = "uint8"}
                     };
                     break;
-                case EventCodes22.PenaltyIssued:
+                case EventCodes.PenaltyIssued:
                     packetItem.Type = typeof(Penalty22);
                     packetItem.Children = new PacketItem[]
                     {
@@ -77,7 +78,7 @@ namespace NingSoft.F1TelemetryAdapter.F1_22_Packets
                         new PacketItem {Name="PlacesGained",TypeName = "uint8"}
                     };
                     break;
-                case EventCodes22.SpeedTrapTriggered:
+                case EventCodes.SpeedTrapTriggered:
                     packetItem.Type = typeof(SpeedTrap22);
                     packetItem.Children = new PacketItem[]
                     {
@@ -90,28 +91,28 @@ namespace NingSoft.F1TelemetryAdapter.F1_22_Packets
                     };
                     break;
 
-                case EventCodes22.StartLights:
+                case EventCodes.StartLights:
                     packetItem.Type = typeof(StartLights22);
                     packetItem.Children = new PacketItem[]
                     {
                         new PacketItem {Name="NumLights",TypeName = "uint8"},
                     };
                     break;
-                case EventCodes22.DriveThroughServed:
+                case EventCodes.DriveThroughServed:
                     packetItem.Type = typeof(DriveThroughPenaltyServed22);
                     packetItem.Children = new PacketItem[]
                     {
                         new PacketItem {Name="VehicleIdx",TypeName = "uint8"}
                     };
                     break;
-                case EventCodes22.StopGoServed:
+                case EventCodes.StopGoServed:
                     packetItem.Type = typeof(StopGoPenaltyServed22);
                     packetItem.Children = new PacketItem[]
                     {
                         new PacketItem {Name="VehicleIdx",TypeName = "uint8"}
                     };
                     break;
-                case EventCodes22.Flashback:
+                case EventCodes.Flashback:
                     packetItem.Type = typeof(Flashback22);
                     packetItem.Children = new PacketItem[]
                     {
@@ -119,7 +120,7 @@ namespace NingSoft.F1TelemetryAdapter.F1_22_Packets
                         new PacketItem {Name="FlashbackSessionTime",TypeName = "float"},
                     };
                     break;
-                case EventCodes22.ButtonStatus:
+                case EventCodes.ButtonStatus:
                     packetItem.Type = typeof(Buttons22);
                     packetItem.Children = new PacketItem[]
                     {
@@ -131,10 +132,8 @@ namespace NingSoft.F1TelemetryAdapter.F1_22_Packets
             }
 
             if (packetItem.Type != null)
-                new ItemList { packetItem }.LoadBytes(bytes, this);
+                new ItemList { packetItem }.LoadBytes(bys, this);
         }
-
-        //internal override ItemList PacketItems => new ItemList { };
     }
 
     public class EventDataDetail22 { }
@@ -281,25 +280,5 @@ namespace NingSoft.F1TelemetryAdapter.F1_22_Packets
         /// </summary>
         public uint ButtonStatus;
         public ButtonFlag _PressedButton => (ButtonFlag)ButtonStatus;
-    }
-    public class EventCodes22
-    {
-        public const string SessionStarted = "SSTA";
-        public const string SessionEnded = "SEND";
-        public const string FastestLap = "FTLP";
-        public const string Retirement = "RTMT";
-        public const string DRSEnabled = "DRSE";
-        public const string DRSFisabled = "DRSD";
-        public const string TeammateInPits = "TMPT";
-        public const string ChequeredFlag = "CHQF";
-        public const string RaceWinner = "RCWN";
-        public const string PenaltyIssued = "PENA";
-        public const string SpeedTrapTriggered = "SPTP";
-        public const string StartLights = "STLG";
-        public const string LightsOut = "LGOT";
-        public const string DriveThroughServed = "DTSV";
-        public const string StopGoServed = "SGSV";
-        public const string Flashback = "FLBK";
-        public const string ButtonStatus = "BUTN";
     }
 }

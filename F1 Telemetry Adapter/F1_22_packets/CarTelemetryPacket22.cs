@@ -13,6 +13,11 @@ namespace NingSoft.F1TelemetryAdapter.F1_22_Packets
         //public override int PacketSize => 1347;
 
         public CarTelemetryData22[] CarTelemetryData;
+
+        public CarTelemetryPacket22(HeaderPacket header, Bytes bys) : base(header, bys)
+        {
+        }
+
         /// <summary>
         /// Index of MFD panel open - 255 = MFD closed.
         /// Single player, race – 0 = Car setup, 1 = Pits.

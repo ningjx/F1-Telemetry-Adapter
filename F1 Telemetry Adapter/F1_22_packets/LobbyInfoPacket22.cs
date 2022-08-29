@@ -23,6 +23,10 @@ namespace NingSoft.F1TelemetryAdapter.F1_22_Packets
         /// </summary>
         public LobbyInfoData[] LobbyInfoData;
 
+        public LobbyInfoPacket22(HeaderPacket header, Bytes bys) : base(header, bys)
+        {
+        }
+
         internal override ItemList PacketItems => new ItemList
         {
             new PacketItem {Name = "NumPlayers",TypeName = "uint8"},

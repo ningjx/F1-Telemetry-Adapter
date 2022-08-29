@@ -1,6 +1,7 @@
 ﻿using NingSoft.F1TelemetryAdapter.Enums;
 using NingSoft.F1TelemetryAdapter.Models;
 using System;
+using System.Collections.Generic;
 
 namespace NingSoft.F1TelemetryAdapter.Helpers
 {
@@ -13,44 +14,31 @@ namespace NingSoft.F1TelemetryAdapter.Helpers
             {
                 res[i] = bytes.byteData[i + start];
             }
+            bytes.MoveIndex(length);
             return res;
         }
 
+        private static Dictionary<string, Type> TypeDic = new Dictionary<string, Type>
+        {
+            {"uint8",  typeof(byte)},
+            {"int8",   typeof(sbyte)},
+            {"uint16", typeof(ushort)},
+            {"int16",  typeof(short)},
+            {"uint32", typeof(uint)},
+            {"int32",  typeof(int)},
+            {"float",  typeof(float)},
+            {"double", typeof(double)},
+            {"uint64", typeof(ulong)},
+            {"int64",  typeof(long)},
+            {"char",   typeof(byte)},
+            {"uint",   typeof(uint)},
+            {"int",    typeof(int)},
+
+        };
+
         internal static Type ToType(this string typeStr)
         {
-            if (string.IsNullOrEmpty(typeStr))
-                return null;
-            switch (typeStr)
-            {
-                case "uint8":
-                    return typeof(byte);
-                case "int8":
-                    return typeof(sbyte);
-                case "uint16":
-                    return typeof(ushort);
-                case "int16":
-                    return typeof(short);
-                case "uint32":
-                    return typeof(uint);
-                case "int32":
-                    return typeof(int);
-                case "float":
-                    return typeof(float);
-                case "double":
-                    return typeof(double);
-                case "uint64":
-                    return typeof(ulong);
-                case "int64":
-                    return typeof(long);
-                case "char":
-                    return typeof(byte);
-                case "uint":
-                    return typeof(uint);
-                case "int":
-                    return typeof(int);
-
-                default: return null;
-            }
+            return TypeDic[typeStr];
         }
 
         public static GameSeries GetGameVersion(this Bytes bytes)

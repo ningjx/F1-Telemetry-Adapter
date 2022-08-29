@@ -15,6 +15,10 @@ namespace NingSoft.F1TelemetryAdapter.F1_22_Packets
 
         public CarSetupData22[] CarSetupDatas;
 
+        public CarSetupsPacket22(HeaderPacket header, Bytes bys) : base(header, bys)
+        {
+        }
+
         internal override ItemList PacketItems => new ItemList
         {
             new PacketItem {

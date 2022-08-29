@@ -37,6 +37,10 @@ namespace NingSoft.F1TelemetryAdapter.F1_Base_packets
         /// </summary>
         public byte PlayerCarIndex;
 
+        public HeaderPacket(HeaderPacket header, Bytes bys) : base(header, bys)
+        {
+        }
+
         public PacketType _PacketType => (PacketType)PacketId;
         public GameSeries _GameSeries => (GameSeries)PacketFormat;
         public TimeSpan _SessionTime => TimeSpan.FromSeconds(SessionTime);

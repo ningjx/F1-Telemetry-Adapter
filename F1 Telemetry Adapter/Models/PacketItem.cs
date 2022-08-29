@@ -14,6 +14,8 @@ namespace NingSoft.F1TelemetryAdapter.Models
         /// <param name="obj"></param>
         public void LoadBytes(Bytes bytes, object obj)
         {
+            if (bytes == null || bytes.byteData.Length == 0) return;
+
             Action<PacketItem, object> action = (item, entity) =>
             {
                 object value = null;

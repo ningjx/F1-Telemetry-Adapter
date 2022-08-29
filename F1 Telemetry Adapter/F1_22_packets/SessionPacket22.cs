@@ -188,6 +188,10 @@ namespace NingSoft.F1TelemetryAdapter.F1_22_Packets
         /// </summary>
         public byte SessionLength;
 
+        public SessionPacket22(HeaderPacket header, Bytes bys) : base(header, bys)
+        {
+        }
+
         public SessionType _SessionType => (SessionType)SessionType;
 
         internal override ItemList PacketItems => new ItemList

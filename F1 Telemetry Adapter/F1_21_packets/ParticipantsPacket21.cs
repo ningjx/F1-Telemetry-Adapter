@@ -24,6 +24,10 @@ namespace NingSoft.F1TelemetryAdapter.F1_22_Packets
 
         public ParticipantData21[] Participants;
 
+        public ParticipantsPacket21(HeaderPacket header, Bytes bys) : base(header, bys)
+        {
+        }
+
         internal override ItemList PacketItems => new ItemList
         {
             new PacketItem {Name="NumActiveCars",TypeName = "uint8"},

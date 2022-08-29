@@ -16,7 +16,7 @@ namespace NingSoft.F1TelemetryAdapter.Models.Tests
             {
                 bytes[i] = Convert.ToByte(sp[i]);
             }
-            var header = F1Adapter.GetHeaderPacket(bytes);
+            var header = F1Adapter.GetHeaderPacket(bytes, out Bytes bys);
             Assert.IsNotNull(header);
         }
     }
