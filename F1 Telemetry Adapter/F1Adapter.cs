@@ -55,6 +55,14 @@ namespace NingSoft.F1TelemetryAdapter
 
             switch (header._GameSeries)
             {
+                case GameSeries.G_2018:
+                    return GetPacket18(header, bys);
+                case GameSeries.G_2019:
+                    return GetPacket19(header, bys);
+                case GameSeries.G_2020:
+                    return GetPacket20(header, bys);
+                case GameSeries.G_2021:
+                    return GetPacket21(header, bys);
                 case GameSeries.G_2022:
                     return GetPacket22(header, bys);
 
@@ -93,5 +101,9 @@ namespace NingSoft.F1TelemetryAdapter
                 default: return null;
             }
         }
+        private static F1Packet GetPacket21(HeaderPacket header, Bytes bytes) { return null; }
+        private static F1Packet GetPacket20(HeaderPacket header, Bytes bytes) { return null; }
+        private static F1Packet GetPacket19(HeaderPacket header, Bytes bytes) { return null; }
+        private static F1Packet GetPacket18(HeaderPacket header, Bytes bytes) { return null; }
     }
 }
