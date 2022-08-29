@@ -11,7 +11,7 @@ namespace NingSoft.F1TelemetryAdapter.F1_22_Packets
     /// </summary>
     public class FinalClassificationPacket22 : F1Packet
     {
-        public override int PacketSize => 1015;
+        public override int Length => 1015;
 
         /// <summary>
         /// Number of cars in the final classification
@@ -24,29 +24,29 @@ namespace NingSoft.F1TelemetryAdapter.F1_22_Packets
         {
         }
 
-        internal override ItemList PacketItems => new ItemList
+        internal override FieldList Fields => new FieldList
         {
-            new PacketItem {Name="NumCars",TypeName = "uint8"},
-            new PacketItem {
+            new PacketField {Name="NumCars",TypeName = "uint8"},
+            new PacketField {
                 Name="FinalClassificationData",
                 Type = typeof(FinalClassificationData),
                 Count=22,
-                Children = new PacketItem[]
+                Children = new PacketField[]
                 {
-                    new PacketItem {Name="Position",TypeName = "uint8"},
-                    new PacketItem {Name="NumLaps",TypeName = "uint8"},
-                    new PacketItem {Name="GridPosition",TypeName = "uint8"},
-                    new PacketItem {Name="Points",TypeName = "uint8"},
-                    new PacketItem {Name="NumPitStops",TypeName = "uint8"},
-                    new PacketItem {Name="ResultStatus",TypeName = "uint8"},
-                    new PacketItem {Name="BestLapTimeInMS",TypeName = "uint32"},
-                    new PacketItem {Name="TotalRaceTime",TypeName = "double"},
-                    new PacketItem {Name="PenaltiesTime",TypeName = "uint8"},
-                    new PacketItem {Name="NumPenalties",TypeName = "uint8"},
-                    new PacketItem {Name="NumTyreStints",TypeName = "uint8"},
-                    new PacketItem {Name="TyreStintsActual",TypeName = "uint8",Count = 8  },
-                    new PacketItem {Name="TyreStintsVisual",TypeName = "uint8",Count = 8  },
-                    new PacketItem {Name="TyreStintsEndLaps",TypeName = "uint8",Count = 8  }
+                    new PacketField {Name="Position",TypeName = "uint8"},
+                    new PacketField {Name="NumLaps",TypeName = "uint8"},
+                    new PacketField {Name="GridPosition",TypeName = "uint8"},
+                    new PacketField {Name="Points",TypeName = "uint8"},
+                    new PacketField {Name="NumPitStops",TypeName = "uint8"},
+                    new PacketField {Name="ResultStatus",TypeName = "uint8"},
+                    new PacketField {Name="BestLapTimeInMS",TypeName = "uint32"},
+                    new PacketField {Name="TotalRaceTime",TypeName = "double"},
+                    new PacketField {Name="PenaltiesTime",TypeName = "uint8"},
+                    new PacketField {Name="NumPenalties",TypeName = "uint8"},
+                    new PacketField {Name="NumTyreStints",TypeName = "uint8"},
+                    new PacketField {Name="TyreStintsActual",TypeName = "uint8",Count = 8  },
+                    new PacketField {Name="TyreStintsVisual",TypeName = "uint8",Count = 8  },
+                    new PacketField {Name="TyreStintsEndLaps",TypeName = "uint8",Count = 8  }
                 }
             }
         };

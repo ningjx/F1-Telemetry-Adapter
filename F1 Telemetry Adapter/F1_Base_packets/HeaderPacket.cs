@@ -6,7 +6,7 @@ namespace NingSoft.F1TelemetryAdapter.F1_Base_packets
 {
     public class HeaderPacket : F1Packet
     {
-        public override int PacketSize => 21;
+        public override int Length => 21;
 
         /// <summary>
         /// 2018/2019/2020/2021/2022
@@ -45,15 +45,15 @@ namespace NingSoft.F1TelemetryAdapter.F1_Base_packets
         public GameSeries _GameSeries => (GameSeries)PacketFormat;
         public TimeSpan _SessionTime => TimeSpan.FromSeconds(SessionTime);
 
-        internal override ItemList PacketItems => new ItemList
+        internal override FieldList Fields => new FieldList
         {
-            new PacketItem {Name="PacketFormat",TypeName = "uint16"},
-            new PacketItem {Name="PacketVersion",TypeName = "uint8"},
-            new PacketItem {Name="PacketId",TypeName = "uint8"},
-            new PacketItem {Name="SessionUID",TypeName = "uint64"},
-            new PacketItem {Name="SessionTime",TypeName = "float"},
-            new PacketItem {Name="FrameIdentifier",TypeName = "uint"},
-            new PacketItem {Name="PlayerCarIndex",TypeName = "uint8"}
+            new PacketField {Name="PacketFormat",TypeName = "uint16"},
+            new PacketField {Name="PacketVersion",TypeName = "uint8"},
+            new PacketField {Name="PacketId",TypeName = "uint8"},
+            new PacketField {Name="SessionUID",TypeName = "uint64"},
+            new PacketField {Name="SessionTime",TypeName = "float"},
+            new PacketField {Name="FrameIdentifier",TypeName = "uint"},
+            new PacketField {Name="PlayerCarIndex",TypeName = "uint8"}
         };
     }
 }

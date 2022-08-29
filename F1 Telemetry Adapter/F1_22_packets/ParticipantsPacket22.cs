@@ -15,7 +15,7 @@ namespace NingSoft.F1TelemetryAdapter.F1_22_Packets
     /// </summary>
     public class ParticipantsPacket22 : F1Packet
     {
-        public override int PacketSize => 1257;
+        public override int Length => 1257;
 
         /// <summary>
         /// Number of active cars in the data – should match number of cars on HUD
@@ -28,25 +28,25 @@ namespace NingSoft.F1TelemetryAdapter.F1_22_Packets
         {
         }
 
-        internal override ItemList PacketItems => new ItemList
+        internal override FieldList Fields => new FieldList
         {
-            new PacketItem {Name="NumActiveCars",TypeName = "uint8"},
-            new PacketItem
+            new PacketField {Name="NumActiveCars",TypeName = "uint8"},
+            new PacketField
             {
                 Name = "Participants",
                 Type = typeof(ParticipantData),
                 Count = 22,
-                Children = new PacketItem[]
+                Children = new PacketField[]
                 {
-                    new PacketItem {Name="AiControlled",TypeName = "uint8"},
-                    new PacketItem {Name="DriverId",TypeName = "uint8"},
-                    new PacketItem {Name="NetworkId",TypeName = "uint8"},
-                    new PacketItem {Name="TeamId",TypeName = "uint8"},
-                    new PacketItem {Name="MyTeam",TypeName = "uint8"},
-                    new PacketItem {Name="RaceNumber",TypeName = "uint8"},
-                    new PacketItem {Name="Nationality",TypeName = "uint8"},
-                    new PacketItem {Name="Name",TypeName = "uint8",Count = 48},
-                    new PacketItem {Name="YourTelemetry",TypeName = "uint8"}
+                    new PacketField {Name="AiControlled",TypeName = "uint8"},
+                    new PacketField {Name="DriverId",TypeName = "uint8"},
+                    new PacketField {Name="NetworkId",TypeName = "uint8"},
+                    new PacketField {Name="TeamId",TypeName = "uint8"},
+                    new PacketField {Name="MyTeam",TypeName = "uint8"},
+                    new PacketField {Name="RaceNumber",TypeName = "uint8"},
+                    new PacketField {Name="Nationality",TypeName = "uint8"},
+                    new PacketField {Name="Name",TypeName = "uint8",Count = 48},
+                    new PacketField {Name="YourTelemetry",TypeName = "uint8"}
                 }
             }
         };

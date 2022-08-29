@@ -19,36 +19,36 @@ namespace NingSoft.F1TelemetryAdapter.F1_22_Packets
         {
         }
 
-        internal override ItemList PacketItems => new ItemList
+        internal override FieldList Fields => new FieldList
         {
-            new PacketItem {
+            new PacketField {
                 Name="CarSetupDatas",
                 Type = typeof(CarSetupData22),
                 Count=22,
-                Children = new PacketItem[]
+                Children = new PacketField[]
                 {
-                    new PacketItem {Name="FrontWing",TypeName = "uint8"},
-                    new PacketItem {Name="RearWing",TypeName = "uint8"},
-                    new PacketItem {Name="OnThrottle",TypeName = "uint8"},
-                    new PacketItem {Name="OffThrottle",TypeName = "uint8"},
-                    new PacketItem {Name="FrontCamber",TypeName = "float"},
-                    new PacketItem {Name="TearCamber",TypeName = "float"},
-                    new PacketItem {Name="FrontToe",TypeName = "float"},
-                    new PacketItem {Name="RearToe",TypeName = "float"},
-                    new PacketItem {Name="FrontSuspension",TypeName = "uint8"},
-                    new PacketItem {Name="TearSuspension",TypeName = "uint8"},
-                    new PacketItem {Name="FrontAntiRollBar",TypeName = "uint8"},
-                    new PacketItem {Name="TearAntiRollBar",TypeName = "uint8"},
-                    new PacketItem {Name="FrontSuspensionHeight",TypeName = "uint8"},
-                    new PacketItem {Name="TearSuspensionHeight",TypeName = "uint8"},
-                    new PacketItem {Name="BrakePressure",TypeName = "uint8"},
-                    new PacketItem {Name="BrakeBias",TypeName = "uint8"},
-                    new PacketItem {Name="RearLeftTyrePressure",TypeName = "float"},
-                    new PacketItem {Name="RearRightTyrePressure",TypeName = "float"},
-                    new PacketItem {Name="FrontLeftTyrePressure",TypeName = "float"},
-                    new PacketItem {Name="FrontRightTyrePressure",TypeName = "float"},
-                    new PacketItem {Name="Ballast",TypeName = "uint8"},
-                    new PacketItem {Name="FuelLoad",TypeName = "float"}
+                    new PacketField {Name="FrontWing",TypeName = "uint8"},
+                    new PacketField {Name="RearWing",TypeName = "uint8"},
+                    new PacketField {Name="OnThrottle",TypeName = "uint8"},
+                    new PacketField {Name="OffThrottle",TypeName = "uint8"},
+                    new PacketField {Name="FrontCamber",TypeName = "float"},
+                    new PacketField {Name="TearCamber",TypeName = "float"},
+                    new PacketField {Name="FrontToe",TypeName = "float"},
+                    new PacketField {Name="RearToe",TypeName = "float"},
+                    new PacketField {Name="FrontSuspension",TypeName = "uint8"},
+                    new PacketField {Name="TearSuspension",TypeName = "uint8"},
+                    new PacketField {Name="FrontAntiRollBar",TypeName = "uint8"},
+                    new PacketField {Name="TearAntiRollBar",TypeName = "uint8"},
+                    new PacketField {Name="FrontSuspensionHeight",TypeName = "uint8"},
+                    new PacketField {Name="TearSuspensionHeight",TypeName = "uint8"},
+                    new PacketField {Name="BrakePressure",TypeName = "uint8"},
+                    new PacketField {Name="BrakeBias",TypeName = "uint8"},
+                    new PacketField {Name="RearLeftTyrePressure",TypeName = "float"},
+                    new PacketField {Name="RearRightTyrePressure",TypeName = "float"},
+                    new PacketField {Name="FrontLeftTyrePressure",TypeName = "float"},
+                    new PacketField {Name="FrontRightTyrePressure",TypeName = "float"},
+                    new PacketField {Name="Ballast",TypeName = "uint8"},
+                    new PacketField {Name="FuelLoad",TypeName = "float"}
                 }
             }
         };

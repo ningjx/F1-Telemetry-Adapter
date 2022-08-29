@@ -39,35 +39,35 @@ namespace NingSoft.F1TelemetryAdapter.F1_22_Packets
         //public sbyte SuggestedGear;
 
 
-        internal override ItemList PacketItems => new ItemList
+        internal override FieldList Fields => new FieldList
         {
-            new PacketItem {
+            new PacketField {
                 Name="CarTelemetryData",
                 Type = typeof(CarTelemetryData22),
                 Count=22,
-                Children = new PacketItem[]
+                Children = new PacketField[]
                 {
-                    new PacketItem {Name="Speed",TypeName = "uint16"},
-                    new PacketItem {Name="Throttle",TypeName = "float"},
-                    new PacketItem {Name="Steer",TypeName = "float"},
-                    new PacketItem {Name="Brake",TypeName = "float"},
-                    new PacketItem {Name="Clutch",TypeName = "uint8"},
-                    new PacketItem {Name="Gear",TypeName = "int8"},
-                    new PacketItem {Name="EngineRPM",TypeName = "uint16"},
-                    new PacketItem {Name="Drs",TypeName = "uint8"},
-                    new PacketItem {Name="RevLightsPercent",TypeName = "uint8"},
-                    new PacketItem {Name="RevLightsBitValue",TypeName = "uint16"},
-                    new PacketItem {Name="BrakesTemperature",TypeName = "uint16",Count = 4  },
-                    new PacketItem {Name="TyresSurfaceTemperature",TypeName = "uint8",Count = 4  },
-                    new PacketItem {Name="TyresInnerTemperature",TypeName = "uint8",Count = 4  },
-                    new PacketItem {Name="EngineTemperature",TypeName = "uint16"},
-                    new PacketItem {Name="TyresPressure",TypeName = "float",Count = 4  },
-                    new PacketItem {Name="SurfaceType",TypeName = "uint8",Count = 4  }
+                    new PacketField {Name="Speed",TypeName = "uint16"},
+                    new PacketField {Name="Throttle",TypeName = "float"},
+                    new PacketField {Name="Steer",TypeName = "float"},
+                    new PacketField {Name="Brake",TypeName = "float"},
+                    new PacketField {Name="Clutch",TypeName = "uint8"},
+                    new PacketField {Name="Gear",TypeName = "int8"},
+                    new PacketField {Name="EngineRPM",TypeName = "uint16"},
+                    new PacketField {Name="Drs",TypeName = "uint8"},
+                    new PacketField {Name="RevLightsPercent",TypeName = "uint8"},
+                    new PacketField {Name="RevLightsBitValue",TypeName = "uint16"},
+                    new PacketField {Name="BrakesTemperature",TypeName = "uint16",Count = 4  },
+                    new PacketField {Name="TyresSurfaceTemperature",TypeName = "uint8",Count = 4  },
+                    new PacketField {Name="TyresInnerTemperature",TypeName = "uint8",Count = 4  },
+                    new PacketField {Name="EngineTemperature",TypeName = "uint16"},
+                    new PacketField {Name="TyresPressure",TypeName = "float",Count = 4  },
+                    new PacketField {Name="SurfaceType",TypeName = "uint8",Count = 4  }
                 }
             },
-            new PacketItem {Name="MfdPanelIndex",TypeName = "uint8"},
-            new PacketItem {Name="MFDPanelIndexSecondaryPlayer",TypeName = "uint8"},
-            new PacketItem {Name="SuggestedGear",TypeName = "int8"}
+            new PacketField {Name="MfdPanelIndex",TypeName = "uint8"},
+            new PacketField {Name="MFDPanelIndexSecondaryPlayer",TypeName = "uint8"},
+            new PacketField {Name="SuggestedGear",TypeName = "int8"}
         };
     }
 

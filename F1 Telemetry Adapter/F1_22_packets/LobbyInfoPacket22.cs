@@ -12,7 +12,7 @@ namespace NingSoft.F1TelemetryAdapter.F1_22_Packets
     /// </summary>
     public class LobbyInfoPacket22 : F1Packet
     {
-        public override int PacketSize => 1191;
+        public override int Length => 1191;
 
         /// <summary>
         /// Packet specific data
@@ -27,21 +27,21 @@ namespace NingSoft.F1TelemetryAdapter.F1_22_Packets
         {
         }
 
-        internal override ItemList PacketItems => new ItemList
+        internal override FieldList Fields => new FieldList
         {
-            new PacketItem {Name = "NumPlayers",TypeName = "uint8"},
-            new PacketItem {
+            new PacketField {Name = "NumPlayers",TypeName = "uint8"},
+            new PacketField {
                 Name = "LobbyInfoData",
                 Type = typeof(LobbyInfoData),
                 Count = 22,
-                Children = new PacketItem[]
+                Children = new PacketField[]
                 {
-                    new PacketItem {Name="AiControlled",TypeName = "uint8"},
-                    new PacketItem {Name="TeamId",TypeName = "uint8"},
-                    new PacketItem {Name="Nationality",TypeName = "uint8"},
-                    new PacketItem {Name="Name",TypeName = "char",Count = 48  },
-                    new PacketItem {Name="CarNumber",TypeName = "uint8"},
-                    new PacketItem {Name="ReadyStatus",TypeName = "uint8"}
+                    new PacketField {Name="AiControlled",TypeName = "uint8"},
+                    new PacketField {Name="TeamId",TypeName = "uint8"},
+                    new PacketField {Name="Nationality",TypeName = "uint8"},
+                    new PacketField {Name="Name",TypeName = "char",Count = 48  },
+                    new PacketField {Name="CarNumber",TypeName = "uint8"},
+                    new PacketField {Name="ReadyStatus",TypeName = "uint8"}
                 }
             }
         };

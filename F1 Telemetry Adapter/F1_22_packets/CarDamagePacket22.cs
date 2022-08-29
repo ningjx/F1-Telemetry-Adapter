@@ -11,7 +11,7 @@ namespace NingSoft.F1TelemetryAdapter.F1_22_Packets
     /// </summary>
     public class CarDamagePacket22 : CarDamagePacket21
     {
-        public override int PacketSize => 941;
+        public override int Length => 941;
 
         public CarDamageData22[] CarDamageDatas;
 
@@ -19,36 +19,36 @@ namespace NingSoft.F1TelemetryAdapter.F1_22_Packets
         {
         }
 
-        internal override ItemList PacketItems => new ItemList
+        internal override FieldList Fields => new FieldList
         {
-            new PacketItem
+            new PacketField
             {
                 Name = "CarDamageDatas",
                 Type = typeof(CarDamageData22),
                 Count = 22,
-                Children = new PacketItem[]
+                Children = new PacketField[]
                 {
-                    new PacketItem {Name="TyresWear",TypeName = "float",Count = 4  },
-                    new PacketItem {Name="TyresDamage",TypeName = "uint8",Count = 4  },
-                    new PacketItem {Name="BrakesDamage",TypeName = "uint8",Count = 4  },
-                    new PacketItem {Name="FrontLeftWingDamage",TypeName = "uint8" },
-                    new PacketItem {Name="FrontRightWingDamage",TypeName = "uint8" },
-                    new PacketItem {Name="RearWingDamage",TypeName = "uint8"},
-                    new PacketItem {Name="FloorDamage",TypeName = "uint8" },
-                    new PacketItem {Name="DiffuserDamage",TypeName = "uint8"},
-                    new PacketItem {Name="SidepodDamage",TypeName = "uint8" },
-                    new PacketItem {Name="DrsFault",TypeName = "uint8" },
-                    new PacketItem {Name="ErsFault",TypeName = "uint8"},
-                    new PacketItem {Name="GearBoxDamage",TypeName = "uint8" },
-                    new PacketItem {Name="EngineDamage",TypeName = "uint8"},
-                    new PacketItem {Name="EngineMGUHWear",TypeName = "uint8"},
-                    new PacketItem {Name="EngineESWear",TypeName = "uint8" },
-                    new PacketItem {Name="EngineCEWear",TypeName = "uint8" },
-                    new PacketItem {Name="EngineICEWear",TypeName = "uint8" },
-                    new PacketItem {Name="EngineMGUKWear",TypeName = "uint8" },
-                    new PacketItem {Name="EngineTCWear",TypeName = "uint8"},
-                    new PacketItem {Name="EngineBlown",TypeName = "uint8"},
-                    new PacketItem {Name="EngineSeized",TypeName = "uint8"}
+                    new PacketField {Name="TyresWear",TypeName = "float",Count = 4  },
+                    new PacketField {Name="TyresDamage",TypeName = "uint8",Count = 4  },
+                    new PacketField {Name="BrakesDamage",TypeName = "uint8",Count = 4  },
+                    new PacketField {Name="FrontLeftWingDamage",TypeName = "uint8" },
+                    new PacketField {Name="FrontRightWingDamage",TypeName = "uint8" },
+                    new PacketField {Name="RearWingDamage",TypeName = "uint8"},
+                    new PacketField {Name="FloorDamage",TypeName = "uint8" },
+                    new PacketField {Name="DiffuserDamage",TypeName = "uint8"},
+                    new PacketField {Name="SidepodDamage",TypeName = "uint8" },
+                    new PacketField {Name="DrsFault",TypeName = "uint8" },
+                    new PacketField {Name="ErsFault",TypeName = "uint8"},
+                    new PacketField {Name="GearBoxDamage",TypeName = "uint8" },
+                    new PacketField {Name="EngineDamage",TypeName = "uint8"},
+                    new PacketField {Name="EngineMGUHWear",TypeName = "uint8"},
+                    new PacketField {Name="EngineESWear",TypeName = "uint8" },
+                    new PacketField {Name="EngineCEWear",TypeName = "uint8" },
+                    new PacketField {Name="EngineICEWear",TypeName = "uint8" },
+                    new PacketField {Name="EngineMGUKWear",TypeName = "uint8" },
+                    new PacketField {Name="EngineTCWear",TypeName = "uint8"},
+                    new PacketField {Name="EngineBlown",TypeName = "uint8"},
+                    new PacketField {Name="EngineSeized",TypeName = "uint8"}
                 }
             }
         };

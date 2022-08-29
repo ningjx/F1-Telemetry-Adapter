@@ -1,11 +1,10 @@
-﻿using NingSoft.F1TelemetryAdapter.Enums;
-using NingSoft.F1TelemetryAdapter.Helpers;
+﻿using NingSoft.F1TelemetryAdapter.Helpers;
 using System;
 using System.Collections.Generic;
 
 namespace NingSoft.F1TelemetryAdapter.Models
 {
-    public class ItemList : List<PacketItem>
+    public class FieldList : List<PacketField>
     {
         /// <summary>
         /// 按照字节定义的顺序，对于所有“基础类型”的属性进行遍历
@@ -16,7 +15,7 @@ namespace NingSoft.F1TelemetryAdapter.Models
         {
             if (bytes == null || bytes.byteData.Length == 0) return;
 
-            Action<PacketItem, object> action = (item, entity) =>
+            Action<PacketField, object> action = (item, entity) =>
             {
                 object value = null;
 
@@ -43,7 +42,7 @@ namespace NingSoft.F1TelemetryAdapter.Models
             }
         }
 
-        private void VisitItem(PacketItem item, Action<PacketItem, object> action, object entity)
+        private void VisitItem(PacketField item, Action<PacketField, object> action, object entity)
         {
             if (!item.HasChild)
             {
@@ -79,7 +78,7 @@ namespace NingSoft.F1TelemetryAdapter.Models
         }
     }
 
-    public class PacketItem
+    public class PacketField
     {
         private Type _type;
         /// <summary>
@@ -108,7 +107,7 @@ namespace NingSoft.F1TelemetryAdapter.Models
         /// </summary>
         public int Count { get; set; } = 0;
         public string ClassName { get; set; }
-        public PacketItem[] Children { get; set; }
+        public PacketField[] Children { get; set; }
         public bool HasChild => Children != null && Children.Length > 0;
     }
 }

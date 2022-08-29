@@ -12,7 +12,7 @@ namespace NingSoft.F1TelemetryAdapter.F1_22_Packets
     /// </summary>
     public class SessionPacket21 : F1Packet
     {
-        public override int PacketSize => 632;
+        public override int Length => 632;
 
         /// <summary>
         /// Weather - 0 = clear, 1 = light cloud, 2 = overcast,
@@ -194,74 +194,74 @@ namespace NingSoft.F1TelemetryAdapter.F1_22_Packets
 
         public SessionType _SessionType => (SessionType)SessionType;
 
-        internal override ItemList PacketItems => new ItemList
+        internal override FieldList Fields => new FieldList
         {
-            new PacketItem {Name="Weather",TypeName = "uint8"},
-            new PacketItem {Name="TrackTemperature",TypeName = "int8"},
-            new PacketItem {Name="AirTemperature",TypeName = "int8"},
-            new PacketItem {Name="TotalLaps",TypeName = "uint8"},
-            new PacketItem {Name="TrackLength",TypeName = "uint16"},
-            new PacketItem {Name="SessionType",TypeName = "uint8"},
-            new PacketItem {Name="TrackId",TypeName = "int8"},
-            new PacketItem {Name="Formula",TypeName = "uint8"},
-            new PacketItem {Name="SessionTimeLeft",TypeName = "uint16"},
-            new PacketItem {Name="SessionDuration",TypeName = "uint16"},
-            new PacketItem {Name="PitSpeedLimit",TypeName = "uint8"},
-            new PacketItem {Name="GamePaused",TypeName = "uint8"},
-            new PacketItem {Name="IsSpectating",TypeName = "uint8"},
-            new PacketItem {Name="SpectatorCarIndex",TypeName = "uint8"},
-            new PacketItem {Name="SliProNativeSupport",TypeName = "uint8"},
-            new PacketItem {Name="NumMarshalZones",TypeName = "uint8"},
-            new PacketItem {
+            new PacketField {Name="Weather",TypeName = "uint8"},
+            new PacketField {Name="TrackTemperature",TypeName = "int8"},
+            new PacketField {Name="AirTemperature",TypeName = "int8"},
+            new PacketField {Name="TotalLaps",TypeName = "uint8"},
+            new PacketField {Name="TrackLength",TypeName = "uint16"},
+            new PacketField {Name="SessionType",TypeName = "uint8"},
+            new PacketField {Name="TrackId",TypeName = "int8"},
+            new PacketField {Name="Formula",TypeName = "uint8"},
+            new PacketField {Name="SessionTimeLeft",TypeName = "uint16"},
+            new PacketField {Name="SessionDuration",TypeName = "uint16"},
+            new PacketField {Name="PitSpeedLimit",TypeName = "uint8"},
+            new PacketField {Name="GamePaused",TypeName = "uint8"},
+            new PacketField {Name="IsSpectating",TypeName = "uint8"},
+            new PacketField {Name="SpectatorCarIndex",TypeName = "uint8"},
+            new PacketField {Name="SliProNativeSupport",TypeName = "uint8"},
+            new PacketField {Name="NumMarshalZones",TypeName = "uint8"},
+            new PacketField {
                 Name="MarshalZones",
                 Type = typeof(MarshalZone21),
                 Count=21,
-                Children = new PacketItem[]
+                Children = new PacketField[]
                 {
-                    new PacketItem { Name="ZoneStart",TypeName = "float"},
-                    new PacketItem {Name="ZoneFlag",TypeName = "int8"}
+                    new PacketField { Name="ZoneStart",TypeName = "float"},
+                    new PacketField {Name="ZoneFlag",TypeName = "int8"}
                 }
             },
-            new PacketItem {Name="SafetyCarStatus",TypeName = "uint8"},
-            new PacketItem {Name="NetworkGame",TypeName = "uint8"},
-            new PacketItem {Name="NumWeatherForecastSamples",TypeName = "uint8"},
-            new PacketItem {
+            new PacketField {Name="SafetyCarStatus",TypeName = "uint8"},
+            new PacketField {Name="NetworkGame",TypeName = "uint8"},
+            new PacketField {Name="NumWeatherForecastSamples",TypeName = "uint8"},
+            new PacketField {
                 Name="WeatherForecastSamples",
                 Type = typeof(WeatherForecastSample21),
                 Count= 56,
-                Children = new PacketItem[]
+                Children = new PacketField[]
                 {
-                    new PacketItem { Name="SessionType",TypeName = "uint8"},
-                    new PacketItem {Name="TimeOffset",TypeName = "uint8"},
-                    new PacketItem {Name="Weather",TypeName = "uint8"},
-                    new PacketItem {Name="TrackTemperature",TypeName = "int8"},
-                    new PacketItem {Name="TrackTemperatureChange",TypeName = "int8"},
-                    new PacketItem {Name="AirTemperature",TypeName = "int8"},
-                    new PacketItem {Name="AirTemperatureChange",TypeName = "int8"},
-                    new PacketItem {Name="RainPercentage",TypeName = "uint8"}
+                    new PacketField { Name="SessionType",TypeName = "uint8"},
+                    new PacketField {Name="TimeOffset",TypeName = "uint8"},
+                    new PacketField {Name="Weather",TypeName = "uint8"},
+                    new PacketField {Name="TrackTemperature",TypeName = "int8"},
+                    new PacketField {Name="TrackTemperatureChange",TypeName = "int8"},
+                    new PacketField {Name="AirTemperature",TypeName = "int8"},
+                    new PacketField {Name="AirTemperatureChange",TypeName = "int8"},
+                    new PacketField {Name="RainPercentage",TypeName = "uint8"}
                 }
             },
-            new PacketItem {Name="ForecastAccuracy",TypeName = "uint8"},
-            new PacketItem {Name="AiDifficulty",TypeName = "uint8"},
-            new PacketItem {Name="SeasonLinkIdentifier",TypeName = "uint32"},
-            new PacketItem {Name="WeekendLinkIdentifier",TypeName = "uint32"},
-            new PacketItem {Name="SessionLinkIdentifier",TypeName = "uint32"},
-            new PacketItem {Name="PitStopWindowIdealLap",TypeName = "uint8"},
-            new PacketItem {Name="PitStopWindowLatestLap",TypeName = "uint8"},
-            new PacketItem {Name="PitStopRejoinPosition",TypeName = "uint8"},
-            new PacketItem {Name="SteeringAssist",TypeName = "uint8"},
-            new PacketItem {Name="BrakingAssist",TypeName = "uint8"},
-            new PacketItem {Name="GearboxAssist",TypeName = "uint8"},
-            new PacketItem {Name="PitAssist",TypeName = "uint8"},
-            new PacketItem {Name="PitReleaseAssist",TypeName = "uint8"},
-            new PacketItem {Name="ERSAssist",TypeName = "uint8"},
-            new PacketItem {Name="DRSAssist",TypeName = "uint8"},
-            new PacketItem {Name="DynamicRacingLine",TypeName = "uint8"},
-            new PacketItem {Name="DynamicRacingLineType",TypeName = "uint8"},
-            new PacketItem {Name="GameMode",TypeName = "uint8"},
-            new PacketItem {Name="RuleSet",TypeName = "uint8"},
-            new PacketItem {Name="TimeOfDay",TypeName = "uint32"},
-            new PacketItem {Name="SessionLength",TypeName = "uint8"}
+            new PacketField {Name="ForecastAccuracy",TypeName = "uint8"},
+            new PacketField {Name="AiDifficulty",TypeName = "uint8"},
+            new PacketField {Name="SeasonLinkIdentifier",TypeName = "uint32"},
+            new PacketField {Name="WeekendLinkIdentifier",TypeName = "uint32"},
+            new PacketField {Name="SessionLinkIdentifier",TypeName = "uint32"},
+            new PacketField {Name="PitStopWindowIdealLap",TypeName = "uint8"},
+            new PacketField {Name="PitStopWindowLatestLap",TypeName = "uint8"},
+            new PacketField {Name="PitStopRejoinPosition",TypeName = "uint8"},
+            new PacketField {Name="SteeringAssist",TypeName = "uint8"},
+            new PacketField {Name="BrakingAssist",TypeName = "uint8"},
+            new PacketField {Name="GearboxAssist",TypeName = "uint8"},
+            new PacketField {Name="PitAssist",TypeName = "uint8"},
+            new PacketField {Name="PitReleaseAssist",TypeName = "uint8"},
+            new PacketField {Name="ERSAssist",TypeName = "uint8"},
+            new PacketField {Name="DRSAssist",TypeName = "uint8"},
+            new PacketField {Name="DynamicRacingLine",TypeName = "uint8"},
+            new PacketField {Name="DynamicRacingLineType",TypeName = "uint8"},
+            new PacketField {Name="GameMode",TypeName = "uint8"},
+            new PacketField {Name="RuleSet",TypeName = "uint8"},
+            new PacketField {Name="TimeOfDay",TypeName = "uint32"},
+            new PacketField {Name="SessionLength",TypeName = "uint8"}
             };
     }
 

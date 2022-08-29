@@ -12,7 +12,7 @@ namespace NingSoft.F1TelemetryAdapter.F1_22_Packets
     /// </summary>
     public class CarStatusPacket21 : F1Packet
     {
-        public override int PacketSize => 1058;
+        public override int Length => 1058;
 
         public CarStatusData21[] CarStatusDatas;
 
@@ -20,37 +20,37 @@ namespace NingSoft.F1TelemetryAdapter.F1_22_Packets
         {
         }
 
-        internal override ItemList PacketItems => new ItemList
+        internal override FieldList Fields => new FieldList
         {
-            new PacketItem {
+            new PacketField {
                 Name="CarStatusDatas",
                 Type = typeof(CarStatusData21),
                 Count=22,
-                Children = new PacketItem[]
+                Children = new PacketField[]
                 {
-                    new PacketItem {Name="TractionControl",TypeName = "uint8"},
-                    new PacketItem {Name="AntiLockBrakes",TypeName = "uint8"},
-                    new PacketItem {Name="FuelMix",TypeName = "uint8"},
-                    new PacketItem {Name="FrontBrakeBias",TypeName = "uint8"},
-                    new PacketItem {Name="PitLimiterStatus",TypeName = "uint8"},
-                    new PacketItem {Name="FuelInTank",TypeName = "float"},
-                    new PacketItem {Name="FuelCapacity",TypeName = "float"},
-                    new PacketItem {Name="FuelRemainingLaps",TypeName = "float"},
-                    new PacketItem {Name="MaxRPM",TypeName = "uint16"},
-                    new PacketItem {Name="IdleRPM",TypeName = "uint16"},
-                    new PacketItem {Name="MaxGears",TypeName = "uint8"},
-                    new PacketItem {Name="DrsAllowed",TypeName = "uint8"},
-                    new PacketItem {Name="DrsActivationDistance",TypeName = "uint16"},
-                    new PacketItem {Name="ActualTyreCompound",TypeName = "uint8"},
-                    new PacketItem {Name="VisualTyreCompound",TypeName = "uint8"},
-                    new PacketItem {Name="TyresAgeLaps",TypeName = "uint8"},
-                    new PacketItem {Name="VehicleFiaFlags",TypeName = "int8"},
-                    new PacketItem {Name="ErsStoreEnergy",TypeName = "float"},
-                    new PacketItem {Name="ErsDeployMode",TypeName = "uint8"},
-                    new PacketItem {Name="ErsHarvestedThisLapMGUK",TypeName = "float"},
-                    new PacketItem {Name="ErsHarvestedThisLapMGUH",TypeName = "float"},
-                    new PacketItem {Name="ErsDeployedThisLap",TypeName = "float"},
-                    new PacketItem {Name="NetworkPaused",TypeName = "uint8"}
+                    new PacketField {Name="TractionControl",TypeName = "uint8"},
+                    new PacketField {Name="AntiLockBrakes",TypeName = "uint8"},
+                    new PacketField {Name="FuelMix",TypeName = "uint8"},
+                    new PacketField {Name="FrontBrakeBias",TypeName = "uint8"},
+                    new PacketField {Name="PitLimiterStatus",TypeName = "uint8"},
+                    new PacketField {Name="FuelInTank",TypeName = "float"},
+                    new PacketField {Name="FuelCapacity",TypeName = "float"},
+                    new PacketField {Name="FuelRemainingLaps",TypeName = "float"},
+                    new PacketField {Name="MaxRPM",TypeName = "uint16"},
+                    new PacketField {Name="IdleRPM",TypeName = "uint16"},
+                    new PacketField {Name="MaxGears",TypeName = "uint8"},
+                    new PacketField {Name="DrsAllowed",TypeName = "uint8"},
+                    new PacketField {Name="DrsActivationDistance",TypeName = "uint16"},
+                    new PacketField {Name="ActualTyreCompound",TypeName = "uint8"},
+                    new PacketField {Name="VisualTyreCompound",TypeName = "uint8"},
+                    new PacketField {Name="TyresAgeLaps",TypeName = "uint8"},
+                    new PacketField {Name="VehicleFiaFlags",TypeName = "int8"},
+                    new PacketField {Name="ErsStoreEnergy",TypeName = "float"},
+                    new PacketField {Name="ErsDeployMode",TypeName = "uint8"},
+                    new PacketField {Name="ErsHarvestedThisLapMGUK",TypeName = "float"},
+                    new PacketField {Name="ErsHarvestedThisLapMGUH",TypeName = "float"},
+                    new PacketField {Name="ErsDeployedThisLap",TypeName = "float"},
+                    new PacketField {Name="NetworkPaused",TypeName = "uint8"}
                 }
             }
         };

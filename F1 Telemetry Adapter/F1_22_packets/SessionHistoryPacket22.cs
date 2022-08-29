@@ -12,7 +12,7 @@ namespace NingSoft.F1TelemetryAdapter.F1_22_Packets
     /// </summary>
     public class SessionHistoryPacket22 : F1Packet
     {
-        public override int PacketSize => 1155;
+        public override int Length => 1155;
 
         /// <summary>
         /// Index of the car this lap data relates to
@@ -53,39 +53,39 @@ namespace NingSoft.F1TelemetryAdapter.F1_22_Packets
         {
         }
 
-        internal override ItemList PacketItems => new ItemList
+        internal override FieldList Fields => new FieldList
         {
-            new PacketItem {Name="CarIdx",TypeName = "uint8"},
-            new PacketItem {Name="NumLaps",TypeName = "uint8"},
-            new PacketItem {Name="NumTyreStints",TypeName = "uint8"},
-            new PacketItem {Name="BestLapTimeLapNum",TypeName = "uint8"},
-            new PacketItem {Name="BestSector1LapNum",TypeName = "uint8"},
-            new PacketItem {Name="BestSector2LapNum",TypeName = "uint8"},
-            new PacketItem {Name="BestSector3LapNum",TypeName = "uint8"},
-            new PacketItem
+            new PacketField {Name="CarIdx",TypeName = "uint8"},
+            new PacketField {Name="NumLaps",TypeName = "uint8"},
+            new PacketField {Name="NumTyreStints",TypeName = "uint8"},
+            new PacketField {Name="BestLapTimeLapNum",TypeName = "uint8"},
+            new PacketField {Name="BestSector1LapNum",TypeName = "uint8"},
+            new PacketField {Name="BestSector2LapNum",TypeName = "uint8"},
+            new PacketField {Name="BestSector3LapNum",TypeName = "uint8"},
+            new PacketField
             {
                 Name="LapHistoryDatas",
                 Type = typeof(LapHistoryData),
                 Count=100,
-                Children = new PacketItem[]
+                Children = new PacketField[]
                 {
-                    new PacketItem {Name="LapTimeInMS",TypeName = "uint32"},
-                    new PacketItem {Name="Sector1TimeInMS",TypeName = "uint16"},
-                    new PacketItem {Name="Sector2TimeInMS",TypeName = "uint16"},
-                    new PacketItem {Name="Sector3TimeInMS",TypeName = "uint16"},
-                    new PacketItem {Name="LapValidBitFlags",TypeName = "uint8"}
+                    new PacketField {Name="LapTimeInMS",TypeName = "uint32"},
+                    new PacketField {Name="Sector1TimeInMS",TypeName = "uint16"},
+                    new PacketField {Name="Sector2TimeInMS",TypeName = "uint16"},
+                    new PacketField {Name="Sector3TimeInMS",TypeName = "uint16"},
+                    new PacketField {Name="LapValidBitFlags",TypeName = "uint8"}
                 }
             },
-            new PacketItem
+            new PacketField
             {
                 Name="TyreStintHistoryDatas",
                 Type = typeof(TyreStintHistoryData),
                 Count=8,
-                Children = new PacketItem[]
+                Children = new PacketField[]
                 {
-                    new PacketItem {Name="EndLap",TypeName = "uint8"},
-                    new PacketItem {Name="TyreActualCompound",TypeName = "uint8"},
-                    new PacketItem {Name="TyreVisualCompound",TypeName = "uint8"}
+                    new PacketField {Name="EndLap",TypeName = "uint8"},
+                    new PacketField {Name="TyreActualCompound",TypeName = "uint8"},
+                    new PacketField {Name="TyreVisualCompound",TypeName = "uint8"}
                 }
             }
         };

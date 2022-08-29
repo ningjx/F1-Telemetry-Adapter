@@ -14,7 +14,7 @@ namespace NingSoft.F1TelemetryAdapter.F1_22_Packets
     /// </summary>
     public class EventPacket21 : F1Packet
     {
-        public override int PacketSize => 36;
+        public override int Length => 36;
 
         /// <summary>
         /// Event string code,
@@ -33,98 +33,98 @@ namespace NingSoft.F1TelemetryAdapter.F1_22_Packets
             var codeBytes = bys.GetBytes(bys.Index, 4);
             EventStringCode = Encoding.UTF8.GetString(codeBytes);
 
-            var packetItem = new PacketItem { Name = "EventDetail" };
+            var packetItem = new PacketField { Name = "EventDetail" };
             switch (EventStringCode)
             {
                 case EventCodes.FastestLap:
                     packetItem.Type = typeof(FastestLap21);
-                    packetItem.Children = new PacketItem[]
+                    packetItem.Children = new PacketField[]
                     {
-                        new PacketItem {Name="VehicleIdx",TypeName = "uint8"},
-                        new PacketItem {Name="lapTime",TypeName = "float"}
+                        new PacketField {Name="VehicleIdx",TypeName = "uint8"},
+                        new PacketField {Name="lapTime",TypeName = "float"}
                     };
                     break;
                 case EventCodes.Retirement:
                     packetItem.Type = typeof(Retirement21);
-                    packetItem.Children = new PacketItem[]
+                    packetItem.Children = new PacketField[]
                     {
-                        new PacketItem {Name="VehicleIdx",TypeName = "uint8"}
+                        new PacketField {Name="VehicleIdx",TypeName = "uint8"}
                     };
                     break;
                 case EventCodes.TeammateInPits:
                     packetItem.Type = typeof(TeamMateInPits21);
-                    packetItem.Children = new PacketItem[]
+                    packetItem.Children = new PacketField[]
                     {
-                        new PacketItem {Name="VehicleIdx",TypeName = "uint8"}
+                        new PacketField {Name="VehicleIdx",TypeName = "uint8"}
                     };
                     break;
                 case EventCodes.RaceWinner:
                     packetItem.Type = typeof(RaceWinner21);
-                    packetItem.Children = new PacketItem[]
+                    packetItem.Children = new PacketField[]
                     {
-                        new PacketItem {Name="VehicleIdx",TypeName = "uint8"}
+                        new PacketField {Name="VehicleIdx",TypeName = "uint8"}
                     };
                     break;
                 case EventCodes.PenaltyIssued:
                     packetItem.Type = typeof(Penalty21);
-                    packetItem.Children = new PacketItem[]
+                    packetItem.Children = new PacketField[]
                     {
-                        new PacketItem {Name="PenaltyType",TypeName = "uint8"},
-                        new PacketItem {Name="InfringementType",TypeName = "uint8"},
-                        new PacketItem {Name="VehicleIdx",TypeName = "uint8"},
-                        new PacketItem {Name="OtherVehicleIdx",TypeName = "uint8"},
-                        new PacketItem {Name="Time",TypeName = "uint8"},
-                        new PacketItem {Name="LapNum",TypeName = "uint8"},
-                        new PacketItem {Name="PlacesGained",TypeName = "uint8"}
+                        new PacketField {Name="PenaltyType",TypeName = "uint8"},
+                        new PacketField {Name="InfringementType",TypeName = "uint8"},
+                        new PacketField {Name="VehicleIdx",TypeName = "uint8"},
+                        new PacketField {Name="OtherVehicleIdx",TypeName = "uint8"},
+                        new PacketField {Name="Time",TypeName = "uint8"},
+                        new PacketField {Name="LapNum",TypeName = "uint8"},
+                        new PacketField {Name="PlacesGained",TypeName = "uint8"}
                     };
                     break;
                 case EventCodes.SpeedTrapTriggered:
                     packetItem.Type = typeof(SpeedTrap21);
-                    packetItem.Children = new PacketItem[]
+                    packetItem.Children = new PacketField[]
                     {
-                        new PacketItem {Name="VehicleIdx",TypeName = "uint8"},
-                        new PacketItem {Name="Speed",TypeName = "float"},
-                        new PacketItem {Name="IsOverallFastestInSession",TypeName = "uint8"},
-                        new PacketItem {Name="IsDriverFastestInSession",TypeName = "uint8"},
-                        new PacketItem {Name="FastestVehicleIdxInSession",TypeName = "uint8"},
-                        new PacketItem {Name="FastestSpeedInSession",TypeName = "float"}
+                        new PacketField {Name="VehicleIdx",TypeName = "uint8"},
+                        new PacketField {Name="Speed",TypeName = "float"},
+                        new PacketField {Name="IsOverallFastestInSession",TypeName = "uint8"},
+                        new PacketField {Name="IsDriverFastestInSession",TypeName = "uint8"},
+                        new PacketField {Name="FastestVehicleIdxInSession",TypeName = "uint8"},
+                        new PacketField {Name="FastestSpeedInSession",TypeName = "float"}
                     };
                     break;
 
                 case EventCodes.StartLights:
                     packetItem.Type = typeof(StartLights21);
-                    packetItem.Children = new PacketItem[]
+                    packetItem.Children = new PacketField[]
                     {
-                        new PacketItem {Name="NumLights",TypeName = "uint8"},
+                        new PacketField {Name="NumLights",TypeName = "uint8"},
                     };
                     break;
                 case EventCodes.DriveThroughServed:
                     packetItem.Type = typeof(DriveThroughPenaltyServed21);
-                    packetItem.Children = new PacketItem[]
+                    packetItem.Children = new PacketField[]
                     {
-                        new PacketItem {Name="VehicleIdx",TypeName = "uint8"}
+                        new PacketField {Name="VehicleIdx",TypeName = "uint8"}
                     };
                     break;
                 case EventCodes.StopGoServed:
                     packetItem.Type = typeof(StopGoPenaltyServed21);
-                    packetItem.Children = new PacketItem[]
+                    packetItem.Children = new PacketField[]
                     {
-                        new PacketItem {Name="VehicleIdx",TypeName = "uint8"}
+                        new PacketField {Name="VehicleIdx",TypeName = "uint8"}
                     };
                     break;
                 case EventCodes.Flashback:
                     packetItem.Type = typeof(Flashback21);
-                    packetItem.Children = new PacketItem[]
+                    packetItem.Children = new PacketField[]
                     {
-                        new PacketItem {Name="FlashbackFrameIdentifier",TypeName = "uint32"},
-                        new PacketItem {Name="FlashbackSessionTime",TypeName = "float"},
+                        new PacketField {Name="FlashbackFrameIdentifier",TypeName = "uint32"},
+                        new PacketField {Name="FlashbackSessionTime",TypeName = "float"},
                     };
                     break;
                 case EventCodes.ButtonStatus:
                     packetItem.Type = typeof(Buttons21);
-                    packetItem.Children = new PacketItem[]
+                    packetItem.Children = new PacketField[]
                     {
-                        new PacketItem {Name="ButtonStatus",TypeName = "uint32"}
+                        new PacketField {Name="ButtonStatus",TypeName = "uint32"}
                     };
                     break;
                 default:
@@ -132,10 +132,10 @@ namespace NingSoft.F1TelemetryAdapter.F1_22_Packets
             }
 
             if (packetItem.Type != null)
-                new ItemList { packetItem }.LoadBytes(bys, this);
+                new FieldList { packetItem }.LoadBytes(bys, this);
         }
 
-        internal override ItemList PacketItems => new ItemList { };
+        internal override FieldList Fields => new FieldList { };
     }
 
     public class EventDataDetail21 { }

@@ -11,7 +11,7 @@ namespace NingSoft.F1TelemetryAdapter.F1_22_Packets
     /// </summary>
     public class LapDataPacket22 : F1Packet
     {
-        public override int PacketSize => 972;
+        public override int Length => 972;
 
         /// <summary>
         /// Lap data for all cars on track
@@ -30,42 +30,42 @@ namespace NingSoft.F1TelemetryAdapter.F1_22_Packets
         {
         }
 
-        internal override ItemList PacketItems => new ItemList
+        internal override FieldList Fields => new FieldList
         {
-            new PacketItem {
+            new PacketField {
                 Name="LapData",
                 Type = typeof(LapData),
                 Count=22,
-                Children = new PacketItem[]
+                Children = new PacketField[]
                 {
-                    new PacketItem {Name="LastLapTimeInMS",TypeName = "uint32"},
-                    new PacketItem {Name="CurrentLapTimeInMS",TypeName = "uint32"},
-                    new PacketItem {Name="Sector1TimeInMS",TypeName = "uint16"},
-                    new PacketItem {Name="Sector2TimeInMS",TypeName = "uint16"},
-                    new PacketItem {Name="LapDistance",TypeName = "float"},
-                    new PacketItem {Name="TotalDistance",TypeName = "float"},
-                    new PacketItem {Name="SafetyCarDelta",TypeName = "float"},
-                    new PacketItem {Name="CarPosition",TypeName = "uint8"},
-                    new PacketItem {Name="CurrentLapNum",TypeName = "uint8"},
-                    new PacketItem {Name="PitStatus",TypeName = "uint8"},
-                    new PacketItem {Name="NumPitStops",TypeName = "uint8"},
-                    new PacketItem {Name="Sector",TypeName = "uint8"},
-                    new PacketItem {Name="CurrentLapInvalid",TypeName = "uint8"},
-                    new PacketItem {Name="Penalties",TypeName = "uint8"},
-                    new PacketItem {Name="Warnings",TypeName = "uint8"},
-                    new PacketItem {Name="NumUnservedDriveThroughPens",TypeName = "uint8"},
-                    new PacketItem {Name="NumUnservedStopGoPens",TypeName = "uint8"},
-                    new PacketItem {Name="GridPosition",TypeName = "uint8"},
-                    new PacketItem {Name="DriverStatus",TypeName = "uint8"},
-                    new PacketItem {Name="ResultStatus",TypeName = "uint8"},
-                    new PacketItem {Name="PitLaneTimerActive",TypeName = "uint8"},
-                    new PacketItem {Name="PitLaneTimeInLaneInMS",TypeName = "uint16"},
-                    new PacketItem {Name="PitStopTimerInMS",TypeName = "uint16"},
-                    new PacketItem {Name="PitStopShouldServePen",TypeName = "uint8"}
+                    new PacketField {Name="LastLapTimeInMS",TypeName = "uint32"},
+                    new PacketField {Name="CurrentLapTimeInMS",TypeName = "uint32"},
+                    new PacketField {Name="Sector1TimeInMS",TypeName = "uint16"},
+                    new PacketField {Name="Sector2TimeInMS",TypeName = "uint16"},
+                    new PacketField {Name="LapDistance",TypeName = "float"},
+                    new PacketField {Name="TotalDistance",TypeName = "float"},
+                    new PacketField {Name="SafetyCarDelta",TypeName = "float"},
+                    new PacketField {Name="CarPosition",TypeName = "uint8"},
+                    new PacketField {Name="CurrentLapNum",TypeName = "uint8"},
+                    new PacketField {Name="PitStatus",TypeName = "uint8"},
+                    new PacketField {Name="NumPitStops",TypeName = "uint8"},
+                    new PacketField {Name="Sector",TypeName = "uint8"},
+                    new PacketField {Name="CurrentLapInvalid",TypeName = "uint8"},
+                    new PacketField {Name="Penalties",TypeName = "uint8"},
+                    new PacketField {Name="Warnings",TypeName = "uint8"},
+                    new PacketField {Name="NumUnservedDriveThroughPens",TypeName = "uint8"},
+                    new PacketField {Name="NumUnservedStopGoPens",TypeName = "uint8"},
+                    new PacketField {Name="GridPosition",TypeName = "uint8"},
+                    new PacketField {Name="DriverStatus",TypeName = "uint8"},
+                    new PacketField {Name="ResultStatus",TypeName = "uint8"},
+                    new PacketField {Name="PitLaneTimerActive",TypeName = "uint8"},
+                    new PacketField {Name="PitLaneTimeInLaneInMS",TypeName = "uint16"},
+                    new PacketField {Name="PitStopTimerInMS",TypeName = "uint16"},
+                    new PacketField {Name="PitStopShouldServePen",TypeName = "uint8"}
                 }
             },
-            new PacketItem {Name="TimeTrialPBCarIdx",TypeName = "uint8"},
-            new PacketItem {Name="TimeTrialRivalCarIdx",TypeName = "uint8"}
+            new PacketField {Name="TimeTrialPBCarIdx",TypeName = "uint8"},
+            new PacketField {Name="TimeTrialRivalCarIdx",TypeName = "uint8"}
         };
     }
 

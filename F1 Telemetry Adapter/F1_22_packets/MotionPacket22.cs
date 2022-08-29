@@ -12,7 +12,7 @@ namespace NingSoft.F1TelemetryAdapter.F1_22_Packets
     /// </summary>
     public class MotionPacket22 : F1Packet
     {
-        public override int PacketSize => 1464;
+        public override int Length => 1464;
 
         public CarMotionData CarMotionData;
 
@@ -77,47 +77,47 @@ namespace NingSoft.F1TelemetryAdapter.F1_22_Packets
         {
         }
 
-        internal override ItemList PacketItems => new ItemList
+        internal override FieldList Fields => new FieldList
         {
-            new PacketItem {
+            new PacketField {
                 Name="CarMotionData",
                 Type = typeof(CarMotionData),
-                Children = new PacketItem[]
+                Children = new PacketField[]
                 {
-                    new PacketItem {Name="WorldPositionX",TypeName = "float"},
-                    new PacketItem {Name="WorldPositionY",TypeName = "float"},
-                    new PacketItem {Name="WorldPositionZ",TypeName = "float"},
-                    new PacketItem {Name="WorldVelocityX",TypeName = "float"},
-                    new PacketItem {Name="WorldVelocityY",TypeName = "float"},
-                    new PacketItem {Name="WorldVelocityZ",TypeName = "float"},
-                    new PacketItem {Name="WorldForwardDirX",TypeName = "int16"},
-                    new PacketItem {Name="WorldForwardDirY",TypeName = "int16"},
-                    new PacketItem {Name="WorldForwardDirZ",TypeName = "int16"},
-                    new PacketItem {Name="WorldRightDirX",TypeName = "int16"},
-                    new PacketItem {Name="WorldRightDirY",TypeName = "int16"},
-                    new PacketItem {Name="WorldRightDirZ",TypeName = "int16"},
-                    new PacketItem {Name="GForceLateral",TypeName = "float"},
-                    new PacketItem {Name="GForceLongitudinal",TypeName = "float"},
-                    new PacketItem {Name="GForceVertical",TypeName = "float"},
-                    new PacketItem {Name="Yaw",TypeName = "float"},
-                    new PacketItem {Name="Pitch",TypeName = "float"},
-                    new PacketItem {Name="Roll",TypeName = "float"}
+                    new PacketField {Name="WorldPositionX",TypeName = "float"},
+                    new PacketField {Name="WorldPositionY",TypeName = "float"},
+                    new PacketField {Name="WorldPositionZ",TypeName = "float"},
+                    new PacketField {Name="WorldVelocityX",TypeName = "float"},
+                    new PacketField {Name="WorldVelocityY",TypeName = "float"},
+                    new PacketField {Name="WorldVelocityZ",TypeName = "float"},
+                    new PacketField {Name="WorldForwardDirX",TypeName = "int16"},
+                    new PacketField {Name="WorldForwardDirY",TypeName = "int16"},
+                    new PacketField {Name="WorldForwardDirZ",TypeName = "int16"},
+                    new PacketField {Name="WorldRightDirX",TypeName = "int16"},
+                    new PacketField {Name="WorldRightDirY",TypeName = "int16"},
+                    new PacketField {Name="WorldRightDirZ",TypeName = "int16"},
+                    new PacketField {Name="GForceLateral",TypeName = "float"},
+                    new PacketField {Name="GForceLongitudinal",TypeName = "float"},
+                    new PacketField {Name="GForceVertical",TypeName = "float"},
+                    new PacketField {Name="Yaw",TypeName = "float"},
+                    new PacketField {Name="Pitch",TypeName = "float"},
+                    new PacketField {Name="Roll",TypeName = "float"}
                 }
             },
-            new PacketItem {Name="SuspensionVelocity",TypeName = "float",Count=4},
-            new PacketItem {Name="SuspensionAcceleration",TypeName = "float",Count=4},
-            new PacketItem {Name="WheelSpeed",TypeName = "float",Count=4},
-            new PacketItem {Name="WheelSlip",TypeName = "float",Count=4},
-            new PacketItem {Name="LocalVelocityX",TypeName = "float"},
-            new PacketItem {Name="LocalVelocityY",TypeName = "float"},
-            new PacketItem {Name="LocalVelocityZ",TypeName = "float"},
-            new PacketItem {Name="AngularVelocityX",TypeName = "float"},
-            new PacketItem {Name="AngularVelocityY",TypeName = "float"},
-            new PacketItem {Name="AngularVelocityZ",TypeName = "float"},
-            new PacketItem {Name="AngularAccelerationX",TypeName = "float"},
-            new PacketItem {Name="AngularAccelerationY",TypeName = "float"},
-            new PacketItem {Name="AngularAccelerationZ",TypeName = "float"},
-            new PacketItem {Name="FrontWheelsAngle",TypeName = "float"}
+            new PacketField {Name="SuspensionVelocity",TypeName = "float",Count=4},
+            new PacketField {Name="SuspensionAcceleration",TypeName = "float",Count=4},
+            new PacketField {Name="WheelSpeed",TypeName = "float",Count=4},
+            new PacketField {Name="WheelSlip",TypeName = "float",Count=4},
+            new PacketField {Name="LocalVelocityX",TypeName = "float"},
+            new PacketField {Name="LocalVelocityY",TypeName = "float"},
+            new PacketField {Name="LocalVelocityZ",TypeName = "float"},
+            new PacketField {Name="AngularVelocityX",TypeName = "float"},
+            new PacketField {Name="AngularVelocityY",TypeName = "float"},
+            new PacketField {Name="AngularVelocityZ",TypeName = "float"},
+            new PacketField {Name="AngularAccelerationX",TypeName = "float"},
+            new PacketField {Name="AngularAccelerationY",TypeName = "float"},
+            new PacketField {Name="AngularAccelerationZ",TypeName = "float"},
+            new PacketField {Name="FrontWheelsAngle",TypeName = "float"}
         };
     }
 

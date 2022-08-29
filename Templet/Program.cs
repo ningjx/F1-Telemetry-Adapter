@@ -14,18 +14,18 @@ namespace Templete
 
             var pack = F1Adapter.GetF1Packet(bytes);
             //If your program works in different version of F1game like "F1 2020/F1 2021/F1 22",you need to parse the packet like below first,
-            switch (pack.PacketHeader._GameSeries)
+            switch (pack.Header._GameSeries)
             {
                 case GameSeries.G_2022:
                     //ba la ba la
                     break;
             }
             //or you don't care about the shit of GameSeries,just want some basic data fields,parse the packet to someone in namespace "NingSoft.F1TelemetryAdapter.F1_XX_packets" directly.(XX likes 18/19/20/21/22)
-            switch (pack.PacketHeader._PacketType)
+            switch (pack.Header._PacketType)
             {
                 case PacketType.CarTelemetry:
                     var newPack = pack as CarTelemetryPacket22;
-                    float playerThrottle = newPack.CarTelemetryData[pack.PacketHeader.PlayerCarIndex].Throttle;
+                    float playerThrottle = newPack.CarTelemetryData[pack.Header.PlayerCarIndex].Throttle;
                     break;
             }
 
