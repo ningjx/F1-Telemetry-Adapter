@@ -134,8 +134,6 @@ namespace NingSoft.F1TelemetryAdapter.F1_22_Packets
             if (packetItem.Type != null)
                 new FieldList { packetItem }.LoadBytes(bys, this);
         }
-
-        public EventPacket22() { }
     }
 
     public class EventDataDetail22 { }

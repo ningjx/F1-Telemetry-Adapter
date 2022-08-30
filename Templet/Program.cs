@@ -1,7 +1,6 @@
 ﻿using NingSoft.F1TelemetryAdapter;
 using NingSoft.F1TelemetryAdapter.Enums;
 using NingSoft.F1TelemetryAdapter.F1_22_Packets;
-using NingSoft.F1TelemetryAdapter.F1_Base_packets;
 
 namespace Templete
 {

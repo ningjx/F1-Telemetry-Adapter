@@ -1,7 +1,7 @@
 ﻿using NingSoft.F1TelemetryAdapter.F1_Base_packets;
 using NingSoft.F1TelemetryAdapter.Models;
 
-namespace NingSoft.F1TelemetryAdapter.F1_22_Packets
+namespace NingSoft.F1TelemetryAdapter.F1_21_Packets
 {
     /// <summary>
     /// Frequency: Rate as specified in menus

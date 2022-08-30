@@ -9,9 +9,6 @@ using NingSoft.F1TelemetryAdapter.F1_22_Packets;
 using NingSoft.F1TelemetryAdapter.F1_Base_packets;
 using NingSoft.F1TelemetryAdapter.Helpers;
 using NingSoft.F1TelemetryAdapter.Models;
-using System;
-using System.Collections.Generic;
-using System.Text;
 
 namespace NingSoft.F1TelemetryAdapter
 {
@@ -26,7 +23,6 @@ namespace NingSoft.F1TelemetryAdapter
         {
             bys = new Bytes(bytes);
             var version = bys.GetGameVersion();
-            HeaderPacket header;
 
             switch (version)
             {
@@ -91,7 +87,7 @@ namespace NingSoft.F1TelemetryAdapter
                 case PacketType.LobbyInfo:
                     return new LobbyInfoPacket22(header, bytes);
                 case PacketType.Session:
-                    return new SessionPacket21(header, bytes);
+                    return new SessionPacket22(header, bytes);
                 case PacketType.Participants:
                     return new ParticipantsPacket22(header, bytes);
                 case PacketType.Motion:

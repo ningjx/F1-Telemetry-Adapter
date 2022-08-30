@@ -1,5 +1,4 @@
-﻿using NingSoft.F1TelemetryAdapter.Enums;
-using NingSoft.F1TelemetryAdapter.F1_Base_packets;
+﻿using NingSoft.F1TelemetryAdapter.F1_Base_packets;
 using NingSoft.F1TelemetryAdapter.Helpers;
 using NingSoft.F1TelemetryAdapter.Models;
 using System.Text;

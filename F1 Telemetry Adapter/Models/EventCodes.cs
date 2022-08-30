@@ -1,8 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
-
-namespace NingSoft.F1TelemetryAdapter.Models
+﻿namespace NingSoft.F1TelemetryAdapter.Models
 {
     public struct EventCodes
     {

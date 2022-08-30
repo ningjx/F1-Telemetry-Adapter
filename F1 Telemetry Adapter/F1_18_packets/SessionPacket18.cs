@@ -93,9 +93,7 @@ namespace NingSoft.F1TelemetryAdapter.F1_18_Packets
         /// </summary>
         public byte NetworkGame;
 
-        public SessionPacket18(HeaderPacket header, Bytes bys) : base(header, bys)
-        {
-        }
+        public SessionPacket18(HeaderPacket header, Bytes bys) : base(header, bys) { }
 
         public SessionType _SessionType => (SessionType)SessionType;
 

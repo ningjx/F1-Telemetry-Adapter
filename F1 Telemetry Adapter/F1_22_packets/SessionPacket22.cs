@@ -190,8 +190,6 @@ namespace NingSoft.F1TelemetryAdapter.F1_22_Packets
 
         public SessionPacket22(HeaderPacket header, Bytes bys) : base(header, bys) { }
 
-        public SessionPacket22() { }
-
         public SessionType _SessionType => (SessionType)SessionType;
 
         internal override FieldList Fields => new FieldList

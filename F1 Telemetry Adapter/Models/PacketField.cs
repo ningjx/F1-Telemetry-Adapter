@@ -42,6 +42,11 @@ namespace NingSoft.F1TelemetryAdapter.Models
             }
         }
 
+        /// <summary>
+        /// 根据FieldList的定义跳过该包需要的字节
+        /// </summary>
+        /// <param name="bytes"></param>
+        /// <param name="obj"></param>
         public void MoveIndexToEnd(Bytes bytes, object obj)
         {
             if (bytes == null) return;

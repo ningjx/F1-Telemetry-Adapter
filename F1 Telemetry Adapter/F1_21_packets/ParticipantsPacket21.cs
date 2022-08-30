@@ -3,7 +3,7 @@ using NingSoft.F1TelemetryAdapter.F1_Base_packets;
 using NingSoft.F1TelemetryAdapter.Models;
 using System.Text;
 
-namespace NingSoft.F1TelemetryAdapter.F1_22_Packets
+namespace NingSoft.F1TelemetryAdapter.F1_21_Packets
 {
     /// <summary>
     /// This is a list of participants in the race. If the vehicle is controlled by AI, then the name will be the driver name. If this is a multiplayer game, the names will be the Steam Id on PC, or the LAN name if appropriate.
@@ -34,7 +34,7 @@ namespace NingSoft.F1TelemetryAdapter.F1_22_Packets
             new PacketField
             {
                 Name = "Participants",
-                Type = typeof(ParticipantData),
+                Type = typeof(ParticipantData21),
                 Count = 22,
                 Children = new PacketField[]
                 {

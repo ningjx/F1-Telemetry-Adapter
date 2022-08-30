@@ -26,8 +26,6 @@ namespace NingSoft.F1TelemetryAdapter.F1_22_Packets
 
         public ParticipantsPacket22(HeaderPacket header, Bytes bys) : base(header, bys) { }
 
-        public ParticipantsPacket22() { }
-
         internal override FieldList Fields => new FieldList
         {
             new PacketField {Name="NumActiveCars",TypeName = "uint8"},

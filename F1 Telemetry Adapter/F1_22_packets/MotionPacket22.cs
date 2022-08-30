@@ -79,8 +79,6 @@ namespace NingSoft.F1TelemetryAdapter.F1_22_Packets
 
         public MotionPacket22(HeaderPacket header, Bytes bys) : base(header, bys) { }
 
-        public MotionPacket22() { }
-
         internal override FieldList Fields => new FieldList
         {
             new PacketField {

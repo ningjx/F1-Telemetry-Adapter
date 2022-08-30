@@ -17,8 +17,6 @@ namespace NingSoft.F1TelemetryAdapter.F1_22_Packets
 
         public CarDamagePacket22(HeaderPacket header, Bytes bys) : base(header, bys) { }
 
-        public CarDamagePacket22() { }
-
         internal override FieldList Fields => new FieldList
         {
             new PacketField

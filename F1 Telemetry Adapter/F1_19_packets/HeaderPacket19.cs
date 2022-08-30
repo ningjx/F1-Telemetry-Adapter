@@ -1,10 +1,9 @@
-﻿using NingSoft.F1TelemetryAdapter.F1_18_packets;
-using NingSoft.F1TelemetryAdapter.F1_Base_packets;
+﻿using NingSoft.F1TelemetryAdapter.F1_Base_packets;
 using NingSoft.F1TelemetryAdapter.Models;
 
 namespace NingSoft.F1TelemetryAdapter.F1_19_packets
 {
-    public class HeaderPacket19 : HeaderPacket18
+    public class HeaderPacket19 : HeaderPacket
     {
         public override int Length => 23;
 
@@ -17,11 +16,10 @@ namespace NingSoft.F1TelemetryAdapter.F1_19_packets
         /// </summary>
         public byte GameMinorVersion;
 
-        public HeaderPacket19(HeaderPacket header, Bytes bys) : base(header, bys)
-        {
-        }
+        public HeaderPacket19(HeaderPacket header, Bytes bys) : base(header, bys) { }
 
         public string _GameMajorVersion => GameMajorVersion.ToString("F0") + ".00";
+
         public string _GameMinorVersion => "1." + GameMinorVersion.ToString("F0");
 
         internal override FieldList Fields => new FieldList

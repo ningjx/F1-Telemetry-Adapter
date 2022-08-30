@@ -1,4 +1,5 @@
-﻿using NingSoft.F1TelemetryAdapter.F1_Base_packets;
+﻿using NingSoft.F1TelemetryAdapter.F1_21_Packets;
+using NingSoft.F1TelemetryAdapter.F1_Base_packets;
 using NingSoft.F1TelemetryAdapter.Models;
 
 namespace NingSoft.F1TelemetryAdapter.F1_22_Packets
@@ -15,8 +16,6 @@ namespace NingSoft.F1TelemetryAdapter.F1_22_Packets
         public CarTelemetryData22[] CarTelemetryData;
 
         public CarTelemetryPacket22(HeaderPacket header, Bytes bys) : base(header, bys) { }
-
-        public CarTelemetryPacket22() { }
 
         /// <summary>
         /// Index of MFD panel open - 255 = MFD closed.

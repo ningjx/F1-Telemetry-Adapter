@@ -14,9 +14,7 @@ namespace NingSoft.F1TelemetryAdapter.F1_18_Packets
 
         public CarSetupData18[] CarSetupDatas;
 
-        public CarSetupsPacket18(HeaderPacket header, Bytes bys) : base(header, bys)
-        {
-        }
+        public CarSetupsPacket18(HeaderPacket header, Bytes bys) : base(header, bys) { }
 
         internal override FieldList Fields => new FieldList
         {

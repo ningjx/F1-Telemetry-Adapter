@@ -7,9 +7,7 @@ namespace NingSoft.F1TelemetryAdapter.F1_18_packets
     {
         public override int Length => 21;
 
-        public HeaderPacket18(HeaderPacket header, Bytes bys) : base(header, bys)
-        {
-        }
+        public HeaderPacket18(HeaderPacket header, Bytes bys) : base(header, bys) { }
 
         internal override FieldList Fields => new FieldList
         {

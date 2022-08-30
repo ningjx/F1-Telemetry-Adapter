@@ -15,9 +15,7 @@ namespace NingSoft.F1TelemetryAdapter.F1_18_Packets
 
         public uint ButtonStatus;
 
-        public CarTelemetryPacket18(HeaderPacket header, Bytes bys) : base(header, bys)
-        {
-        }
+        public CarTelemetryPacket18(HeaderPacket header, Bytes bys) : base(header, bys) { }
 
         internal override FieldList Fields => new FieldList
         {
@@ -37,7 +35,7 @@ namespace NingSoft.F1TelemetryAdapter.F1_18_Packets
                     new PacketField {Name="Drs",TypeName = "uint8"},
                     new PacketField {Name="RevLightsPercent",TypeName = "uint8"},
                     new PacketField {Name="BrakesTemperature",TypeName = "uint16",Count = 4  },
-                    new PacketField {Name="TyresSurfaceTemperature",TypeName = "uiuint16nt8",Count = 4  },
+                    new PacketField {Name="TyresSurfaceTemperature",TypeName = "uint16",Count = 4  },
                     new PacketField {Name="TyresInnerTemperature",TypeName = "uint16",Count = 4  },
                     new PacketField {Name="EngineTemperature",TypeName = "uint16"},
                     new PacketField {Name="TyresPressure",TypeName = "float",Count = 4  },

@@ -1,18 +1,29 @@
-﻿using NingSoft.F1TelemetryAdapter.F1_19_packets;
-using NingSoft.F1TelemetryAdapter.F1_Base_packets;
+﻿using NingSoft.F1TelemetryAdapter.F1_Base_packets;
 using NingSoft.F1TelemetryAdapter.Models;
 
 namespace NingSoft.F1TelemetryAdapter.F1_20_packets
 {
-    public class HeaderPacket20 : HeaderPacket19
+    public class HeaderPacket20 : HeaderPacket
     {
         public override int Length => 24;
 
+        /// <summary>
+        /// Game major version - "X.00"
+        /// </summary>
+        public byte GameMajorVersion;
+        /// <summary>
+        /// Game minor version - "1.XX"
+        /// </summary>
+        public byte GameMinorVersion;
         /// <summary>
         /// Index of secondary player's car in the array (splitscreen).
         /// 255 if no second player
         /// </summary>
         public byte SecondaryPlayerCarIndex;
+
+        public string _GameMajorVersion => GameMajorVersion.ToString("F0") + ".00";
+
+        public string _GameMinorVersion => "1." + GameMinorVersion.ToString("F0");
 
         public HeaderPacket20(HeaderPacket header, Bytes bys) : base(header, bys)
         {

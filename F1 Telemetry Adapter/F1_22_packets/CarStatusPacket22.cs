@@ -1,6 +1,6 @@
-﻿using NingSoft.F1TelemetryAdapter.F1_Base_packets;
+﻿using NingSoft.F1TelemetryAdapter.F1_21_Packets;
+using NingSoft.F1TelemetryAdapter.F1_Base_packets;
 using NingSoft.F1TelemetryAdapter.Models;
-using System;
 
 namespace NingSoft.F1TelemetryAdapter.F1_22_Packets
 {
@@ -17,8 +17,6 @@ namespace NingSoft.F1TelemetryAdapter.F1_22_Packets
         public CarStatusData22[] CarStatusDatas;
 
         public CarStatusPacket22(HeaderPacket header, Bytes bys) : base(header, bys) { }
-
-        public CarStatusPacket22() { }
 
         internal override FieldList Fields => new FieldList
         {

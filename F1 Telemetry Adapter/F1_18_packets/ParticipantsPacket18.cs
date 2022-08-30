@@ -15,7 +15,7 @@ namespace NingSoft.F1TelemetryAdapter.F1_18_Packets
     /// </summary>
     public class ParticipantsPacket18 : F1Packet
     {
-        public override int Length => 1257;
+        public override int Length => 1082;
 
         /// <summary>
         /// Number of active cars in the data – should match number of cars on HUD
@@ -24,9 +24,7 @@ namespace NingSoft.F1TelemetryAdapter.F1_18_Packets
 
         public ParticipantData18[] Participants;
 
-        public ParticipantsPacket18(HeaderPacket header, Bytes bys) : base(header, bys)
-        {
-        }
+        public ParticipantsPacket18(HeaderPacket header, Bytes bys) : base(header, bys) { }
 
         internal override FieldList Fields => new FieldList
         {

@@ -76,9 +76,7 @@ namespace NingSoft.F1TelemetryAdapter.F1_18_Packets
         /// </summary>
         public float FrontWheelsAngle;
 
-        public MotionPacket18(HeaderPacket header, Bytes bys) : base(header, bys)
-        {
-        }
+        public MotionPacket18(HeaderPacket header, Bytes bys) : base(header, bys) { }
 
         internal override FieldList Fields => new FieldList
         {

@@ -17,16 +17,14 @@ namespace NingSoft.F1TelemetryAdapter.F1_18_Packets
         /// </summary>
         public LapData18[] LapData;
 
-        public LapDataPacket18(HeaderPacket header, Bytes bys) : base(header, bys)
-        {
-        }
+        public LapDataPacket18(HeaderPacket header, Bytes bys) : base(header, bys) { }
 
         internal override FieldList Fields => new FieldList
         {
             new PacketField {
                 Name="LapData",
                 Type = typeof(LapData18),
-                Count=20,
+                Count = 20,
                 Children = new PacketField[]
                 {
                     new PacketField {Name="LastLapTime",TypeName = "float"},
@@ -47,9 +45,7 @@ namespace NingSoft.F1TelemetryAdapter.F1_18_Packets
                     new PacketField {Name="DriverStatus",TypeName = "uint8"},
                     new PacketField {Name="ResultStatus",TypeName = "uint8"}
                 }
-            },
-            new PacketField {Name="TimeTrialPBCarIdx",TypeName = "uint8"},
-            new PacketField {Name="TimeTrialRivalCarIdx",TypeName = "uint8"}
+            }
         };
     }
 
