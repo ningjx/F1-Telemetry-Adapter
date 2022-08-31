@@ -1,6 +1,7 @@
 ﻿using NingSoft.F1TelemetryAdapter;
 using NingSoft.F1TelemetryAdapter.Enums;
 using NingSoft.F1TelemetryAdapter.F1_22_packets;
+using NingSoft.F1TelemetryAdapter.Models;
 
 namespace Templete
 {
@@ -35,6 +36,20 @@ namespace Templete
                 float playerThrottle = dPack.CarTelemetryData[dPack.PacketHeader.PlayerCarIndex].Throttle;
             }
 
+            //Especially,for PacketType.Event,you should do like below(Codemaster designed these shits:()
+            dynamic dEventPack = F1Adapter.GetF1Packet(bytes);
+            if (dEventPack.PacketHeader._PacketType == PacketType.Event)
+            {
+                string code = dEventPack.EventStringCode;
+                switch (code)
+                {
+                    case EventCodes.FastestLap:
+                        var fastestCarIndex = dEventPack.EventDetail.VehicleIdx;
+                        var fastestTime = dEventPack.EventDetail.lapTime;
+                        //Do something with these data.
+                        break;
+                }
+            }
         }
     }
 }
