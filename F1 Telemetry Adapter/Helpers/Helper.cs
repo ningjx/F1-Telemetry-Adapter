@@ -1,4 +1,5 @@
 ﻿using NingSoft.F1TelemetryAdapter.Enums;
+using NingSoft.F1TelemetryAdapter.Exceptions;
 using NingSoft.F1TelemetryAdapter.Models;
 using System;
 using System.Collections.Generic;
@@ -38,10 +39,17 @@ namespace NingSoft.F1TelemetryAdapter.Helpers
 
         internal static Type ToType(this string typeStr)
         {
-            return TypeDic[typeStr];
+            if (string.IsNullOrEmpty(typeStr))
+                return null;
+            else
+            {
+                if (!TypeDic.ContainsKey(typeStr))
+                    throw new F1_Exception($"Undefine type in F1 data.typeStr={typeStr}");
+                return TypeDic[typeStr];
+            }
         }
 
-        public static GameSeries GetGameVersion(this Bytes bytes)
+        internal static GameSeries GetGameVersion(this Bytes bytes)
         {
             return (GameSeries)BitConverter.ToUInt16(bytes.byteData, 0);
         }
