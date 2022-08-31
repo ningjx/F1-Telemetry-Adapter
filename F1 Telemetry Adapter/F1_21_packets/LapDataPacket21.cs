@@ -1,7 +1,7 @@
 ﻿using NingSoft.F1TelemetryAdapter.F1_Base_packets;
 using NingSoft.F1TelemetryAdapter.Models;
 
-namespace NingSoft.F1TelemetryAdapter.F1_21_Packets
+namespace NingSoft.F1TelemetryAdapter.F1_21_packets
 {
     /// <summary>
     /// The lap data packet gives details of all the cars in the session.
@@ -142,9 +142,10 @@ namespace NingSoft.F1TelemetryAdapter.F1_21_Packets
         /// <summary>
         /// Grid position the vehicle started the race in
         /// </summary>
-        public byte GridPosition;        /// <summary>
-                                         /// Status of driver - 0 = in garage, 1 = flying lap, 2 = in lap, 3 = out lap, 4 = on track
-                                         /// </summary>
+        public byte GridPosition;
+        /// <summary>                                
+        /// Status of driver - 0 = in garage, 1 = flying lap, 2 = in lap, 3 = out lap, 4 = on track                                         
+        /// </summary>
         public byte DriverStatus;
         /// <summary>
         /// Result status - 0 = invalid, 1 = inactive, 2 = active

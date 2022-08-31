@@ -1,37 +1,48 @@
 ﻿using NingSoft.F1TelemetryAdapter.F1_Base_packets;
 using NingSoft.F1TelemetryAdapter.Models;
 
-namespace NingSoft.F1TelemetryAdapter.F1_18_packets
+namespace NingSoft.F1TelemetryAdapter.F1_20_packets
 {
     /// <summary>
     /// The lap data packet gives details of all the cars in the session.
     /// Frequency: Rate as specified in menus
-    /// Size: 841 bytes
+    /// Size: 1190 bytes
+    /// Version: 1
     /// </summary>
-    public class LapDataPacket18 : F1Packet
+    public class LapDataPacket20 : F1Packet
     {
-        public override int Length => 841;
+        public override int Length => 1190;
 
         /// <summary>
         /// Lap data for all cars on track
         /// </summary>
-        public LapData18[] LapData;
+        public LapData20[] LapData;
 
-        public LapDataPacket18(HeaderPacket header, Bytes bys) : base(header, bys) { }
+        public LapDataPacket20(HeaderPacket header, Bytes bys) : base(header, bys) { }
 
         internal override FieldList Fields => new FieldList
         {
             new PacketField {
                 Name="LapData",
-                Type = typeof(LapData18),
-                Count = 20,
+                Type = typeof(LapData20),
+                Count = 22,
                 Children = new PacketField[]
                 {
                     new PacketField {Name="LastLapTime",TypeName = "float"},
                     new PacketField {Name="CurrentLapTime",TypeName = "float"},
+                    new PacketField {Name="Sector1TimeInMS",TypeName = "uint16"},
+                    new PacketField {Name="Sector2TimeInMS",TypeName = "uint16"},
                     new PacketField {Name="BestLapTime",TypeName = "float"},
-                    new PacketField {Name="Sector1Time",TypeName = "float"},
-                    new PacketField {Name="Sector2Time",TypeName = "float"},
+                    new PacketField {Name="BestLapNum",TypeName = "uint8"},
+                    new PacketField {Name="BestLapSector1TimeInMS",TypeName = "uint16"},
+                    new PacketField {Name="BestLapSector2TimeInMS",TypeName = "uint16"},
+                    new PacketField {Name="BestLapSector3TimeInMS",TypeName = "uint16"},
+                    new PacketField {Name="BestOverallSector1TimeInMS",TypeName = "uint16"},
+                    new PacketField {Name="BestOverallSector1LapNum",TypeName = "uint8"},
+                    new PacketField {Name="BestOverallSector2TimeInMS",TypeName = "uint16"},
+                    new PacketField {Name="BestOverallSector2LapNum",TypeName = "uint8"},
+                    new PacketField {Name="BestOverallSector3TimeInMS",TypeName = "uint16"},
+                    new PacketField {Name="BestOverallSector3LapNum",TypeName = "uint8"},
                     new PacketField {Name="LapDistance",TypeName = "float"},
                     new PacketField {Name="TotalDistance",TypeName = "float"},
                     new PacketField {Name="SafetyCarDelta",TypeName = "float"},
@@ -49,7 +60,7 @@ namespace NingSoft.F1TelemetryAdapter.F1_18_packets
         };
     }
 
-    public class LapData18
+    public class LapData20
     {
         /// <summary>
         /// Last lap time in seconds
@@ -60,17 +71,27 @@ namespace NingSoft.F1TelemetryAdapter.F1_18_packets
         /// </summary>
         public float CurrentLapTime;
         /// <summary>
+        /// Sector 1 time in milliseconds
+        /// </summary>
+        public ushort Sector1TimeInMS;
+        /// <summary>
+        /// Sector 2 time in milliseconds
+        /// </summary>
+        public ushort Sector2TimeInMS;
+        /// <summary>
         /// Best lap time of the session in seconds
         /// </summary>
         public float BestLapTime;
-        /// <summary>
-        /// Sector 1 time in seconds
-        /// </summary>
-        public float Sector1Time;
-        /// <summary>
-        /// Sector 2 time in seconds
-        /// </summary>
-        public float Sector2Time;
+        public byte BestLapNum;
+        public ushort BestLapSector1TimeInMS;
+        public ushort BestLapSector2TimeInMS;
+        public ushort BestLapSector3TimeInMS;
+        public ushort BestOverallSector1TimeInMS;
+        public byte BestOverallSector1LapNum;
+        public ushort BestOverallSector2TimeInMS;
+        public byte BestOverallSector2LapNum;
+        public ushort BestOverallSector3TimeInMS;
+        public byte BestOverallSector3LapNum;
         /// <summary>
         /// Distance vehicle is around current lap in metres – could be negative if line hasn’t been crossed yet
         /// </summary>
@@ -111,8 +132,8 @@ namespace NingSoft.F1TelemetryAdapter.F1_18_packets
         /// Grid position the vehicle started the race in
         /// </summary>
         public byte GridPosition;
-        /// <summary>                                         
-        /// Status of driver - 0 = in garage, 1 = flying lap, 2 = in lap, 3 = out lap, 4 = on track                                         
+        /// <summary>                            
+        /// Status of driver - 0 = in garage, 1 = flying lap, 2 = in lap, 3 = out lap, 4 = on trac                              
         /// </summary>
         public byte DriverStatus;
         /// <summary>

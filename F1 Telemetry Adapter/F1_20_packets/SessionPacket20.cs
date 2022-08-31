@@ -2,17 +2,17 @@
 using NingSoft.F1TelemetryAdapter.F1_Base_packets;
 using NingSoft.F1TelemetryAdapter.Models;
 
-namespace NingSoft.F1TelemetryAdapter.F1_21_packets
+namespace NingSoft.F1TelemetryAdapter.F1_20_packets
 {
     /// <summary>
     /// The session packet includes details about the current session in progress.
     /// Frequency: 2 per second
-    /// Size: 632 bytes
+    /// Size: 251 bytes
     /// Version: 1
     /// </summary>
-    public class SessionPacket21 : F1Packet
+    public class SessionPacket20 : F1Packet
     {
-        public override int Length => 632;
+        public override int Length => 251;
 
         /// <summary>
         /// Weather - 0 = clear, 1 = light cloud, 2 = overcast,
@@ -86,7 +86,7 @@ namespace NingSoft.F1TelemetryAdapter.F1_21_packets
         /// <summary>
         /// List of marshal zones – max 21
         /// </summary>
-        public MarshalZone21[] MarshalZones;
+        public MarshalZone20[] MarshalZones;
         /// <summary>
         /// 0 = no safety car, 1 = full, 2 = virtual, 3 = formation lap
         /// </summary>
@@ -102,95 +102,9 @@ namespace NingSoft.F1TelemetryAdapter.F1_21_packets
         /// <summary>
         /// Array of weather forecast samples
         /// </summary>
-        public WeatherForecastSample21[] WeatherForecastSamples;
-        /// <summary>
-        /// 0 = Perfect, 1 = Approximate
-        /// </summary>
-        public byte ForecastAccuracy;
-        /// <summary>
-        /// AI Difficulty rating – 0-110
-        /// </summary>
-        public byte AiDifficulty;
-        /// <summary>
-        /// Identifier for season - persists across saves
-        /// </summary>
-        public uint SeasonLinkIdentifier;
-        /// <summary>
-        /// Identifier for weekend - persists across saves
-        /// </summary>
-        public uint WeekendLinkIdentifier;
-        /// <summary>
-        /// Identifier for session - persists across saves
-        /// </summary>
-        public uint SessionLinkIdentifier;
-        /// <summary>
-        /// Ideal lap to pit on for current strategy (player)
-        /// </summary>
-        public byte PitStopWindowIdealLap;
-        /// <summary>
-        /// Latest lap to pit on for current strategy (player)
-        /// </summary>
-        public byte PitStopWindowLatestLap;
-        /// <summary>
-        /// Predicted position to rejoin at (player)
-        /// </summary>
-        public byte PitStopRejoinPosition;
-        /// <summary>
-        /// 0 = off, 1 = on
-        /// </summary>
-        public byte SteeringAssist;
-        /// <summary>
-        /// 0 = off, 1 = low, 2 = medium, 3 = high
-        /// </summary>
-        public byte BrakingAssist;
-        /// <summary>
-        /// 1 = manual, 2 = manual & suggested gear, 3 = auto
-        /// </summary>
-        public byte GearboxAssist;
-        /// <summary>
-        /// 0 = off, 1 = on
-        /// </summary>
-        public byte PitAssist;
-        /// <summary>
-        /// 0 = off, 1 = on
-        /// </summary>
-        public byte PitReleaseAssist;
-        /// <summary>
-        /// 0 = off, 1 = on
-        /// </summary>
-        public byte ERSAssist;
-        /// <summary>
-        /// 0 = off, 1 = on
-        /// </summary>
-        public byte DRSAssist;
-        /// <summary>
-        /// 0 = off, 1 = corners only, 2 = full
-        /// </summary>
-        public byte DynamicRacingLine;
-        /// <summary>
-        /// 0 = 2D, 1 = 3D
-        /// </summary>
-        public byte DynamicRacingLineType;
-        /// <summary>
-        /// Game mode id - see appendix
-        /// </summary>
-        public byte GameMode;
-        /// <summary>
-        /// Ruleset - see appendix
-        /// </summary>
-        public byte RuleSet;
-        /// <summary>
-        /// Local time of day - minutes since midnight
-        /// </summary>
-        public uint TimeOfDay;
-        /// <summary>
-        /// 0 = None, 2 = Very Short, 3 = Short, 4 = Medium, 5 = Medium Long, 6 = Long, 7 = Full
-        /// </summary>
-        public byte SessionLength;
+        public WeatherForecastSample20[] WeatherForecastSamples;
 
-        public SessionPacket21(HeaderPacket header, Bytes bys) : base(header, bys)
-        {
-        }
+        public SessionPacket20(HeaderPacket header, Bytes bys) : base(header, bys) { }
 
         public SessionType _SessionType => (SessionType)SessionType;
 
@@ -214,7 +128,7 @@ namespace NingSoft.F1TelemetryAdapter.F1_21_packets
             new PacketField {Name="NumMarshalZones",TypeName = "uint8"},
             new PacketField {
                 Name="MarshalZones",
-                Type = typeof(MarshalZone21),
+                Type = typeof(MarshalZone20),
                 Count=21,
                 Children = new PacketField[]
                 {
@@ -227,45 +141,21 @@ namespace NingSoft.F1TelemetryAdapter.F1_21_packets
             new PacketField {Name="NumWeatherForecastSamples",TypeName = "uint8"},
             new PacketField {
                 Name="WeatherForecastSamples",
-                Type = typeof(WeatherForecastSample21),
-                Count= 56,
+                Type = typeof(WeatherForecastSample20),
+                Count= 20,
                 Children = new PacketField[]
                 {
                     new PacketField { Name="SessionType",TypeName = "uint8"},
                     new PacketField {Name="TimeOffset",TypeName = "uint8"},
                     new PacketField {Name="Weather",TypeName = "uint8"},
                     new PacketField {Name="TrackTemperature",TypeName = "int8"},
-                    new PacketField {Name="TrackTemperatureChange",TypeName = "int8"},
-                    new PacketField {Name="AirTemperature",TypeName = "int8"},
-                    new PacketField {Name="AirTemperatureChange",TypeName = "int8"},
-                    new PacketField {Name="RainPercentage",TypeName = "uint8"}
+                    new PacketField {Name="AirTemperature",TypeName = "int8"}
                 }
-            },
-            new PacketField {Name="ForecastAccuracy",TypeName = "uint8"},
-            new PacketField {Name="AiDifficulty",TypeName = "uint8"},
-            new PacketField {Name="SeasonLinkIdentifier",TypeName = "uint32"},
-            new PacketField {Name="WeekendLinkIdentifier",TypeName = "uint32"},
-            new PacketField {Name="SessionLinkIdentifier",TypeName = "uint32"},
-            new PacketField {Name="PitStopWindowIdealLap",TypeName = "uint8"},
-            new PacketField {Name="PitStopWindowLatestLap",TypeName = "uint8"},
-            new PacketField {Name="PitStopRejoinPosition",TypeName = "uint8"},
-            new PacketField {Name="SteeringAssist",TypeName = "uint8"},
-            new PacketField {Name="BrakingAssist",TypeName = "uint8"},
-            new PacketField {Name="GearboxAssist",TypeName = "uint8"},
-            new PacketField {Name="PitAssist",TypeName = "uint8"},
-            new PacketField {Name="PitReleaseAssist",TypeName = "uint8"},
-            new PacketField {Name="ERSAssist",TypeName = "uint8"},
-            new PacketField {Name="DRSAssist",TypeName = "uint8"},
-            new PacketField {Name="DynamicRacingLine",TypeName = "uint8"},
-            new PacketField {Name="DynamicRacingLineType",TypeName = "uint8"},
-            new PacketField {Name="GameMode",TypeName = "uint8"},
-            new PacketField {Name="RuleSet",TypeName = "uint8"},
-            new PacketField {Name="TimeOfDay",TypeName = "uint32"},
-            new PacketField {Name="SessionLength",TypeName = "uint8"}
+            }
             };
     }
 
-    public class MarshalZone21
+    public class MarshalZone20
     {
         /// <summary>
         /// Fraction (0..1) of way through the lap the marshal zone starts
@@ -277,7 +167,7 @@ namespace NingSoft.F1TelemetryAdapter.F1_21_packets
         public sbyte ZoneFlag;
     }
 
-    public class WeatherForecastSample21
+    public class WeatherForecastSample20
     {
         /// <summary>
         /// 0 = unknown, 1 = P1, 2 = P2, 3 = P3, 4 = Short P, 5 = Q1,
@@ -298,21 +188,9 @@ namespace NingSoft.F1TelemetryAdapter.F1_21_packets
         /// </summary>
         public sbyte TrackTemperature;
         /// <summary>
-        /// Track temp. change – 0 = up, 1 = down, 2 = no change
-        /// </summary>
-        public sbyte TrackTemperatureChange;
-        /// <summary>
         /// Air temp. in degrees celsius
         /// </summary>
         public sbyte AirTemperature;
-        /// <summary>
-        /// Air temp. change – 0 = up, 1 = down, 2 = no change
-        /// </summary>
-        public sbyte AirTemperatureChange;
-        /// <summary>
-        /// Rain percentage (0-100)
-        /// </summary>
-        public byte RainPercentage;
 
         public SessionType _SessionType => (SessionType)SessionType;
     }

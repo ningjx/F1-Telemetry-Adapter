@@ -1,20 +1,19 @@
-﻿using NingSoft.F1TelemetryAdapter.Enums;
-using NingSoft.F1TelemetryAdapter.F1_Base_packets;
+﻿using NingSoft.F1TelemetryAdapter.F1_Base_packets;
 using NingSoft.F1TelemetryAdapter.Helpers;
 using NingSoft.F1TelemetryAdapter.Models;
 using System.Text;
 
-namespace NingSoft.F1TelemetryAdapter.F1_21_packets
+namespace NingSoft.F1TelemetryAdapter.F1_20_packets
 {
     /// <summary>
     /// This packet gives details of events that happen during the course of a session.
     /// Frequency: When the event occurs
-    /// Size: 36 bytes
+    /// Size: 35 bytes
     /// Version: 1
     /// </summary>
-    public class EventPacket21 : F1Packet
+    public class EventPacket20 : F1Packet
     {
-        public override int Length => 36;
+        public override int Length => 35;
 
         /// <summary>
         /// Event string code,
@@ -24,9 +23,9 @@ namespace NingSoft.F1TelemetryAdapter.F1_21_packets
         /// <summary>
         /// Event details - should be interpreted differently for each typ
         /// </summary>
-        public EventDataDetail21 EventDetail;
+        public EventDataDetail20 EventDetail;
 
-        public EventPacket21(HeaderPacket header, Bytes bys) : base(header, null)
+        public EventPacket20(HeaderPacket header, Bytes bys) : base(header, null)
         {
             if (bys == null) return;
 
@@ -37,7 +36,7 @@ namespace NingSoft.F1TelemetryAdapter.F1_21_packets
             switch (EventStringCode)
             {
                 case EventCodes.FastestLap:
-                    packetItem.Type = typeof(FastestLap21);
+                    packetItem.Type = typeof(FastestLap20);
                     packetItem.Children = new PacketField[]
                     {
                         new PacketField {Name="VehicleIdx",TypeName = "uint8"},
@@ -45,28 +44,28 @@ namespace NingSoft.F1TelemetryAdapter.F1_21_packets
                     };
                     break;
                 case EventCodes.Retirement:
-                    packetItem.Type = typeof(Retirement21);
+                    packetItem.Type = typeof(Retirement20);
                     packetItem.Children = new PacketField[]
                     {
                         new PacketField {Name="VehicleIdx",TypeName = "uint8"}
                     };
                     break;
                 case EventCodes.TeammateInPits:
-                    packetItem.Type = typeof(TeamMateInPits21);
+                    packetItem.Type = typeof(TeamMateInPits20);
                     packetItem.Children = new PacketField[]
                     {
                         new PacketField {Name="VehicleIdx",TypeName = "uint8"}
                     };
                     break;
                 case EventCodes.RaceWinner:
-                    packetItem.Type = typeof(RaceWinner21);
+                    packetItem.Type = typeof(RaceWinner20);
                     packetItem.Children = new PacketField[]
                     {
                         new PacketField {Name="VehicleIdx",TypeName = "uint8"}
                     };
                     break;
                 case EventCodes.PenaltyIssued:
-                    packetItem.Type = typeof(Penalty21);
+                    packetItem.Type = typeof(Penalty20);
                     packetItem.Children = new PacketField[]
                     {
                         new PacketField {Name="PenaltyType",TypeName = "uint8"},
@@ -79,50 +78,11 @@ namespace NingSoft.F1TelemetryAdapter.F1_21_packets
                     };
                     break;
                 case EventCodes.SpeedTrapTriggered:
-                    packetItem.Type = typeof(SpeedTrap21);
+                    packetItem.Type = typeof(SpeedTrap20);
                     packetItem.Children = new PacketField[]
                     {
                         new PacketField {Name="VehicleIdx",TypeName = "uint8"},
-                        new PacketField {Name="Speed",TypeName = "float"},
-                        new PacketField {Name="FastestVehicleIdxInSession",TypeName = "uint8"},
-                        new PacketField {Name="FastestSpeedInSession",TypeName = "float"}
-                    };
-                    break;
-
-                case EventCodes.StartLights:
-                    packetItem.Type = typeof(StartLights21);
-                    packetItem.Children = new PacketField[]
-                    {
-                        new PacketField {Name="NumLights",TypeName = "uint8"},
-                    };
-                    break;
-                case EventCodes.DriveThroughServed:
-                    packetItem.Type = typeof(DriveThroughPenaltyServed21);
-                    packetItem.Children = new PacketField[]
-                    {
-                        new PacketField {Name="VehicleIdx",TypeName = "uint8"}
-                    };
-                    break;
-                case EventCodes.StopGoServed:
-                    packetItem.Type = typeof(StopGoPenaltyServed21);
-                    packetItem.Children = new PacketField[]
-                    {
-                        new PacketField {Name="VehicleIdx",TypeName = "uint8"}
-                    };
-                    break;
-                case EventCodes.Flashback:
-                    packetItem.Type = typeof(Flashback21);
-                    packetItem.Children = new PacketField[]
-                    {
-                        new PacketField {Name="FlashbackFrameIdentifier",TypeName = "uint32"},
-                        new PacketField {Name="FlashbackSessionTime",TypeName = "float"},
-                    };
-                    break;
-                case EventCodes.ButtonStatus:
-                    packetItem.Type = typeof(Buttons21);
-                    packetItem.Children = new PacketField[]
-                    {
-                        new PacketField {Name="ButtonStatus",TypeName = "uint32"}
+                        new PacketField {Name="Speed",TypeName = "float"}
                     };
                     break;
                 default:
@@ -136,10 +96,10 @@ namespace NingSoft.F1TelemetryAdapter.F1_21_packets
         internal override FieldList Fields => new FieldList { };
     }
 
-    public class EventDataDetail21 { }
+    public class EventDataDetail20 { }
 
 
-    public class FastestLap21 : EventDataDetail21
+    public class FastestLap20 : EventDataDetail20
     {
         /// <summary>
         /// Vehicle index of car achieving fastest lap
@@ -151,7 +111,7 @@ namespace NingSoft.F1TelemetryAdapter.F1_21_packets
         public float lapTime;
     }
 
-    public class Retirement21 : EventDataDetail21
+    public class Retirement20 : EventDataDetail20
     {
         /// <summary>
         /// Vehicle index of car retiring
@@ -159,8 +119,7 @@ namespace NingSoft.F1TelemetryAdapter.F1_21_packets
         public byte VehicleIdx;
     }
 
-
-    public class TeamMateInPits21 : EventDataDetail21
+    public class TeamMateInPits20 : EventDataDetail20
     {
         /// <summary>
         /// Vehicle index of team mate
@@ -169,7 +128,7 @@ namespace NingSoft.F1TelemetryAdapter.F1_21_packets
     }
 
 
-    public class RaceWinner21 : EventDataDetail21
+    public class RaceWinner20 : EventDataDetail20
     {
         /// <summary>
         /// Vehicle index of the race winner
@@ -177,7 +136,7 @@ namespace NingSoft.F1TelemetryAdapter.F1_21_packets
         public byte VehicleIdx;
     }
 
-    public class Penalty21 : EventDataDetail21
+    public class Penalty20 : EventDataDetail20
     {
         /// <summary>
         /// Penalty type – see Appendices
@@ -209,7 +168,7 @@ namespace NingSoft.F1TelemetryAdapter.F1_21_packets
         public byte PlacesGained;
     }
 
-    public class SpeedTrap21 : EventDataDetail21
+    public class SpeedTrap20 : EventDataDetail20
     {
         /// <summary>
         /// Vehicle index of the Vehicle triggering speed trap
@@ -219,58 +178,5 @@ namespace NingSoft.F1TelemetryAdapter.F1_21_packets
         /// Top speed achieved in kilometres per hour
         /// </summary>
         public float Speed;
-        /// <summary>
-        /// Vehicle index of the Vehicle that is the fastest in this session
-        /// </summary>
-        public byte FastestVehicleIdxInSession;
-        /// <summary>
-        /// Speed of the Vehicle that is the fastest in this session
-        /// </summary>
-        public float FastestSpeedInSession;
-    }
-
-    public class StartLights21 : EventDataDetail21
-    {
-        /// <summary>
-        /// Number of lights showing
-        /// </summary>
-        public byte NumLights;
-    }
-
-    public class DriveThroughPenaltyServed21 : EventDataDetail21
-    {
-        /// <summary>
-        /// Vehicle index of the Vehicle serving drive through
-        /// </summary>
-        public byte VehicleIdx;
-    }
-
-    public class StopGoPenaltyServed21 : EventDataDetail21
-    {
-        /// <summary>
-        /// Vehicle index of the Vehicle serving stop go
-        /// </summary>
-        public byte VehicleIdx;
-    }
-
-    public class Flashback21 : EventDataDetail21
-    {
-        /// <summary>
-        /// Frame identifier flashed back to
-        /// </summary>
-        public uint FlashbackFrameIdentifier;
-        /// <summary>
-        /// Session time flashed back to
-        /// </summary>
-        public float FlashbackSessionTime;
-    }
-
-    public class Buttons21 : EventDataDetail21
-    {
-        /// <summary>
-        /// Bit flags specifying which buttons are being pressed currently - see appendices
-        /// </summary>
-        public uint ButtonStatus;
-        public ButtonFlag _PressedButton => (ButtonFlag)ButtonStatus;
     }
 }

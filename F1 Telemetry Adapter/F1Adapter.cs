@@ -5,7 +5,6 @@ using NingSoft.F1TelemetryAdapter.F1_19_packets;
 using NingSoft.F1TelemetryAdapter.F1_20_packets;
 using NingSoft.F1TelemetryAdapter.F1_21_packets;
 using NingSoft.F1TelemetryAdapter.F1_22_packets;
-using NingSoft.F1TelemetryAdapter.F1_22_Packets;
 using NingSoft.F1TelemetryAdapter.F1_Base_packets;
 using NingSoft.F1TelemetryAdapter.Helpers;
 using NingSoft.F1TelemetryAdapter.Models;
@@ -97,9 +96,109 @@ namespace NingSoft.F1TelemetryAdapter
                 default: return null;
             }
         }
-        private static F1Packet GetPacket21(HeaderPacket header, Bytes bytes) { return null; }
-        private static F1Packet GetPacket20(HeaderPacket header, Bytes bytes) { return null; }
-        private static F1Packet GetPacket19(HeaderPacket header, Bytes bytes) { return null; }
-        private static F1Packet GetPacket18(HeaderPacket header, Bytes bytes) { return null; }
+        private static F1Packet GetPacket21(HeaderPacket header, Bytes bytes)
+        {
+            switch (header._PacketType)
+            {
+                case PacketType.CarTelemetry:
+                    return new CarTelemetryPacket21(header, bytes);
+                case PacketType.CarStatus:
+                    return new CarStatusPacket21(header, bytes);
+                case PacketType.CarSetups:
+                    return new CarSetupsPacket21(header, bytes);
+                case PacketType.CarDamage:
+                    return new CarDamagePacket21(header, bytes);
+                case PacketType.SessionHistory:
+                    return new SessionHistoryPacket21(header, bytes);
+                case PacketType.LapData:
+                    return new LapDataPacket21(header, bytes);
+                case PacketType.FinalClassification:
+                    return new FinalClassificationPacket21(header, bytes);
+                case PacketType.LobbyInfo:
+                    return new LobbyInfoPacket21(header, bytes);
+                case PacketType.Session:
+                    return new SessionPacket21(header, bytes);
+                case PacketType.Participants:
+                    return new ParticipantsPacket21(header, bytes);
+                case PacketType.Motion:
+                    return new MotionPacket21(header, bytes);
+                case PacketType.Event:
+                    return new EventPacket21(header, bytes);
+                default: return null;
+            }
+        }
+        private static F1Packet GetPacket20(HeaderPacket header, Bytes bytes)
+        {
+            switch (header._PacketType)
+            {
+                case PacketType.CarTelemetry:
+                    return new CarTelemetryPacket20(header, bytes);
+                case PacketType.CarStatus:
+                    return new CarStatusPacket20(header, bytes);
+                case PacketType.CarSetups:
+                    return new CarSetupsPacket20(header, bytes);
+                case PacketType.LapData:
+                    return new LapDataPacket20(header, bytes);
+                case PacketType.FinalClassification:
+                    return new FinalClassificationPacket20(header, bytes);
+                case PacketType.LobbyInfo:
+                    return new LobbyInfoPacket20(header, bytes);
+                case PacketType.Session:
+                    return new SessionPacket20(header, bytes);
+                case PacketType.Participants:
+                    return new ParticipantsPacket20(header, bytes);
+                case PacketType.Motion:
+                    return new MotionPacket20(header, bytes);
+                case PacketType.Event:
+                    return new EventPacket20(header, bytes);
+                default: return null;
+            }
+        }
+        private static F1Packet GetPacket19(HeaderPacket header, Bytes bytes)
+        {
+            switch (header._PacketType)
+            {
+                case PacketType.CarTelemetry:
+                    return new CarTelemetryPacket19(header, bytes);
+                case PacketType.CarStatus:
+                    return new CarStatusPacket19(header, bytes);
+                case PacketType.CarSetups:
+                    return new CarSetupsPacket19(header, bytes);
+                case PacketType.LapData:
+                    return new LapDataPacket19(header, bytes);
+                case PacketType.Session:
+                    return new SessionPacket19(header, bytes);
+                case PacketType.Participants:
+                    return new ParticipantsPacket19(header, bytes);
+                case PacketType.Motion:
+                    return new MotionPacket19(header, bytes);
+                case PacketType.Event:
+                    return new EventPacket19(header, bytes);
+                default: return null;
+            }
+        }
+        private static F1Packet GetPacket18(HeaderPacket header, Bytes bytes)
+        {
+            switch (header._PacketType)
+            {
+                case PacketType.CarTelemetry:
+                    return new CarTelemetryPacket18(header, bytes);
+                case PacketType.CarStatus:
+                    return new CarStatusPacket18(header, bytes);
+                case PacketType.CarSetups:
+                    return new CarSetupsPacket18(header, bytes);
+                case PacketType.LapData:
+                    return new LapDataPacket18(header, bytes);
+                case PacketType.Session:
+                    return new SessionPacket18(header, bytes);
+                case PacketType.Participants:
+                    return new ParticipantsPacket18(header, bytes);
+                case PacketType.Motion:
+                    return new MotionPacket18(header, bytes);
+                case PacketType.Event:
+                    return new EventPacket18(header, bytes);
+                default: return null;
+            }
+        }
     }
 }

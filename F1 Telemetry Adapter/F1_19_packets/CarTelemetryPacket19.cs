@@ -1,34 +1,33 @@
 ﻿using NingSoft.F1TelemetryAdapter.F1_Base_packets;
 using NingSoft.F1TelemetryAdapter.Models;
 
-namespace NingSoft.F1TelemetryAdapter.F1_18_packets
+namespace NingSoft.F1TelemetryAdapter.F1_19_packets
 {
     /// <summary>
     /// Frequency: Rate as specified in menus
-    /// Size: 1085 bytes
+    /// Size: 1347 bytes
     /// </summary>
-    public class CarTelemetryPacket18 : F1Packet
+    public class CarTelemetryPacket19 : F1Packet
     {
-        public override int Length => 1085;
+        public override int Length => 1347;
 
-        public CarTelemetryData18[] CarTelemetryData;
-
+        public CarTelemetryData19[] CarTelemetryData;
         public uint ButtonStatus;
 
-        public CarTelemetryPacket18(HeaderPacket header, Bytes bys) : base(header, bys) { }
+        public CarTelemetryPacket19(HeaderPacket header, Bytes bys) : base(header, bys) { }
 
         internal override FieldList Fields => new FieldList
         {
             new PacketField {
                 Name="CarTelemetryData",
-                Type = typeof(CarTelemetryData18),
+                Type = typeof(CarTelemetryData19),
                 Count = 20,
                 Children = new PacketField[]
                 {
                     new PacketField {Name="Speed",TypeName = "uint16"},
-                    new PacketField {Name="Throttle",TypeName = "uint8"},
-                    new PacketField {Name="Steer",TypeName = "int8"},
-                    new PacketField {Name="Brake",TypeName = "uint8"},
+                    new PacketField {Name="Throttle",TypeName = "float"},
+                    new PacketField {Name="Steer",TypeName = "float"},
+                    new PacketField {Name="Brake",TypeName = "float"},
                     new PacketField {Name="Clutch",TypeName = "uint8"},
                     new PacketField {Name="Gear",TypeName = "int8"},
                     new PacketField {Name="EngineRPM",TypeName = "uint16"},
@@ -39,30 +38,31 @@ namespace NingSoft.F1TelemetryAdapter.F1_18_packets
                     new PacketField {Name="TyresInnerTemperature",TypeName = "uint16",Count = 4  },
                     new PacketField {Name="EngineTemperature",TypeName = "uint16"},
                     new PacketField {Name="TyresPressure",TypeName = "float",Count = 4  },
+                    new PacketField {Name="SurfaceType",TypeName = "uint8",Count = 4  }
                 }
             },
             new PacketField {Name="ButtonStatus",TypeName = "uint32"}
         };
     }
 
-    public class CarTelemetryData18
+    public class CarTelemetryData19
     {
         /// <summary>
         /// Speed of car in kilometres per hour
         /// </summary>
         public ushort Speed;
         /// <summary>
-        /// Amount of throttle applied (0 to 100)
+        /// Amount of throttle applied (0.0 to 1.0)
         /// </summary>
-        public byte Throttle;
+        public float Throttle;
         /// <summary>
-        /// Steering (-100 (full lock left) to 100 (full lock right))
+        /// Steering (-1.0 (full lock left) to 1.0 (full lock right))
         /// </summary>
-        public sbyte Steer;
+        public float Steer;
         /// <summary>
-        /// Amount of brake applied (0 to 100)
+        /// Amount of brake applied (0.0 to 1.0)
         /// </summary>
-        public byte Brake;
+        public float Brake;
         /// <summary>
         /// Amount of clutch applied (0 to 100)
         /// </summary>
@@ -103,5 +103,9 @@ namespace NingSoft.F1TelemetryAdapter.F1_18_packets
         /// Tyres pressure (PSI)
         /// </summary>
         public float[] TyresPressure;
+        /// <summary>
+        /// Driving surface, see appendices
+        /// </summary>
+        public byte[] SurfaceType;
     }
 }

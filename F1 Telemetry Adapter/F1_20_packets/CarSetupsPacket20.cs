@@ -1,7 +1,7 @@
 ﻿using NingSoft.F1TelemetryAdapter.F1_Base_packets;
 using NingSoft.F1TelemetryAdapter.Models;
 
-namespace NingSoft.F1TelemetryAdapter.F1_21_packets
+namespace NingSoft.F1TelemetryAdapter.F1_20_packets
 {
     /// <summary>
     /// This packet details the car setups for each vehicle in the session. Note that in multiplayer games, other player cars will appear as blank, you will only be able to see your car setup and AI cars.
@@ -9,22 +9,20 @@ namespace NingSoft.F1TelemetryAdapter.F1_21_packets
     /// Size: 1102 bytes
     /// Version: 1
     /// </summary>
-    public class CarSetupsPacket21 : F1Packet
+    public class CarSetupsPacket20 : F1Packet
     {
         public override int Length => 1102;
 
-        public CarSetupData21[] CarSetupDatas;
+        public CarSetupData20[] CarSetupDatas;
 
-        public CarSetupsPacket21(HeaderPacket header, Bytes bys) : base(header, bys)
-        {
-        }
+        public CarSetupsPacket20(HeaderPacket header, Bytes bys) : base(header, bys) { }
 
         internal override FieldList Fields => new FieldList
         {
             new PacketField {
                 Name="CarSetupDatas",
-                Type = typeof(CarSetupData21),
-                Count=22,
+                Type = typeof(CarSetupData20),
+                Count = 22,
                 Children = new PacketField[]
                 {
                     new PacketField {Name="FrontWing",TypeName = "uint8"},
@@ -54,7 +52,7 @@ namespace NingSoft.F1TelemetryAdapter.F1_21_packets
         };
     }
 
-    public class CarSetupData21
+    public class CarSetupData20
     {
         /// <summary>
         /// Front wing aero

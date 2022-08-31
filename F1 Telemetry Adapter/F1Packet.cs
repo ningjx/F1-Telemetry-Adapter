@@ -42,6 +42,7 @@ namespace NingSoft.F1TelemetryAdapter
             bys.MoveIndex(Header.Length);
             this.Fields.MoveIndexToEnd(bys, this);
             if (bys.Index != Length)
+                //Console.WriteLine($"定义错误 Fields定义长度:{bys.Index} 数据包定义Length:{Length} 数据包类型{this.GetType().Name}");
                 throw new F1_Exception($"Fields定义所需长度{bys.Index}不等于数据包要求长度{Length}。数据包名称{this.GetType().Name}");
         }
     }

@@ -1,27 +1,27 @@
 ﻿using NingSoft.F1TelemetryAdapter.F1_Base_packets;
 using NingSoft.F1TelemetryAdapter.Models;
 
-namespace NingSoft.F1TelemetryAdapter.F1_18_packets
+namespace NingSoft.F1TelemetryAdapter.F1_19_packets
 {
     /// <summary>
     /// This packet details car statuses for all the cars in the race.
     /// Frequency: Rate as specified in menus
-    /// Size: 1061 bytes
+    /// Size: 1143 bytes
     /// Version: 1
     /// </summary>
-    public class CarStatusPacket18 : F1Packet
+    public class CarStatusPacket19 : F1Packet
     {
-        public override int Length => 1061;
+        public override int Length => 1143;
 
-        public CarStatusData18[] CarStatusDatas;
+        public CarStatusData19[] CarStatusDatas;
 
-        public CarStatusPacket18(HeaderPacket header, Bytes bys) : base(header, bys) { }
+        public CarStatusPacket19(HeaderPacket header, Bytes bys) : base(header, bys) { }
 
         internal override FieldList Fields => new FieldList
         {
             new PacketField {
                 Name="CarStatusDatas",
-                Type = typeof(CarStatusData18),
+                Type = typeof(CarStatusData19),
                 Count = 20,
                 Children = new PacketField[]
                 {
@@ -32,19 +32,20 @@ namespace NingSoft.F1TelemetryAdapter.F1_18_packets
                     new PacketField {Name="PitLimiterStatus",TypeName = "uint8"},
                     new PacketField {Name="FuelInTank",TypeName = "float"},
                     new PacketField {Name="FuelCapacity",TypeName = "float"},
+                    new PacketField {Name="FuelRemainingLaps",TypeName = "float"},
                     new PacketField {Name="MaxRPM",TypeName = "uint16"},
                     new PacketField {Name="IdleRPM",TypeName = "uint16"},
                     new PacketField {Name="MaxGears",TypeName = "uint8"},
                     new PacketField {Name="DrsAllowed",TypeName = "uint8"},
                     new PacketField {Name="TyresWear",TypeName = "uint8",Count = 4},
-                    new PacketField {Name="TyreCompound",TypeName = "uint8"},
+                    new PacketField {Name="ActualTyreCompound",TypeName = "uint8"},
+                    new PacketField {Name="VisualTyreCompound",TypeName = "uint8"},
                     new PacketField {Name="TyresDamage",TypeName = "uint8",Count = 4},
                     new PacketField {Name="FrontLeftWingDamage",TypeName = "uint8"},
                     new PacketField {Name="FrontRightWingDamage",TypeName = "uint8"},
                     new PacketField {Name="RearWingDamage",TypeName = "uint8"},
                     new PacketField {Name="EngineDamage",TypeName = "uint8"},
                     new PacketField {Name="GearboxDamage",TypeName = "uint8"},
-                    new PacketField {Name="ExhaustDamage",TypeName = "uint8"},
                     new PacketField {Name="VehicleFiaFlags",TypeName = "int8"},
                     new PacketField {Name="ErsStoreEnergy",TypeName = "float"},
                     new PacketField {Name="ErsDeployMode",TypeName = "uint8"},
@@ -56,7 +57,7 @@ namespace NingSoft.F1TelemetryAdapter.F1_18_packets
         };
     }
 
-    public class CarStatusData18
+    public class CarStatusData19
     {
         /// <summary>
         /// Traction control - 0 = off, 1 = medium, 2 = full
@@ -87,6 +88,10 @@ namespace NingSoft.F1TelemetryAdapter.F1_18_packets
         /// </summary>
         public float FuelCapacity;
         /// <summary>
+        /// Fuel remaining in terms of laps (value on MFD)
+        /// </summary>
+        public float FuelRemainingLaps;
+        /// <summary>
         /// Cars max RPM, point of rev limiter
         /// </summary>
         public ushort MaxRPM;
@@ -105,13 +110,23 @@ namespace NingSoft.F1TelemetryAdapter.F1_18_packets
 
         public byte[] TyresWear;
         /// <summary>
-        /// F1 Modern - 0 = hyper soft,1 = ultra soft,2 = super soft,3 = soft,4 = medium,5 = hard
-        /// ,6 = super hard,7 = inter,8 = wet
-        /// Classic 0-6 = dry,7-8 = wet
+        /// F1 Modern - 16 = C5, 17 = C4, 18 = C3, 19 = C2, 20 = C1
+        /// 7 = inter, 8 = wet
+        /// F1 Classic - 9 = dry, 10 = wet
+        /// F2 – 11 = super soft, 12 = soft, 13 = medium, 14 = hard
+        /// 15 = wet
         /// </summary>
-        public byte TyreCompound;
+        public byte ActualTyreCompound;
         /// <summary>
-        /// Tyres Damage(%)
+        /// F1 visual (can be different from actual compound)
+        /// 16 = soft, 17 = medium, 18 = hard, 7 = inter, 8 = wet
+        /// F1 Classic – same as above
+        /// F2 ‘19, 15 = wet, 19 – super soft, 20 = soft
+        /// 20 = medium , 22 = hard
+        /// </summary>
+        public byte VisualTyreCompound;
+        /// <summary>
+        /// Age in laps of the current set of tyres
         /// </summary>
         public byte[] TyresDamage;
         public byte FrontLeftWingDamage;
@@ -119,7 +134,6 @@ namespace NingSoft.F1TelemetryAdapter.F1_18_packets
         public byte RearWingDamage;
         public byte EngineDamage;
         public byte GearboxDamage;
-        public byte ExhaustDamage;
         /// <summary>
         /// -1 = invalid/unknown, 0 = none, 1 = green, 2 = blue, 3 = yellow, 4 = red
         /// </summary>

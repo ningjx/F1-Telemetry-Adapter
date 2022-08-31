@@ -2,16 +2,16 @@
 using NingSoft.F1TelemetryAdapter.F1_Base_packets;
 using NingSoft.F1TelemetryAdapter.Models;
 
-namespace NingSoft.F1TelemetryAdapter.F1_18_packets
+namespace NingSoft.F1TelemetryAdapter.F1_19_packets
 {
     /// <summary>
     /// The session packet includes details about the current session in progress.
     /// Frequency: 2 per second
-    /// Size: 147 bytes
+    /// Size: 149 bytes
     /// </summary>
-    public class SessionPacket18 : F1Packet
+    public class SessionPacket19 : F1Packet
     {
-        public override int Length => 147;
+        public override int Length => 149;
 
         /// <summary>
         /// Weather - 0 = clear, 1 = light cloud, 2 = overcast,
@@ -83,7 +83,7 @@ namespace NingSoft.F1TelemetryAdapter.F1_18_packets
         /// <summary>
         /// List of marshal zones – max 21
         /// </summary>
-        public MarshalZone18[] MarshalZones;
+        public MarshalZone19[] MarshalZones;
         /// <summary>
         /// 0 = no safety car, 1 = full, 2 = virtual, 3 = formation lap
         /// </summary>
@@ -93,7 +93,7 @@ namespace NingSoft.F1TelemetryAdapter.F1_18_packets
         /// </summary>
         public byte NetworkGame;
 
-        public SessionPacket18(HeaderPacket header, Bytes bys) : base(header, bys) { }
+        public SessionPacket19(HeaderPacket header, Bytes bys) : base(header, bys) { }
 
         public SessionType _SessionType => (SessionType)SessionType;
 
@@ -117,7 +117,7 @@ namespace NingSoft.F1TelemetryAdapter.F1_18_packets
             new PacketField {Name="NumMarshalZones",TypeName = "uint8"},
             new PacketField {
                 Name="MarshalZones",
-                Type = typeof(MarshalZone18),
+                Type = typeof(MarshalZone19),
                 Count = 21,
                 Children = new PacketField[]
                 {
@@ -130,7 +130,7 @@ namespace NingSoft.F1TelemetryAdapter.F1_18_packets
             };
     }
 
-    public class MarshalZone18
+    public class MarshalZone19
     {
         /// <summary>
         /// Fraction (0..1) of way through the lap the marshal zone starts

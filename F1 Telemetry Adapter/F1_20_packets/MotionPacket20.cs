@@ -1,20 +1,20 @@
 ﻿using NingSoft.F1TelemetryAdapter.F1_Base_packets;
 using NingSoft.F1TelemetryAdapter.Models;
 
-namespace NingSoft.F1TelemetryAdapter.F1_21_packets
+namespace NingSoft.F1TelemetryAdapter.F1_20_packets
 {
     /// <summary>
     /// The motion packet gives physics data for all the cars being driven. There is additional data for the car being driven with the goal of being able to drive a motion platform setup.
     /// N.B.For the normalised vectors below, to convert to float values divide by 32767.0f – 16-bit signed values are used to pack the data and on the assumption that direction values are always between -1.0f and 1.0f.
     /// Frequency: Rate as specified in menus
-    /// Size: 1464 bytes
+    /// Size: 1464 bytes (Package size update in Beta 3)
     /// Version: 1
     /// </summary>
-    public class MotionPacket21 : F1Packet
+    public class MotionPacket20 : F1Packet
     {
         public override int Length => 1464;
 
-        public CarMotionData21[] CarMotionData;
+        public CarMotionData20[] CarMotionData;
 
         /// <summary>
         /// RL, RR, FL, FR
@@ -77,16 +77,14 @@ namespace NingSoft.F1TelemetryAdapter.F1_21_packets
         /// </summary>
         public float FrontWheelsAngle;
 
-        public MotionPacket21(HeaderPacket header, Bytes bys) : base(header, bys)
-        {
-        }
+        public MotionPacket20(HeaderPacket header, Bytes bys) : base(header, bys) { }
 
         internal override FieldList Fields => new FieldList
         {
             new PacketField {
                 Name="CarMotionData",
                 Count = 22,
-                Type = typeof(CarMotionData21),
+                Type = typeof(CarMotionData20),
                 Children = new PacketField[]
                 {
                     new PacketField {Name="WorldPositionX",TypeName = "float"},
@@ -127,7 +125,7 @@ namespace NingSoft.F1TelemetryAdapter.F1_21_packets
         };
     }
 
-    public class CarMotionData21
+    public class CarMotionData20
     {
         /// <summary>
         /// World space X position

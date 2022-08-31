@@ -1,30 +1,27 @@
 ﻿using NingSoft.F1TelemetryAdapter.F1_Base_packets;
 using NingSoft.F1TelemetryAdapter.Models;
 
-namespace NingSoft.F1TelemetryAdapter.F1_21_packets
+namespace NingSoft.F1TelemetryAdapter.F1_19_packets
 {
     /// <summary>
     /// This packet details the car setups for each vehicle in the session. Note that in multiplayer games, other player cars will appear as blank, you will only be able to see your car setup and AI cars.
     /// Frequency: 2 per second
-    /// Size: 1102 bytes
-    /// Version: 1
+    /// Size: 843 bytes
     /// </summary>
-    public class CarSetupsPacket21 : F1Packet
+    public class CarSetupsPacket19 : F1Packet
     {
-        public override int Length => 1102;
+        public override int Length => 843;
 
-        public CarSetupData21[] CarSetupDatas;
+        public CarSetupData19[] CarSetupDatas;
 
-        public CarSetupsPacket21(HeaderPacket header, Bytes bys) : base(header, bys)
-        {
-        }
+        public CarSetupsPacket19(HeaderPacket header, Bytes bys) : base(header, bys) { }
 
         internal override FieldList Fields => new FieldList
         {
             new PacketField {
                 Name="CarSetupDatas",
-                Type = typeof(CarSetupData21),
-                Count=22,
+                Type = typeof(CarSetupData19),
+                Count = 20,
                 Children = new PacketField[]
                 {
                     new PacketField {Name="FrontWing",TypeName = "uint8"},
@@ -43,10 +40,8 @@ namespace NingSoft.F1TelemetryAdapter.F1_21_packets
                     new PacketField {Name="RearSuspensionHeight",TypeName = "uint8"},
                     new PacketField {Name="BrakePressure",TypeName = "uint8"},
                     new PacketField {Name="BrakeBias",TypeName = "uint8"},
-                    new PacketField {Name="RearLeftTyrePressure",TypeName = "float"},
-                    new PacketField {Name="RearRightTyrePressure",TypeName = "float"},
-                    new PacketField {Name="FrontLeftTyrePressure",TypeName = "float"},
-                    new PacketField {Name="FrontRightTyrePressure",TypeName = "float"},
+                    new PacketField {Name="FrontTyrePressure",TypeName = "float"},
+                    new PacketField {Name="RearTyrePressure",TypeName = "float"},
                     new PacketField {Name="Ballast",TypeName = "uint8"},
                     new PacketField {Name="FuelLoad",TypeName = "float"}
                 }
@@ -54,7 +49,7 @@ namespace NingSoft.F1TelemetryAdapter.F1_21_packets
         };
     }
 
-    public class CarSetupData21
+    public class CarSetupData19
     {
         /// <summary>
         /// Front wing aero
@@ -121,21 +116,13 @@ namespace NingSoft.F1TelemetryAdapter.F1_21_packets
         /// </summary>
         public byte BrakeBias;
         /// <summary>
-        /// Rear left tyre pressure (PSI)
+        /// Front tyre pressure (PSI)
         /// </summary>
-        public float RearLeftTyrePressure;
+        public float FrontTyrePressure;
         /// <summary>
-        /// Rear right tyre pressure (PSI)
+        /// Rear tyre pressure (PSI)
         /// </summary>
-        public float RearRightTyrePressure;
-        /// <summary>
-        /// Front left tyre pressure (PSI)
-        /// </summary>
-        public float FrontLeftTyrePressure;
-        /// <summary>
-        /// Front right tyre pressure (PSI)
-        /// </summary>
-        public float FrontRightTyrePressure;
+        public float RearTyrePressure;
         /// <summary>
         /// Ballast
         /// </summary>

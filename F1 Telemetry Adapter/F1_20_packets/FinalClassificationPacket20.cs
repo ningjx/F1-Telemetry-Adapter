@@ -1,36 +1,34 @@
 ﻿using NingSoft.F1TelemetryAdapter.F1_Base_packets;
 using NingSoft.F1TelemetryAdapter.Models;
 
-namespace NingSoft.F1TelemetryAdapter.F1_21_packets
+namespace NingSoft.F1TelemetryAdapter.F1_20_packets
 {
     /// <summary>
     /// This packet details the final classification at the end of the race, and the data will match with the post race results screen. This is especially useful for multiplayer games where it is not always possible to send lap times on the final frame because of network delay.
     /// Frequency: Once at the end of a race
-    /// Size: 1015 bytes
+    /// Size: 839 bytes
     /// Version: 1
     /// </summary>
-    public class FinalClassificationPacket21 : F1Packet
+    public class FinalClassificationPacket20 : F1Packet
     {
-        public override int Length => 1015;
+        public override int Length => 839;
 
         /// <summary>
         /// Number of cars in the final classification
         /// </summary>
         public byte NumCars;
 
-        public FinalClassificationData21[] FinalClassificationData;
+        public FinalClassificationData20[] FinalClassificationData;
 
-        public FinalClassificationPacket21(HeaderPacket header, Bytes bys) : base(header, bys)
-        {
-        }
+        public FinalClassificationPacket20(HeaderPacket header, Bytes bys) : base(header, bys) { }
 
         internal override FieldList Fields => new FieldList
         {
             new PacketField {Name="NumCars",TypeName = "uint8"},
             new PacketField {
                 Name="FinalClassificationData",
-                Type = typeof(FinalClassificationData21),
-                Count=22,
+                Type = typeof(FinalClassificationData20),
+                Count = 22,
                 Children = new PacketField[]
                 {
                     new PacketField {Name="Position",TypeName = "uint8"},
@@ -39,20 +37,19 @@ namespace NingSoft.F1TelemetryAdapter.F1_21_packets
                     new PacketField {Name="Points",TypeName = "uint8"},
                     new PacketField {Name="NumPitStops",TypeName = "uint8"},
                     new PacketField {Name="ResultStatus",TypeName = "uint8"},
-                    new PacketField {Name="BestLapTimeInMS",TypeName = "uint32"},
+                    new PacketField {Name="BestLapTime",TypeName = "float"},
                     new PacketField {Name="TotalRaceTime",TypeName = "double"},
                     new PacketField {Name="PenaltiesTime",TypeName = "uint8"},
                     new PacketField {Name="NumPenalties",TypeName = "uint8"},
                     new PacketField {Name="NumTyreStints",TypeName = "uint8"},
                     new PacketField {Name="TyreStintsActual",TypeName = "uint8",Count = 8  },
-                    new PacketField {Name="TyreStintsVisual",TypeName = "uint8",Count = 8  },
-                    new PacketField {Name="TyreStintsEndLaps",TypeName = "uint8",Count = 8  }
+                    new PacketField {Name="TyreStintsVisual",TypeName = "uint8",Count = 8  }
                 }
             }
         };
     }
 
-    public class FinalClassificationData21
+    public class FinalClassificationData20
     {
         /// <summary>
         /// Finishing position
@@ -81,9 +78,9 @@ namespace NingSoft.F1TelemetryAdapter.F1_21_packets
         /// </summary>
         public byte ResultStatus;
         /// <summary>
-        /// Best lap time of the session in milliseconds
+        /// Best lap time of the session in seconds
         /// </summary>
-        public uint BestLapTimeInMS;
+        public float BestLapTime;
         /// <summary>
         /// Total race time in seconds without penalties
         /// </summary>
@@ -108,9 +105,5 @@ namespace NingSoft.F1TelemetryAdapter.F1_21_packets
         /// Visual tyres used by this driver
         /// </summary>
         public byte[] TyreStintsVisual;
-        /// <summary>
-        /// The lap number stints end on
-        /// </summary>
-        public byte[] TyreStintsEndLaps;
     }
 }

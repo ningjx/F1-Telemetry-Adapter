@@ -1,17 +1,15 @@
 ﻿using Microsoft.VisualStudio.TestTools.UnitTesting;
 using NingSoft.F1TelemetryAdapter.F1_18_packets;
-using NingSoft.F1TelemetryAdapter.F1_18_Packets;
+using NingSoft.F1TelemetryAdapter.F1_19_packets;
+using NingSoft.F1TelemetryAdapter.F1_20_packets;
 using NingSoft.F1TelemetryAdapter.F1_21_packets;
-using NingSoft.F1TelemetryAdapter.F1_21_Packets;
 using NingSoft.F1TelemetryAdapter.F1_22_packets;
-using NingSoft.F1TelemetryAdapter.F1_22_Packets;
 
 namespace UnitTest
 {
+    [TestClass]
     public class CheckPacketFieldsFormat
-    {/// <summary>
-     /// 检测数据包定义是否正确
-     /// </summary>
+    {
         [TestCategory("检查数据包定义")]
         [TestMethod]
         public void CheckPacket22Format()
@@ -31,9 +29,6 @@ namespace UnitTest
             new CarDamagePacket22(h, null).CheckPacket();
         }
 
-        /// <summary>
-        /// 检测数据包定义是否正确
-        /// </summary>
         [TestCategory("检查数据包定义")]
         [TestMethod]
         public void CheckPacket21Format()
@@ -53,9 +48,38 @@ namespace UnitTest
             new CarDamagePacket21(h, null).CheckPacket();
         }
 
-        /// <summary>
-        /// 检测数据包定义是否正确
-        /// </summary>
+        [TestCategory("检查数据包定义")]
+        [TestMethod]
+        public void CheckPacket20Format()
+        {
+            var h = new HeaderPacket20(null, null);
+
+            new CarSetupsPacket20(h, null).CheckPacket();
+            new CarTelemetryPacket20(h, null).CheckPacket();
+            new CarStatusPacket20(h, null).CheckPacket();
+            new FinalClassificationPacket20(h, null).CheckPacket();
+            new LapDataPacket20(h, null).CheckPacket();
+            new LobbyInfoPacket20(h, null).CheckPacket();
+            new MotionPacket20(h, null).CheckPacket();
+            new ParticipantsPacket20(h, null).CheckPacket();
+            new SessionPacket20(h, null).CheckPacket();
+        }
+
+        [TestCategory("检查数据包定义")]
+        [TestMethod]
+        public void CheckPacket19Format()
+        {
+            var h = new HeaderPacket19(null, null);
+
+            new CarTelemetryPacket19(h, null).CheckPacket();
+            new CarSetupsPacket19(h, null).CheckPacket();
+            new CarStatusPacket19(h, null).CheckPacket();
+            new LapDataPacket19(h, null).CheckPacket();
+            new MotionPacket19(h, null).CheckPacket();
+            new ParticipantsPacket19(h, null).CheckPacket();
+            new SessionPacket19(h, null).CheckPacket();
+        }
+
         [TestCategory("检查数据包定义")]
         [TestMethod]
         public void CheckPacket18Format()

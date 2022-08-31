@@ -1,8 +1,8 @@
-﻿using NingSoft.F1TelemetryAdapter.F1_21_Packets;
+﻿using NingSoft.F1TelemetryAdapter.F1_21_packets;
 using NingSoft.F1TelemetryAdapter.F1_Base_packets;
 using NingSoft.F1TelemetryAdapter.Models;
 
-namespace NingSoft.F1TelemetryAdapter.F1_22_Packets
+namespace NingSoft.F1TelemetryAdapter.F1_22_packets
 {
     /// <summary>
     /// This packet details the car setups for each vehicle in the session. Note that in multiplayer games, other player cars will appear as blank, you will only be able to see your car setup and AI cars.

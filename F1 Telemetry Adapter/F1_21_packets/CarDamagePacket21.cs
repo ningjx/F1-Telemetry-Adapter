@@ -1,7 +1,7 @@
 ﻿using NingSoft.F1TelemetryAdapter.F1_Base_packets;
 using NingSoft.F1TelemetryAdapter.Models;
 
-namespace NingSoft.F1TelemetryAdapter.F1_21_Packets
+namespace NingSoft.F1TelemetryAdapter.F1_21_packets
 {
     /// <summary>
     /// This packet details car damage parameters for all the cars in the race.

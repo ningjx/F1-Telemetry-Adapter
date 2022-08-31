@@ -4,7 +4,7 @@ using NingSoft.F1TelemetryAdapter.Helpers;
 using NingSoft.F1TelemetryAdapter.Models;
 using System.Text;
 
-namespace NingSoft.F1TelemetryAdapter.F1_22_Packets
+namespace NingSoft.F1TelemetryAdapter.F1_22_packets
 {
     /// <summary>
     /// This packet gives details of events that happen during the course of a session.

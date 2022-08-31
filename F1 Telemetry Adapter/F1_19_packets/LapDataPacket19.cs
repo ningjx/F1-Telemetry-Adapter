@@ -1,29 +1,29 @@
 ﻿using NingSoft.F1TelemetryAdapter.F1_Base_packets;
 using NingSoft.F1TelemetryAdapter.Models;
 
-namespace NingSoft.F1TelemetryAdapter.F1_18_packets
+namespace NingSoft.F1TelemetryAdapter.F1_19_packets
 {
     /// <summary>
     /// The lap data packet gives details of all the cars in the session.
     /// Frequency: Rate as specified in menus
-    /// Size: 841 bytes
+    /// Size: 843 bytes
     /// </summary>
-    public class LapDataPacket18 : F1Packet
+    public class LapDataPacket19 : F1Packet
     {
-        public override int Length => 841;
+        public override int Length => 843;
 
         /// <summary>
         /// Lap data for all cars on track
         /// </summary>
-        public LapData18[] LapData;
+        public LapData19[] LapData;
 
-        public LapDataPacket18(HeaderPacket header, Bytes bys) : base(header, bys) { }
+        public LapDataPacket19(HeaderPacket header, Bytes bys) : base(header, bys) { }
 
         internal override FieldList Fields => new FieldList
         {
             new PacketField {
                 Name="LapData",
-                Type = typeof(LapData18),
+                Type = typeof(LapData19),
                 Count = 20,
                 Children = new PacketField[]
                 {
@@ -49,7 +49,7 @@ namespace NingSoft.F1TelemetryAdapter.F1_18_packets
         };
     }
 
-    public class LapData18
+    public class LapData19
     {
         /// <summary>
         /// Last lap time in seconds
