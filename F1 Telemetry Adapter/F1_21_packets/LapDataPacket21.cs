@@ -6,12 +6,12 @@ namespace NingSoft.F1TelemetryAdapter.F1_21_packets
     /// <summary>
     /// The lap data packet gives details of all the cars in the session.
     /// Frequency: Rate as specified in menus
-    /// Size: 972 bytes
+    /// Size: 970 bytes
     /// Version: 1
     /// </summary>
     public class LapDataPacket21 : F1Packet
     {
-        public override int Length => 972;
+        public override int Length => 970;
 
         /// <summary>
         /// Lap data for all cars on track
@@ -63,9 +63,7 @@ namespace NingSoft.F1TelemetryAdapter.F1_21_packets
                     new PacketField {Name="PitStopTimerInMS",TypeName = "uint16"},
                     new PacketField {Name="PitStopShouldServePen",TypeName = "uint8"}
                 }
-            },
-            new PacketField {Name="TimeTrialPBCarIdx",TypeName = "uint8"},
-            new PacketField {Name="TimeTrialRivalCarIdx",TypeName = "uint8"}
+            }
         };
     }
 

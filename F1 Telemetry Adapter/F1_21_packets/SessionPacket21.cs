@@ -7,12 +7,12 @@ namespace NingSoft.F1TelemetryAdapter.F1_21_packets
     /// <summary>
     /// The session packet includes details about the current session in progress.
     /// Frequency: 2 per second
-    /// Size: 632 bytes
+    /// Size: 625 bytes
     /// Version: 1
     /// </summary>
     public class SessionPacket21 : F1Packet
     {
-        public override int Length => 632;
+        public override int Length => 625;
 
         /// <summary>
         /// Weather - 0 = clear, 1 = light cloud, 2 = overcast,
@@ -257,11 +257,7 @@ namespace NingSoft.F1TelemetryAdapter.F1_21_packets
             new PacketField {Name="ERSAssist",TypeName = "uint8"},
             new PacketField {Name="DRSAssist",TypeName = "uint8"},
             new PacketField {Name="DynamicRacingLine",TypeName = "uint8"},
-            new PacketField {Name="DynamicRacingLineType",TypeName = "uint8"},
-            new PacketField {Name="GameMode",TypeName = "uint8"},
-            new PacketField {Name="RuleSet",TypeName = "uint8"},
-            new PacketField {Name="TimeOfDay",TypeName = "uint32"},
-            new PacketField {Name="SessionLength",TypeName = "uint8"}
+            new PacketField {Name="DynamicRacingLineType",TypeName = "uint8"}
             };
     }
 

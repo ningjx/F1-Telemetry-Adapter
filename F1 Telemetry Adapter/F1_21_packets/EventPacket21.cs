@@ -84,8 +84,8 @@ namespace NingSoft.F1TelemetryAdapter.F1_21_packets
                     {
                         new PacketField {Name="VehicleIdx",TypeName = "uint8"},
                         new PacketField {Name="Speed",TypeName = "float"},
-                        new PacketField {Name="FastestVehicleIdxInSession",TypeName = "uint8"},
-                        new PacketField {Name="FastestSpeedInSession",TypeName = "float"}
+                        new PacketField {Name="OverallFastestInSession",TypeName = "uint8"},
+                        new PacketField {Name="DriverFastestInSession",TypeName = "uint8"}
                     };
                     break;
 
@@ -222,11 +222,11 @@ namespace NingSoft.F1TelemetryAdapter.F1_21_packets
         /// <summary>
         /// Vehicle index of the Vehicle that is the fastest in this session
         /// </summary>
-        public byte FastestVehicleIdxInSession;
+        public byte OverallFastestInSession;
         /// <summary>
         /// Speed of the Vehicle that is the fastest in this session
         /// </summary>
-        public float FastestSpeedInSession;
+        public float DriverFastestInSession;
     }
 
     public class StartLights21 : EventDataDetail21

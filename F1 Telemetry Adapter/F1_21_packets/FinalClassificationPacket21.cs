@@ -6,12 +6,12 @@ namespace NingSoft.F1TelemetryAdapter.F1_21_packets
     /// <summary>
     /// This packet details the final classification at the end of the race, and the data will match with the post race results screen. This is especially useful for multiplayer games where it is not always possible to send lap times on the final frame because of network delay.
     /// Frequency: Once at the end of a race
-    /// Size: 1015 bytes
+    /// Size: 839 bytes
     /// Version: 1
     /// </summary>
     public class FinalClassificationPacket21 : F1Packet
     {
-        public override int Length => 1015;
+        public override int Length => 839;
 
         /// <summary>
         /// Number of cars in the final classification
@@ -45,8 +45,7 @@ namespace NingSoft.F1TelemetryAdapter.F1_21_packets
                     new PacketField {Name="NumPenalties",TypeName = "uint8"},
                     new PacketField {Name="NumTyreStints",TypeName = "uint8"},
                     new PacketField {Name="TyreStintsActual",TypeName = "uint8",Count = 8  },
-                    new PacketField {Name="TyreStintsVisual",TypeName = "uint8",Count = 8  },
-                    new PacketField {Name="TyreStintsEndLaps",TypeName = "uint8",Count = 8  }
+                    new PacketField {Name="TyreStintsVisual",TypeName = "uint8",Count = 8  }
                 }
             }
         };
@@ -108,9 +107,5 @@ namespace NingSoft.F1TelemetryAdapter.F1_21_packets
         /// Visual tyres used by this driver
         /// </summary>
         public byte[] TyreStintsVisual;
-        /// <summary>
-        /// The lap number stints end on
-        /// </summary>
-        public byte[] TyreStintsEndLaps;
     }
 }

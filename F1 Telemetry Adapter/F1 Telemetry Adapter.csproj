@@ -4,7 +4,7 @@
 		<TargetFrameworks>netstandard2.0;net461;net6.0</TargetFrameworks>
 		<RootNamespace>NingSoft.F1TelemetryAdapter</RootNamespace>
 		<GeneratePackageOnBuild>True</GeneratePackageOnBuild>
-		<Description>This project is used for decode Codemaster Formula 1Game UDP telemtry data.If you want to know the usage of this project,please see the github storage.</Description>
+		<Description> </Description>
 		<AssemblyName>NingSoft.F1TelemetryAdapter</AssemblyName>
 		<GenerateDocumentationFile>True</GenerateDocumentationFile>
 		<RepositoryUrl>https://github.com/ningjx/F1-Telemetry-Adapter</RepositoryUrl>
