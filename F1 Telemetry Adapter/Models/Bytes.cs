@@ -34,8 +34,10 @@ namespace NingSoft.F1TelemetryAdapter.Models
                     res = BitConverter.ToUInt16(byteData, index); index += 2; break;
                 case "int16":
                     res = BitConverter.ToInt16(byteData, index); index += 2; break;
+                case "uint":
                 case "uint32":
                     res = BitConverter.ToUInt32(byteData, index); index += 4; break;
+                case "int":
                 case "int32":
                     res = BitConverter.ToInt32(byteData, index); index += 4; break;
                 case "float":
